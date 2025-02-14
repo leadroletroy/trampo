@@ -690,7 +690,7 @@ def calibrate_extrinsics(calib_dir, extrinsics_config_dict, C, S, K, D):
 
             # Find corners or label by hand
             if extrinsics_method == 'board':
-                imgp = findCorners(img_vid_files[0], extrinsics_corners_nb, objp=object_coords_3d, show=show_reprojection_error)
+                imgp = findCorners(img_vid_files[0], extrinsics_corners_nb) #, objp=object_coords_3d, show=show_reprojection_error)
                 objp = object_coords_3d
                 if len(imgp) == 0:
                     logging.exception('No corners found. Set "show_detection_extrinsics" to true to click corners by hand, or change extrinsic_board_type to "scene"')
@@ -707,6 +707,8 @@ def calibrate_extrinsics(calib_dir, extrinsics_config_dict, C, S, K, D):
             elif extrinsics_method == 'keypoints':
                 logging.info('Calibration based on keypoints is not available yet.')
             
+            imgp = np.array(imgp, dtype=np.float32)
+
             # Calculate extrinsics
             mtx, dist = np.array(K[i]), np.array(D[i])
             _, r, t = cv2.solvePnP(np.array(objp)*1000, imgp, mtx, dist)
