@@ -1,0 +1,1730 @@
+2025-02-25 16:22:11,797 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (9,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-02-25 16:25:11,287 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-25 16:26:00,635 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-25 16:30:57,433 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-25 16:37:18,590 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:27:26,004 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:29:25,189 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:30:12,095 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:31:26,667 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:33:09,193 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:33:11,656 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 2236300918784.0, best pos: [ 477.5626 1560.8716  401.4081  285.6093   -0.2109   -0.0039    0.0615
+    0.0606   -0.    ]
+2025-02-26 09:33:51,121 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:33:51,680 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 5132335448064.0, best pos: [ 449.3744 1229.6604  627.3477  398.7319   -0.2653    0.0625   -0.0377
+    0.0527   -0.    ]
+2025-02-26 09:37:56,371 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (9,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-02-26 09:39:13,315 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (9,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-02-26 09:39:38,207 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (9,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-02-26 09:39:43,381 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (9,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-02-26 09:42:44,369 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (9,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-02-26 09:43:28,232 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:44:04,617 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:44:22,679 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:45:40,582 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:45:42,182 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 1782093709312.0, best pos: [563.2912 613.2516 443.2372 413.4584  -0.0164   0.0231  -0.0029  -0.016
+  -0.    ]
+2025-02-26 09:47:07,651 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:47:55,368 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:50:36,152 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:54:05,958 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:54:16,536 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:54:17,243 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 27881394667520.0, best pos: [605.855  587.8846 501.6929 283.7099   0.0661   0.0653  -0.0362   0.0245
+  -0.    ]
+2025-02-26 09:54:52,395 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:54:53,048 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 4815770877952.0, best pos: [609.34   554.8605 589.3352 380.6589  -0.499    0.0122  -0.0188   0.0085
+  -0.    ]
+2025-02-26 09:55:24,137 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:56:29,599 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:58:49,695 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:59:09,856 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:59:10,659 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 1991780990976.0, best pos: [605.2343 627.9649 387.118  333.3352   0.1064   0.0044  -0.0206   0.0534
+  -0.    ]
+2025-02-26 09:59:31,824 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-02-26 09:59:32,329 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 365416611840.0, best pos: [577.9512 631.5813 220.291  329.3198  -0.4714  -0.0023   0.0644  -0.098
+   0.    ]
+2025-02-26 10:02:57,632 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:02:58,193 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 41698394636288.0, best pos: [642.768  657.2779 497.9876 379.5717   0.2766  -0.3149   0.0891   0.0828
+   0.    ]
+2025-02-26 10:04:02,816 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:04:03,291 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 1169622002827264.0, best pos: [611.4547 598.6726 461.6251 329.9094   0.0314   0.1415  -0.0775   0.0933
+   0.    ]
+2025-02-26 10:04:11,325 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:04:11,831 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 117475928702976.0, best pos: [592.6368 629.8248 356.4766 336.9398  -0.4808   0.0257   0.0988   0.0965
+  -0.    ]
+2025-02-26 10:04:26,420 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:04:30,989 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 828892.875, best pos: [609.1388 619.8987 537.7154 310.3326   0.0021  -0.      -0.0306  -0.0545
+   0.    ]
+2025-02-26 10:06:49,384 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:06:54,514 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 727833.5, best pos: [574.8246 614.8496 666.3341 381.9101   0.0016  -0.      -0.0125  -0.0422
+   0.    ]
+2025-02-26 10:08:42,686 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:08:47,459 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 64210036.0, best pos: [500.6555 506.2794 635.2952 353.4372  -0.107    0.      -0.0185  -0.0435
+  -0.    ]
+2025-02-26 10:10:12,345 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:10:17,214 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 937026.5625, best pos: [542.3962 572.4889 643.8886 350.6526  -0.0001   0.      -0.0289  -0.005
+  -0.    ]
+2025-02-26 10:15:35,150 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:17:01,683 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:17:06,856 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 578164.375, best pos: [616.0345 571.2379 643.6243 360.3844  -0.001    0.       0.025    0.0214
+  -0.    ]
+2025-02-26 10:18:17,481 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:18:23,197 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:18:23,720 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 1820944129589248.0, best pos: [602.5803 558.2687 635.0796 347.8412   0.1512   0.0823  -0.0206  -0.0546
+  -0.    ]
+2025-02-26 10:18:49,785 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:18:54,270 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 301484.71875, best pos: [567.8428 574.8213 646.3499 363.533    0.0002  -0.       0.0032   0.0063
+   0.    ]
+2025-02-26 10:19:11,016 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:19:11,978 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 12561982423040.0, best pos: [512.6702 588.4095 630.3196 334.3158   0.0464  -0.0482   0.0041   0.075
+   0.    ]
+2025-02-26 10:28:28,802 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:28:32,748 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 4592492347392.0, best pos: [590.245  594.9835 650.0753 327.3126  -0.0387   0.0274   0.0491  -0.0561
+  -0.    ]
+2025-02-26 10:30:55,222 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:31:00,915 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 6756356325376.0, best pos: [602.5387 597.0401 692.0864 353.6426   0.4806  -0.0624  -0.0085   0.0106
+   0.    ]
+2025-02-26 10:32:18,299 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:32:22,398 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 97890.484375, best pos: [501.0061 502.6854 682.0197 336.3857   0.46     0.2109  -0.0858   0.0177
+  -0.1347]
+2025-02-26 10:35:59,726 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:36:03,279 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 98033.6875, best pos: [500.0059 510.4655 643.2569 336.2628  -0.0742   0.0002   0.0022   0.0026
+   0.0203]
+2025-02-26 10:37:15,316 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:37:19,357 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 97712.078125, best pos: [500.693  500.9599 613.7417 313.6141  -0.06    -0.048    0.0003   0.0082
+   0.    ]
+2025-02-26 10:38:33,930 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:38:38,816 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 97645.1171875, best pos: [500.2579 500.3288 629.1034 353.2247   0.0622  -0.0571   0.0096  -0.003
+   0.01  ]
+2025-02-26 10:42:48,929 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:42:53,383 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 80.30286407470703, best pos: [ 508.1732  527.929   642.1205  326.7089    0.0545    0.0347   -0.0018
+    0.0013    0.0372    0.6304    0.9972    0.4181 -199.7424 -284.0086
+  960.6174]
+2025-02-26 10:43:24,942 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:43:26,279 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 10.860608100891113, best pos: [ 641.9584  580.4499  649.442   358.3729   -0.0042   -0.0194   -0.0027
+   -0.0073    0.0226    0.0434    0.7421    0.3289   52.8788   93.1584
+ -990.238 ]
+2025-02-26 10:43:58,949 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:43:59,831 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 11.352529525756836, best pos: [ 565.0591  559.9009  638.5045  354.5703    0.0107   -0.0649    0.0078
+   -0.0049    0.0502    0.045     0.7436    0.3377   41.5387   87.6202
+ -943.9837]
+2025-02-26 10:44:21,417 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:44:22,409 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 17.731155395507812, best pos: [ 593.9581  536.1242  665.9308  314.1481   -0.0602   -0.0326    0.0015
+   -0.0012   -0.0361    0.3322    0.5971    0.1904   34.6178   22.8593
+ -930.2219]
+2025-02-26 10:45:29,062 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:45:31,319 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 14.684371948242188, best pos: [ 592.668   573.2892  638.6352  319.5356    0.0039    0.0319    0.0002
+    0.0057    0.0632    0.2131    0.6176    0.2209    9.9126   26.7449
+ -971.8401]
+2025-02-26 10:47:55,594 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:48:00,063 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 12.568353652954102, best pos: [ 619.4908  558.6899  631.9499  325.586     0.0289    0.0145   -0.0016
+   -0.0001    0.0497    0.0417    0.7207    0.3685   23.7947   23.3689
+ -948.0434]
+2025-02-26 10:50:42,108 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:50:43,042 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 25.06890106201172, best pos: [ 582.4826  554.5041  658.7857  353.6002    0.0916    0.0491    0.0016
+   -0.0009   -0.0021    0.2339    0.5367    0.5743   61.6482   34.1512
+ -908.7131]
+2025-02-26 10:51:01,232 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:51:03,474 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 12.6969633102417, best pos: [ 594.5298  553.0473  659.3791  368.0129   -0.0348   -0.0288    0.0077
+   -0.0021    0.0052    0.0625    0.7124    0.3173   60.1225   99.1888
+ -876.9324]
+2025-02-26 10:55:07,918 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:55:10,659 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 9.911317825317383, best pos: [ 626.5633  508.6228  624.7547  342.4526   -0.0314    0.0489   -0.0039
+   -0.0014   -0.0456    0.0815    0.8367    0.3192   13.3828   72.087
+ -903.4362]
+2025-02-26 10:57:42,854 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 10:57:45,373 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 584.1466064453125, best pos: [627.6694 629.647  644.0427 362.9257  -0.0755  -0.0266  -0.0044   0.004
+   0.0018   0.9089   0.1878   0.9814   0.673    1.0059   0.5326]
+2025-02-26 11:07:56,551 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (15,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 65, in generate_swarm
+    np.all(bounds[0] <= init_pos) and np.all(init_pos <= bounds[1])
+           ^^^^^^^^^^^^^^^^^^^^^
+ValueError: operands could not be broadcast together with shapes (15,) (90,9) 
+2025-02-26 11:09:28,604 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (15,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 65, in generate_swarm
+    np.all(bounds[0] <= init_pos) and np.all(init_pos <= bounds[1])
+           ^^^^^^^^^^^^^^^^^^^^^
+ValueError: operands could not be broadcast together with shapes (15,) (90,9) 
+2025-02-26 11:09:56,325 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (15,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 65, in generate_swarm
+    np.all(bounds[0] <= init_pos) and np.all(init_pos <= bounds[1])
+           ^^^^^^^^^^^^^^^^^^^^^
+ValueError: operands could not be broadcast together with shapes (15,) (90,9) 
+2025-02-26 11:11:50,313 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (15,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-02-26 11:12:59,437 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (15,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-02-26 11:13:14,292 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (15,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-02-26 11:13:42,343 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (15,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-02-26 11:14:04,048 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (15,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-02-26 11:21:43,498 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 11:21:46,459 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 1.56001877784729, best pos: [ 626.6063  628.5252  642.6921  361.8347    0.        0.0998    0.0023
+    0.0012    0.0007   -0.4369   -0.5569   -2.7119  -65.2818 -176.0856
+ 1407.5089]
+2025-02-26 11:27:58,802 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 11:28:01,141 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 1.5574201345443726, best pos: [ 626.395   628.5085  642.6841  361.8669    0.0221    0.0997   -0.0009
+    0.0012    0.0047   -0.4437   -0.5655   -2.7098  -65.2983 -176.0651
+ 1407.5042]
+2025-02-26 11:48:51,637 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 11:49:00,653 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 1.5592308044433594, best pos: [ 626.6064  628.5248  642.7271  361.8531    0.0134    0.099     0.0005
+    0.0021   -0.0001   -0.4388   -0.5619   -2.7115  -65.2862 -176.0926
+ 1407.5043]
+2025-02-26 11:50:29,599 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 11:50:47,307 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 1.5545321702957153, best pos: [ 626.5787  628.5554  642.7043  361.8406    0.0647    0.1       0.0008
+    0.001     0.0009   -0.4486   -0.5715   -2.7071  -65.3004 -176.0843
+ 1407.5082]
+2025-02-26 11:52:43,151 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 11:53:02,623 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.28042447566986084, best pos: [ 626.6041  628.5266  642.691   361.8358   -0.0581    0.0988   -0.0012
+    0.0005   -0.0001   -0.5345   -0.483     2.3042  395.254   -49.2056
+ 1340.5433]
+2025-02-26 11:58:04,156 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2025-02-26 11:58:13,326 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.9061048626899719, best pos: [ 626.6041  628.5266  642.6911  361.8359   -0.0555    0.0395   -0.0012
+    0.0005    0.       -0.9372   -0.2514    2.9212  755.3384 -112.7707
+ 1935.7434]
+2025-02-26 11:59:34,673 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-26 11:59:43,816 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.9060624837875366, best pos: [ 626.6036  628.5269  642.691   361.8359   -0.0555    0.0411   -0.0012
+    0.0005    0.       -0.9373   -0.2514    2.9212  755.3383 -112.7708
+ 1935.7434]
+2025-02-26 12:00:09,683 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-26 12:00:19,422 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.6016120910644531, best pos: [ 626.6042  628.5266  642.6915  361.8358   -0.0581    0.0395   -0.0012
+    0.0006   -0.       -1.3297   -0.1854    2.3551  200.2757 -225.5755
+ 1913.9215]
+2025-02-27 14:28:09,972 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:31:27,891 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:31:55,123 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:32:33,123 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:32:59,440 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:33:19,679 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:33:21,403 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:33:45,191 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:35:34,212 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:35:57,491 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:52:32,211 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:53:25,534 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:56:50,825 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 14:57:17,598 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 15:01:56,078 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 15:17:18,428 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 15:18:05,108 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 15:18:26,423 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 15:18:44,742 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 15:19:50,471 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 15:28:13,459 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 15:28:29,972 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 15:32:13,306 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 15:37:21,129 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 5.5113622617009375, best pos: [681.2625 500.0563 605.9983 325.2006   0.0982  -0.0833  -0.0074  -0.0009
+   0.0705 588.7071 626.3108 612.2813 303.7257   0.0467  -0.0141  -0.0035
+  -0.0066   0.0435 597.9134 696.0835 671.7949 365.8737   0.0762   0.0777
+  -0.0096  -0.0072   0.0725 633.5566 681.4159 675.9327 369.4383  -0.0635
+  -0.052   -0.0095   0.0054   0.0195 615.437  662.1427 697.5144 330.7886
+   0.0022   0.0374  -0.0046  -0.0038   0.0831 552.5862 634.1467 625.1582
+ 301.1631  -0.0546   0.0674  -0.009   -0.0088  -0.0221]
+2025-02-27 16:01:07,872 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-27 16:06:07,161 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 965.0669377515369, best pos: [ 636.7921  644.3608  650.9327  353.0089   -0.0691    0.023     0.0048
+   -0.0013    0.0547    2.5404    0.6301   -0.918  -820.5151 -826.5287
+ -667.2256  511.1074  535.8996  669.0215  381.2555    0.045    -0.0241
+    0.0001   -0.0025    0.0542   -2.57      2.7968   -2.442  -356.947
+ -339.5858   92.1172  685.32    617.3011  605.6697  391.1496    0.0749
+   -0.0354   -0.002    -0.0007    0.0043   -2.6118    1.5154   -0.6957
+ -109.4065 -699.5041 -237.3844  534.7667  569.6978  654.2864  337.8747
+    0.0456    0.0627   -0.0051    0.0036    0.0063    2.9001   -1.332
+    2.0437  892.6816 -807.0569  364.7113  549.5776  614.1491  600.4438
+  345.4479    0.0043    0.044     0.0007   -0.0034   -0.0803    0.1265
+    1.2256    0.3364  833.3646 -766.172  -414.6601  692.2388  550.3404
+  658.1469  348.0267   -0.0522    0.0277    0.0007   -0.0008    0.0295
+    2.7561   -2.8713    1.2426  684.9668 -230.7963 1864.1573]
+2025-02-28 09:09:57,365 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-28 09:11:45,096 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-28 09:16:04,676 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.3663913723174925, best pos: [668.0907 541.4    672.1789 321.6706   0.0836  -0.0312   0.0001   0.0068
+   0.0768 650.8767 646.5232 699.5555 399.207   -0.0026  -0.0662   0.0091
+   0.005   -0.0867 551.2009 670.0441 611.8114 332.757    0.011   -0.0954
+  -0.0062   0.0074  -0.0329 528.4502 564.183  637.7188 329.9834   0.0093
+  -0.0448   0.0079   0.0043  -0.0866 654.5595 521.7609 652.0406 357.4978
+   0.0267  -0.0685  -0.003   -0.0056  -0.0765 612.7972 635.5274 609.1677
+ 345.8049   0.0126   0.034    0.0097   0.0011  -0.069 ]
+2025-02-28 09:18:29,034 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-28 09:26:51,145 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.2659348683319202, best pos: [649.8918 616.8761 671.7272 339.8158  -0.0387   0.0621  -0.0068   0.005
+  -0.0437 593.5038 630.7107 651.0181 339.0873  -0.0912   0.0017   0.0097
+  -0.0061  -0.095  576.8416 627.6375 686.6785 336.9736   0.042    0.0605
+  -0.0064  -0.0037  -0.0926 597.1554 545.8543 657.5232 366.9782   0.0097
+  -0.0454  -0.0063  -0.004   -0.014  654.9563 655.4634 614.5479 385.2826
+  -0.0494   0.0998  -0.0041  -0.0078  -0.0537 535.9477 547.5756 610.3051
+ 325.7196   0.0096  -0.0455   0.005    0.0028  -0.0036]
+2025-02-28 09:28:37,757 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-28 09:30:42,814 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 1.0892739488116674, best pos: [594.9549 651.4699 691.0736 357.4894   0.0768   0.0663   0.0002  -0.003
+   0.0419 651.769  628.0658 654.3276 393.8273  -0.0144   0.0939  -0.0083
+  -0.0087  -0.0821 518.0382 637.0322 685.2086 360.3781  -0.0519  -0.0539
+   0.0074  -0.0052   0.0384 604.8403 681.3362 671.6855 375.0601   0.081
+   0.038   -0.0048   0.0067  -0.0536 640.9392 550.3406 616.7621 382.2507
+   0.0794  -0.0673  -0.0083  -0.0015  -0.0677 527.4014 649.4398 644.1598
+ 329.9428  -0.0128  -0.0778  -0.0034   0.006    0.0485]
+2025-02-28 09:34:41,702 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-28 09:35:04,486 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-28 09:37:01,497 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 1.4542311518797644, best pos: [593.8881 664.4226 634.577  369.6897  -0.0906  -0.0702  -0.0008  -0.0063
+   0.0154 679.8517 510.843  641.6673 321.7531   0.0891   0.0009  -0.0035
+  -0.005   -0.0832 509.0374 657.4173 639.7911 382.8799  -0.0024  -0.0744
+  -0.0006   0.0099  -0.0501 522.7642 653.6439 647.9861 312.727   -0.024
+   0.0799   0.0052   0.0037  -0.077  505.527  593.78   626.4889 352.0594
+   0.04     0.0423   0.0081   0.001   -0.0317 675.2188 690.6694 630.2274
+ 325.3225  -0.0853  -0.0632   0.0077   0.0024   0.0107]
+2025-02-28 09:37:11,162 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-28 09:39:06,560 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 1.0357324105193642, best pos: [576.6272 504.9699 692.806  393.7698  -0.0699  -0.016   -0.0086   0.0012
+  -0.0573 596.7587 532.8958 678.6622 395.3938   0.0511  -0.0176   0.0036
+   0.008    0.0324 532.9406 513.3455 687.0477 381.5139  -0.0771   0.002
+  -0.0039   0.0051   0.0086 601.1124 581.8181 634.9237 387.4991   0.0484
+  -0.0106  -0.0005  -0.0073  -0.0499 671.8269 637.7375 687.8504 332.5793
+   0.0302   0.0501  -0.0085   0.0095   0.0327 612.0448 625.7196 683.021
+ 354.4235   0.046   -0.0026   0.0067  -0.0095   0.0598]
+2025-02-28 09:42:44,303 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-02-28 09:44:36,865 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 1.3413528294807702, best pos: [629.0066 692.2739 609.1485 360.4797   0.0982  -0.0352   0.0028  -0.0043
+  -0.0398 628.8125 615.7793 620.3899 378.6241  -0.0332  -0.0843   0.0002
+  -0.0009  -0.0363 626.9632 587.0663 642.742  354.7231  -0.0028  -0.0474
+  -0.0046   0.0006   0.024  578.8816 560.0724 619.7809 314.7627  -0.0416
+   0.0479   0.0067   0.0004  -0.012  658.3184 525.7467 655.8684 359.267
+   0.0647   0.0153   0.0063   0.0053   0.0202 512.6711 629.2437 674.0313
+ 306.5824  -0.0234   0.0505  -0.0092   0.007    0.0099]
+2025-03-03 17:04:44,317 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:05:55,019 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:07:54,689 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:12:42,987 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:13:10,648 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:14:46,315 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:15:37,502 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (36,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-03-03 17:18:05,806 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (36,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 65, in generate_swarm
+    np.all(bounds[0] <= init_pos) and np.all(init_pos <= bounds[1])
+           ^^^^^^^^^^^^^^^^^^^^^
+ValueError: operands could not be broadcast together with shapes (36,) (216,) 
+2025-03-03 17:20:25,978 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (36,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 65, in generate_swarm
+    np.all(bounds[0] <= init_pos) and np.all(init_pos <= bounds[1])
+           ^^^^^^^^^^^^^^^^^^^^^
+ValueError: operands could not be broadcast together with shapes (36,) (6,6) 
+2025-03-03 17:21:19,902 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (36,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 65, in generate_swarm
+    np.all(bounds[0] <= init_pos) and np.all(init_pos <= bounds[1])
+           ^^^^^^^^^^^^^^^^^^^^^
+ValueError: operands could not be broadcast together with shapes (1,36) (6,6) 
+2025-03-03 17:23:00,657 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:25:17,525 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:25:45,274 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:26:59,996 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:28:29,170 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:29:13,066 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:29:38,579 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:30:06,397 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:31:02,430 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:32:07,642 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-03 17:33:11,843 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-04 08:52:45,546 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-04 08:58:18,973 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (36,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-03-04 08:59:12,228 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (36,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-03-04 09:00:51,742 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (36,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 67, in generate_swarm
+    raise ValueError("User-defined init_pos is out of bounds.")
+ValueError: User-defined init_pos is out of bounds.
+2025-03-04 09:07:39,720 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (36,)
+Traceback (most recent call last):
+  File "c:\Users\LEA\Desktop\Poly\Trampo\code\trampo\Lib\site-packages\pyswarms-1.3.0-py3.13.egg\pyswarms\backend\generators.py", line 81, in generate_swarm
+    pos = center * np.random.uniform(
+                   ~~~~~~~~~~~~~~~~~^
+        low=min_bounds, high=max_bounds, size=(n_particles, dimensions)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "numpy\\random\\mtrand.pyx", line 1171, in numpy.random.mtrand.RandomState.uniform
+  File "_common.pyx", line 600, in numpy.random._common.cont
+  File "_common.pyx", line 518, in numpy.random._common.cont_broadcast_2
+  File "_common.pyx", line 245, in numpy.random._common.validate_output_shape
+ValueError: Output size (50, 36) is not compatible with broadcast dimensions of inputs (50, 50, 36).
+2025-03-04 09:09:25,598 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-04 09:10:23,499 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 100.92458985833561, best pos: [   -3.1805     4.5506     0.2506  -217.7037 -1390.5176    45.248
+    -1.1281    -1.6296    -1.8461    43.4903  -214.3102  1192.5537
+     1.1118    -0.6249    -0.4483  -715.7519  1026.7447   493.5799
+     0.2273    -1.0586     0.3435  -938.8056 -1293.318    147.4797
+    -1.4948     0.446      0.1665 -1209.8511  -157.8257  -416.9349
+    -1.9047     3.5177    -1.7877   670.6589   351.7562  1266.3097]
+2025-03-04 09:12:31,805 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-04 09:12:42,903 - pyswarms.single.global_best - INFO - Optimize for 20 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-04 09:13:32,827 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 85.32173083927117, best pos: [    3.4308     0.2987    -0.6116  1068.0843   805.1024  -667.1433
+    -2.0852     5.6177     2.2621  1343.2273   126.3349  -433.2486
+    -1.8744    -3.919      4.7834 -2419.1793   -44.5795  1103.6495
+     3.889      0.1641     3.8381   241.5098 -1151.235  -1905.3388
+     0.5712    -2.9278    -5.3922 -1209.478    795.7036 -2458.7097
+     3.739     -0.3174    -0.2048  2429.5108  -451.2693  -989.1604]
+2025-03-04 09:16:04,097 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-04 09:19:46,049 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 83.56803361093738, best pos: [    2.6696    -0.6913    -2.0824   454.9795  -499.2139  -778.3381
+     1.3367     1.7996    -1.003   1030.6742    10.3627    55.346
+     3.6678     3.4077     2.4709   172.1603    32.4939 -1544.3794
+    -2.3448    -0.7415     2.1166 -1104.421    503.7265   277.3709
+    -0.2639     1.5615    -0.0891   667.2962   -63.8413  1583.1192
+     3.1605    -1.0287    -0.8016   980.8912  -283.6776 -1670.5444]
+2025-03-04 09:20:46,462 - pyswarms.single.global_best - INFO - Optimize for 50 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.5}
+2025-03-04 09:22:40,156 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 59.63150292160499, best pos: [    0.3759     0.3238     0.0738     0.3287     0.2695     0.3079
+     1.5524     0.1864     2.7476 -1484.7488   630.1257  1388.2002
+     2.0342     0.1522     2.2654 -1572.7056   688.8283  2193.9842
+     0.2027    -0.7714    -0.1987  1160.5486  -128.8859   274.6276
+    -0.553      0.546      2.4169  -753.8996   -42.0184  -240.5841
+     0.3171    -0.1656     0.4173  -122.0602   279.1722   230.9998]
+2025-03-04 09:24:15,930 - pyswarms.single.global_best - INFO - Optimize for 50 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 09:26:23,559 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 52.02603341844347, best pos: [    0.2894     0.2009     0.1091     0.393      0.0747     0.0006
+     1.1346     0.2187     3.0004 -1484.6803   629.7191  1387.815
+     2.0529     0.3287     2.4609 -1572.8528   689.2455  2194.0478
+     0.0287    -0.771     -0.1119  1159.9843  -128.835    274.8691
+     0.3593     0.4537     2.6675  -754.1675   -41.9108  -240.8942
+     0.2122    -0.2818     0.4168  -121.6135   278.8973   230.8007]
+2025-03-04 09:27:42,787 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 09:31:18,523 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 42.13037866421263, best pos: [    0.0703     0.0327    -0.0966     1.1172    -0.0026     2.9146
+     1.0398     0.3028     2.7693 -1485.0122   629.1731  1387.6493
+     1.8437     0.515      2.2827 -1572.7623   687.6845  2194.0849
+    -0.0542    -0.803     -0.4411  1160.6287  -136.5455   274.6248
+     0.5874    -0.0381     3.1575  -754.8265   -41.8264  -239.569
+     0.1757    -0.4736     0.0566  -121.4924   279.3299   232.7449]
+2025-03-04 09:31:42,529 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 09:39:22,597 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 42.83430792078642, best pos: [   -0.1612     0.4469    -0.0374     9.3927     1.3609     3.6915
+     1.1932    -0.2071     2.6466 -1485.3423   630.0046  1386.4247
+     1.8466    -0.001      2.2202 -1573.5557   695.4416  2196.3622
+    -0.1054    -0.6556    -0.5179  1161.917   -125.4551   274.8453
+     0.1942    -0.4137     3.1586  -752.684   -145.8395  -166.1703
+    -0.0377    -0.0385     0.0973  -120.8314   276.5801   165.0808]
+2025-03-04 09:40:46,340 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 09:41:08,513 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 09:42:54,842 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 09:51:34,431 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 09:58:59,492 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 45.196479918231944, best pos: [    0.1824     0.0773     0.1599    -0.6648   -57.3499    -0.3615
+     1.3588     0.4626     2.6747 -1485.6978   625.2827  1388.2639
+     1.8548     0.5821     2.364  -1572.9727   875.8857  2201.0948
+     0.0165    -0.9173    -0.2263  1168.6634  -129.1174   273.4565
+    -0.3604     0.1399     3.1699  -755.2165   -42.1795  -240.8173
+     0.2527    -0.4258     0.3082  -130.4765   280.5354   230.6939]
+2025-03-04 10:21:23,577 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 10:29:07,901 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 43.44721999312688, best pos: [    0.0401     0.312     -0.1182     0.3262     0.1713     0.2038
+     1.2013     0.2165     2.6365 -1494.4405   629.7267  1391.7277
+     1.8458     0.462      2.2324 -1572.4344   705.3678  2198.5376
+     0.1251    -0.7502    -0.5614  1160.6131  -122.0482   277.0984
+     0.213      0.0297     2.9375  -754.247    -43.3454  -241.417
+     0.197     -0.1644     0.0049  -122.3606   280.4468   182.8577]
+2025-03-04 10:54:13,763 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 11:02:11,550 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 82.11157037317753, best pos: [    1.1069    -4.6159    -4.7367   995.414   1435.6128  2136.4542
+     1.8618     1.2725     3.8983  1440.8888 -2829.0382   959.5056
+    -1.9157    -3.47      -0.4069 -1523.7618  2154.055     84.04
+     0.8621    -1.779     -0.0446  -743.1503  1604.0639  -870.5249
+    -1.3007    -1.9052    -1.5715  1325.4068 -2319.6857  -719.2489
+    -0.4232    -4.8403     2.4017  1269.2116  1288.8996  1266.7446]
+2025-03-04 11:03:29,398 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 11:11:19,590 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 42.47904564477759, best pos: [   -0.147     -0.0522     0.6672     1.6284    -0.615      0.047
+     0.9161    -0.0787     3.1895 -1484.9251   629.7124  1387.1397
+     1.6501    -0.0261     2.8433 -1572.485    688.13    2193.6732
+    -0.6021    -0.7396     0.1681  1160.6994  -130.3392   274.9755
+    -0.0617    -0.4374     3.5612  -756.5605   -42.4991  -240.249
+    -0.2502    -0.5718     0.7011  -122.4764   279.0598   230.5082]
+2025-03-04 11:13:20,127 - pyswarms.single.global_best - INFO - Optimize for 300 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 11:25:37,785 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 42.79885398201084, best pos: [   -0.0335    -0.4501    -0.3882    -0.4393     0.1311     2.192
+     1.0316     0.3662     2.3234 -1484.7791   629.2821  1387.0427
+     1.5931     0.585      1.9126 -1572.4107   688.4283  2193.5818
+    -0.031     -1.5092    -0.8385  1160.8667  -129.4245   274.488
+     1.3761     0.0191     2.464   -754.6647   -42.08    -230.9077
+     0.2057    -0.9293    -0.3242  -122.4155   277.9135   230.7965]
+2025-03-04 11:33:29,307 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 11:34:18,468 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 11:35:38,511 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 11:37:20,802 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 11:41:17,375 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 35.45325156775388, best pos: [    0.5682     0.3208     0.0729     0.6436     0.8667     0.5189
+     1.0495     0.9324     2.9688 -1485.3432   630.4131  1388.0025
+     2.647      0.8119     2.2653 -1572.7948   689.0106  2193.744
+     0.4119    -0.8116    -0.0929  1175.1696  -129.1756   274.7595
+     0.4414     0.888      3.2509  -754.545    -41.9197  -240.3707
+     0.6002    -0.1519     0.3427  -122.0554   278.6105   231.056 ]
+2025-03-04 11:45:44,979 - pyswarms.single.global_best - INFO - Optimize for 250 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 11:50:42,620 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 34.46739824725823, best pos: [    0.2439     0.0976    -0.0547     0.1713     0.1322    -0.2575
+     1.7603     0.0871     2.8332 -1484.8742   629.8327  1388.0962
+     2.4753     0.2085     2.2254 -1572.2113   688.4555  2193.9988
+     0.1998    -1.0608    -0.3079  1161.193   -129.0467   272.8678
+     0.4754     0.1709     3.464   -752.9902   -44.6105  -241.0206
+     0.4168    -0.4022     0.1779  -121.7265   288.8696   231.8113]
+2025-03-04 11:51:17,102 - pyswarms.single.global_best - INFO - Optimize for 300 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-04 11:57:26,685 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 30.511228625301843, best pos: [    0.1983     0.0566     0.0655    12.0162    -0.2825     0.4322
+     1.2557     0.297      3.1569 -1484.5443   630.1738  1387.556
+     2.03       0.3339     2.7821 -1569.363    736.464   2193.3237
+     0.0784    -1.0599    -0.2731  1161.0181  -136.0307   274.414
+     0.7203     0.392      3.4265  -758.6283  -448.4256    29.6389
+     0.3215    -0.4436     0.2485  -121.3775   279.1137   230.6414]
+2025-03-05 09:50:25,220 - pyswarms.single.global_best - INFO - Optimize for 300 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-05 09:50:47,063 - pyswarms.single.global_best - INFO - Optimize for 300 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-05 09:51:27,924 - pyswarms.single.global_best - INFO - Optimize for 300 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-05 09:53:18,758 - pyswarms.single.global_best - INFO - Optimize for 300 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-05 09:53:43,290 - pyswarms.single.global_best - INFO - Optimize for 300 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-05 10:00:23,436 - pyswarms.single.global_best - INFO - Optimize for 300 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-05 10:08:11,254 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 35.143416123432026, best pos: [    0.5358     0.235      0.3609     1.3019   -26.4796    70.2503
+     1.7251     0.3382     3.1478 -1484.2728   630.6194   826.8366
+     2.6433     0.2824     2.5638 -1572.6461   685.7999  2201.2417
+     0.2626    -0.9207     0.2052  1160.8979  -133.1667   275.0247
+     0.0974     0.5899     3.7477  -750.2922   -42.8177  -240.7566
+     0.61      -0.2478     0.6361  -119.6467   285.6307   231.308 ]
+2025-03-05 10:12:05,455 - pyswarms.single.global_best - INFO - Optimize for 300 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-05 10:19:42,983 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 34.141406642763236, best pos: [    0.7578     0.3534     0.0402     2.4429   -62.902     61.731
+     1.8436     1.3352     2.9101 -1487.7812   154.6142  1388.1051
+     2.5458     1.0714     2.3958 -1571.9006   688.324   2208.2958
+     0.68      -0.8554     0.0826  1159.5395  -132.0366   278.69
+     0.0425     1.0472     3.2528  -734.2033   -41.2221  -240.0811
+     0.9308    -0.0699     0.3869  -122.8243   281.995    230.9951]
+2025-03-05 10:23:01,853 - pyswarms.single.global_best - INFO - Optimize for 300 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-05 10:23:31,780 - pyswarms.single.global_best - INFO - Optimize for 300 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-05 10:33:32,124 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 30.790517462711584, best pos: [    0.5694     0.1225    -0.1529    -1.3818     0.4191    53.4662
+     1.5727     1.0132     3.001  -1572.3718  -113.4497   658.5136
+     2.4088     0.762      2.3544 -1565.6828   688.6449  2193.3864
+     0.5592    -0.9989    -0.2656  1302.3312  -126.0858   242.0942
+     0.2543     0.9043     3.0843  -753.9943  -281.3069  -240.7778
+     0.714     -0.315      0.1227  -121.8288   281.1011   224.5837]
+2025-03-05 10:49:26,143 - root - INFO - 
+Camera c1:
+2025-03-05 10:49:27,584 - root - INFO - g1_p3_0.png: Corners found.
+2025-03-05 10:49:31,550 - root - INFO - g1_p3_1.png: Corners found.
+2025-03-05 10:49:33,468 - root - INFO - g1_p3_10.png: Corners found.
+2025-03-05 10:49:35,047 - root - INFO - g1_p3_11.png: Corners found.
+2025-03-05 10:49:37,491 - root - INFO - g1_p3_12.png: Corners found.
+2025-03-05 10:49:38,788 - root - INFO - g1_p3_13.png: Corners found.
+2025-03-05 10:49:39,984 - root - INFO - g1_p3_14.png: Corners found.
+2025-03-05 10:49:41,384 - root - INFO - g1_p3_15.png: Corners found.
+2025-03-05 10:49:42,555 - root - INFO - g1_p3_16.png: Corners found.
+2025-03-05 10:49:43,512 - root - INFO - g1_p3_17.png: Corners found.
+2025-03-05 10:49:44,635 - root - INFO - g1_p3_18.png: Corners found.
+2025-03-05 10:49:45,744 - root - INFO - g1_p3_19.png: Corners found.
+2025-03-05 10:49:46,844 - root - INFO - g1_p3_27.png: Corners found.
+2025-03-05 10:49:53,544 - root - INFO - g1_p3_28.png: Corners found.
+2025-03-05 10:49:55,783 - root - INFO - g1_p3_29.png: Corners found.
+2025-03-05 10:49:58,090 - root - INFO - g1_p3_30.png: Corners found.
+2025-03-05 10:50:00,977 - root - INFO - g1_p3_31.png: Corners not found: please label them by hand.
+2025-03-05 10:50:03,104 - root - INFO - g1_p3_34.png: Corners found.
+2025-03-05 10:50:05,247 - root - INFO - g1_p3_35.png: Corners found.
+2025-03-05 10:50:06,468 - root - INFO - g1_p3_36.png: Corners found.
+2025-03-05 10:50:07,613 - root - INFO - g1_p3_37.png: Corners found.
+2025-03-05 10:50:08,685 - root - INFO - g1_p3_38.png: Corners found.
+2025-03-05 10:50:10,486 - root - INFO - g1_p3_39.png: Corners found.
+2025-03-05 10:50:11,411 - root - INFO - g1_p3_40.png: Corners found.
+2025-03-05 10:50:12,625 - root - INFO - g1_p3_41.png: Corners found.
+2025-03-05 10:50:13,935 - root - INFO - g1_p3_49.png: Corners found.
+2025-03-05 10:50:18,544 - root - INFO - g1_p3_50.png: Corners found.
+2025-03-05 10:50:20,804 - root - INFO - g1_p3_51.png: Corners found.
+2025-03-05 10:50:23,893 - root - INFO - g1_p3_52.png: Corners found.
+2025-03-05 10:50:26,395 - root - INFO - g1_p3_53.png: Corners found.
+2025-03-05 10:50:35,510 - root - INFO - g1_p3_54.png: Corners found.
+2025-03-05 10:50:39,440 - root - INFO - g1_p3_63.png: Corners found.
+2025-03-05 10:50:41,301 - root - INFO - g1_p3_64.png: Corners found.
+2025-03-05 10:50:43,110 - root - INFO - g1_p3_65.png: Corners found.
+2025-03-05 10:50:44,411 - root - INFO - g1_p3_66.png: Corners found.
+2025-03-05 10:50:45,592 - root - INFO - g1_p3_67.png: Corners found.
+2025-03-05 10:50:46,763 - root - INFO - g1_p3_68.png: Corners found.
+2025-03-05 10:50:48,050 - root - INFO - g1_p3_76.png: Corners found.
+2025-03-05 10:50:50,485 - root - INFO - g1_p3_77.png: Corners found.
+2025-03-05 10:50:51,629 - root - INFO - g1_p3_78.png: Corners found.
+2025-03-05 10:50:52,771 - root - INFO - g1_p3_79.png: Corners found.
+2025-03-05 10:50:55,292 - root - INFO - g1_p3_80.png: Corners found.
+2025-03-05 10:50:56,418 - root - INFO - g1_p3_81.png: Corners found.
+2025-03-05 10:50:57,702 - root - INFO - g1_p3_83.png: Corners found.
+2025-03-05 10:50:59,064 - root - INFO - g1_p3_84.png: Corners found.
+2025-03-05 10:51:00,196 - root - INFO - g1_p3_85.png: Corners found.
+2025-03-05 10:51:01,147 - root - INFO - g1_p3_86.png: Corners found.
+2025-03-05 10:51:02,323 - root - INFO - g1_p3_95.png: Corners found.
+2025-03-05 10:51:05,129 - root - INFO - g1_p3_96.png: Corners found.
+2025-03-05 10:51:07,475 - root - INFO - g1_p3_97.png: Corners found.
+2025-03-05 10:51:08,887 - root - INFO - g1_p3_98.png: Corners found.
+2025-03-05 10:51:10,062 - root - INFO - g1_p3_99.png: Corners found.
+2025-03-05 10:51:11,124 - root - INFO - g1_p3_100.png: Corners found.
+2025-03-05 10:51:12,431 - root - INFO - g1_p3_101.png: Corners found.
+2025-03-05 10:51:15,756 - root - INFO - g1_p3_102.png: Corners found.
+2025-03-05 10:51:19,235 - root - INFO - g1_p3_104.png: Corners found.
+2025-03-05 10:51:21,114 - root - INFO - g1_p3_105.png: Corners found.
+2025-03-05 10:51:24,037 - root - INFO - g1_p3_106.png: Corners found.
+2025-03-05 10:51:25,298 - root - INFO - g1_p3_107.png: Corners found.
+2025-03-05 10:51:27,132 - root - INFO - g1_p3_108.png: Corners found.
+2025-03-05 10:51:29,085 - root - INFO - g1_p3_109.png: Corners found.
+2025-03-05 10:51:30,998 - root - INFO - g1_p3_110.png: Corners found.
+2025-03-05 10:51:32,149 - root - INFO - g1_p3_111.png: Corners found.
+2025-03-05 10:51:33,466 - root - INFO - g1_p3_112.png: Corners found.
+2025-03-05 10:51:35,202 - root - INFO - g1_p3_113.png: Corners found.
+2025-03-05 10:51:36,330 - root - INFO - g1_p3_114.png: Corners found.
+2025-03-05 10:51:37,628 - root - INFO - g1_p3_115.png: Corners found.
+2025-03-05 10:51:39,312 - root - INFO - g1_p3_117.png: Corners found.
+2025-03-05 10:51:40,457 - root - INFO - g1_p3_118.png: Corners found.
+2025-03-05 10:51:41,458 - root - INFO - g1_p3_119.png: Corners found.
+2025-03-05 10:51:44,987 - root - INFO - g1_p3_120.png: Corners found.
+2025-03-05 10:51:46,209 - root - INFO - g1_p3_121.png: Corners found.
+2025-03-05 10:51:47,786 - root - INFO - g1_p3_149.png: Corners found.
+2025-03-05 10:51:49,228 - root - INFO - g1_p3_150.png: Corners found.
+2025-03-05 10:51:50,565 - root - INFO - g1_p3_152.png: Corners found.
+2025-03-05 10:51:52,064 - root - INFO - g1_p3_153.png: Corners found.
+2025-03-05 10:51:53,464 - root - INFO - g1_p3_154.png: Corners found.
+2025-03-05 10:51:54,985 - root - INFO - g1_p3_155.png: Corners found.
+2025-03-05 10:51:56,169 - root - INFO - g1_p3_156.png: Corners found.
+2025-03-05 10:51:57,162 - root - INFO - g1_p3_157.png: Corners found.
+2025-03-05 10:51:58,053 - root - INFO - g1_p3_158.png: Corners found.
+2025-03-05 10:51:58,882 - root - INFO - g1_p3_159.png: Corners found.
+2025-03-05 10:51:59,800 - root - INFO - g1_p3_160.png: Corners found.
+2025-03-05 10:52:01,122 - root - INFO - g1_p3_161.png: Corners found.
+2025-03-05 10:52:02,122 - root - INFO - g1_p3_162.png: Corners found.
+2025-03-05 10:52:02,945 - root - INFO - g1_p3_163.png: Corners found.
+2025-03-05 10:52:03,787 - root - INFO - g1_p3_164.png: Corners found.
+2025-03-05 10:52:04,860 - root - INFO - g1_p3_165.png: Corners found.
+2025-03-05 10:52:05,774 - root - INFO - g1_p3_166.png: Corners found.
+2025-03-05 10:52:07,499 - root - INFO - g1_p3_167.png: Corners found.
+2025-03-05 10:52:08,772 - root - INFO - g1_p3_187.png: Corners found.
+2025-03-05 10:52:10,235 - root - INFO - g1_p3_188.png: Corners found.
+2025-03-05 10:52:11,878 - root - INFO - g1_p3_189.png: Corners found.
+2025-03-05 10:52:13,128 - root - INFO - g1_p3_190.png: Corners found.
+2025-03-05 10:52:14,226 - root - INFO - g1_p3_191.png: Corners found.
+2025-03-05 10:52:15,484 - root - INFO - g1_p3_192.png: Corners found.
+2025-03-05 10:52:18,187 - root - INFO - g1_p3_195.png: Corners found.
+2025-03-05 10:52:19,780 - root - INFO - g1_p3_196.png: Corners found.
+2025-03-05 10:52:21,279 - root - INFO - g1_p3_197.png: Corners found.
+2025-03-05 10:52:22,507 - root - INFO - g1_p3_198.png: Corners found.
+2025-03-05 10:52:24,007 - root - INFO - g2_p2_0.png: Corners found.
+2025-03-05 10:52:27,627 - root - INFO - g2_p2_1.png: Corners found.
+2025-03-05 10:52:29,050 - root - INFO - g2_p2_2.png: Corners found.
+2025-03-05 10:52:30,251 - root - INFO - g2_p2_3.png: Corners found.
+2025-03-05 10:52:32,765 - root - INFO - g2_p2_4.png: Corners found.
+2025-03-05 10:52:33,756 - root - INFO - g2_p2_5.png: Corners found.
+2025-03-05 10:52:34,616 - root - INFO - g2_p2_6.png: Corners found.
+2025-03-05 10:52:35,493 - root - INFO - g2_p2_7.png: Corners found.
+2025-03-05 10:52:36,282 - root - INFO - g2_p2_8.png: Corners found.
+2025-03-05 10:52:37,066 - root - INFO - g2_p2_9.png: Corners found.
+2025-03-05 10:52:38,383 - root - INFO - g2_p2_10.png: Corners found.
+2025-03-05 10:52:39,085 - root - INFO - g2_p2_11.png: Corners found.
+2025-03-05 10:52:39,828 - root - INFO - g2_p2_12.png: Corners found.
+2025-03-05 10:52:40,782 - root - INFO - g2_p2_16.png: Corners found.
+2025-03-05 10:52:41,527 - root - INFO - g2_p2_17.png: Corners found.
+2025-03-05 10:52:42,440 - root - INFO - g2_p2_21.png: Corners found.
+2025-03-05 10:52:43,562 - root - INFO - g2_p2_22.png: Corners found.
+2025-03-05 10:52:44,383 - root - INFO - g2_p2_23.png: Corners found.
+2025-03-05 10:52:45,344 - root - INFO - g2_p2_24.png: Corners found.
+2025-03-05 10:52:46,217 - root - INFO - g2_p2_25.png: Corners found.
+2025-03-05 10:52:47,280 - root - INFO - g2_p2_26.png: Corners found.
+2025-03-05 10:52:48,256 - root - INFO - g2_p2_27.png: Corners found.
+2025-03-05 10:52:49,736 - root - INFO - g2_p2_28.png: Corners found.
+2025-03-05 10:52:50,677 - root - INFO - g2_p2_29.png: Corners found.
+2025-03-05 10:52:51,528 - root - INFO - g2_p2_30.png: Corners found.
+2025-03-05 10:52:53,574 - root - INFO - g2_p2_31.png: Corners found.
+2025-03-05 10:52:54,618 - root - INFO - g2_p2_32.png: Corners found.
+2025-03-05 10:52:56,703 - root - INFO - g2_p2_33.png: Corners found.
+2025-03-05 10:52:58,584 - root - INFO - g2_p2_39.png: Corners found.
+2025-03-05 10:53:00,763 - root - INFO - g2_p2_40.png: Corners found.
+2025-03-05 10:53:01,901 - root - INFO - g2_p2_41.png: Corners found.
+2025-03-05 10:53:03,106 - root - INFO - g2_p2_42.png: Corners found.
+2025-03-05 10:53:04,104 - root - INFO - g2_p2_43.png: Corners found.
+2025-03-05 10:53:05,004 - root - INFO - g2_p2_44.png: Corners found.
+2025-03-05 10:53:06,018 - root - INFO - g2_p2_45.png: Corners found.
+2025-03-05 10:53:06,789 - root - INFO - g2_p2_46.png: Corners found.
+2025-03-05 10:53:07,539 - root - INFO - g2_p2_47.png: Corners found.
+2025-03-05 10:53:08,261 - root - INFO - g2_p2_48.png: Corners found.
+2025-03-05 10:53:08,996 - root - INFO - g2_p2_49.png: Corners found.
+2025-03-05 10:53:09,803 - root - INFO - g2_p2_50.png: Corners found.
+2025-03-05 10:53:10,652 - root - INFO - g2_p2_51.png: Corners found.
+2025-03-05 10:53:11,483 - root - INFO - g2_p2_52.png: Corners found.
+2025-03-05 10:53:12,295 - root - INFO - g2_p2_53.png: Corners found.
+2025-03-05 10:53:13,050 - root - INFO - g2_p2_54.png: Corners found.
+2025-03-05 10:53:13,816 - root - INFO - g2_p2_55.png: Corners found.
+2025-03-05 10:53:14,630 - root - INFO - g2_p2_56.png: Corners found.
+2025-03-05 10:53:15,417 - root - INFO - g2_p2_57.png: Corners found.
+2025-03-05 10:53:16,285 - root - INFO - g2_p2_70.png: Corners found.
+2025-03-05 10:53:17,174 - root - INFO - g2_p2_71.png: Corners found.
+2025-03-05 10:53:18,059 - root - INFO - g2_p2_72.png: Corners found.
+2025-03-05 10:53:18,860 - root - INFO - g2_p2_73.png: Corners found.
+2025-03-05 10:53:19,697 - root - INFO - g2_p2_74.png: Corners found.
+2025-03-05 10:53:20,385 - root - INFO - g2_p2_75.png: Corners found.
+2025-03-05 10:53:21,155 - root - INFO - g2_p2_76.png: Corners found.
+2025-03-05 10:53:21,952 - root - INFO - g2_p2_77.png: Corners found.
+2025-03-05 10:53:22,962 - root - INFO - g2_p2_84.png: Corners found.
+2025-03-05 10:53:24,082 - root - INFO - g2_p2_85.png: Corners found.
+2025-03-05 10:53:25,367 - root - INFO - g2_p2_86.png: Corners found.
+2025-03-05 10:53:26,709 - root - INFO - g2_p2_87.png: Corners found.
+2025-03-05 10:53:27,573 - root - INFO - g2_p2_88.png: Corners found.
+2025-03-05 10:53:28,387 - root - INFO - g2_p2_89.png: Corners found.
+2025-03-05 10:53:29,628 - root - INFO - g2_p2_90.png: Corners found.
+2025-03-05 10:53:30,489 - root - INFO - g2_p2_91.png: Corners found.
+2025-03-05 10:53:31,378 - root - INFO - g2_p2_92.png: Corners found.
+2025-03-05 10:53:32,219 - root - INFO - g2_p2_93.png: Corners found.
+2025-03-05 10:53:33,051 - root - INFO - g2_p2_94.png: Corners found.
+2025-03-05 10:53:33,807 - root - INFO - g2_p2_95.png: Corners found.
+2025-03-05 10:53:34,779 - root - INFO - g2_p2_96.png: Corners found.
+2025-03-05 10:53:35,761 - root - INFO - g2_p2_97.png: Corners found.
+2025-03-05 10:53:36,829 - root - INFO - g2_p2_98.png: Corners found.
+2025-03-05 10:53:38,163 - root - INFO - g2_p2_99.png: Corners found.
+2025-03-05 10:53:39,531 - root - INFO - g2_p2_100.png: Corners found.
+2025-03-05 10:53:40,714 - root - INFO - g2_p2_101.png: Corners found.
+2025-03-05 10:53:41,623 - root - INFO - g2_p2_102.png: Corners found.
+2025-03-05 10:53:42,504 - root - INFO - g2_p2_103.png: Corners found.
+2025-03-05 10:53:45,471 - root - INFO - g2_p2_104.png: Corners found.
+2025-03-05 10:53:46,970 - root - INFO - g2_p2_105.png: Corners found.
+2025-03-05 10:53:48,398 - root - INFO - g2_p2_106.png: Corners found.
+2025-03-05 10:53:49,942 - root - INFO - g2_p2_107.png: Corners found.
+2025-03-05 10:53:50,981 - root - INFO - g2_p2_108.png: Corners found.
+2025-03-05 10:53:51,747 - root - INFO - g2_p2_109.png: Corners found.
+2025-03-05 10:53:52,974 - root - INFO - g2_p2_110.png: Corners found.
+2025-03-05 10:53:53,781 - root - INFO - g2_p2_111.png: Corners found.
+2025-03-05 10:53:54,477 - root - INFO - g2_p2_112.png: Corners found.
+2025-03-05 10:53:55,214 - root - INFO - g2_p2_113.png: Corners found.
+2025-03-05 10:53:56,187 - root - INFO - g2_p2_114.png: Corners found.
+2025-03-05 10:53:57,113 - root - INFO - g2_p2_115.png: Corners found.
+2025-03-05 10:53:58,050 - root - INFO - g2_p2_116.png: Corners found.
+2025-03-05 10:53:58,936 - root - INFO - g2_p2_117.png: Corners found.
+2025-03-05 10:53:59,909 - root - INFO - g2_p2_118.png: Corners found.
+2025-03-05 10:54:00,856 - root - INFO - g2_p2_119.png: Corners found.
+2025-03-05 10:54:01,629 - root - INFO - g2_p2_120.png: Corners found.
+2025-03-05 10:54:02,537 - root - INFO - g2_p2_121.png: Corners found.
+2025-03-05 10:54:03,787 - root - INFO - g2_p2_122.png: Corners found.
+2025-03-05 10:54:04,913 - root - INFO - g2_p2_123.png: Corners found.
+2025-03-05 10:54:05,740 - root - INFO - g2_p2_124.png: Corners found.
+2025-03-05 10:54:06,726 - root - INFO - g2_p2_125.png: Corners found.
+2025-03-05 10:54:07,414 - root - INFO - g2_p2_126.png: Corners found.
+2025-03-05 10:54:08,104 - root - INFO - g2_p2_127.png: Corners found.
+2025-03-05 10:54:08,861 - root - INFO - g2_p2_128.png: Corners found.
+2025-03-05 10:54:09,582 - root - INFO - g2_p2_129.png: Corners found.
+2025-03-05 10:54:17,268 - root - INFO - Intrinsics error: 0.913 px for each cameras.
+2025-03-05 10:54:17,269 - root - INFO - 
+Camera c2:
+2025-03-05 10:54:17,657 - root - INFO - g1_p3_52.png: Corners found.
+2025-03-05 10:54:21,880 - root - INFO - g1_p3_53.png: Corners found.
+2025-03-05 10:54:23,311 - root - INFO - g1_p3_54.png: Corners found.
+2025-03-05 10:54:24,720 - root - INFO - g1_p3_55.png: Corners found.
+2025-03-05 10:54:27,082 - root - INFO - g1_p3_56.png: Corners found.
+2025-03-05 10:54:28,415 - root - INFO - g1_p3_57.png: Corners found.
+2025-03-05 10:54:29,662 - root - INFO - g1_p3_58.png: Corners found.
+2025-03-05 10:54:30,750 - root - INFO - g1_p3_59.png: Corners found.
+2025-03-05 10:54:31,698 - root - INFO - g1_p3_60.png: Corners found.
+2025-03-05 10:54:32,929 - root - INFO - g1_p3_61.png: Corners found.
+2025-03-05 10:54:34,452 - root - INFO - g1_p3_62.png: Corners found.
+2025-03-05 10:54:35,593 - root - INFO - g1_p3_63.png: Corners found.
+2025-03-05 10:54:36,491 - root - INFO - g1_p3_64.png: Corners found.
+2025-03-05 10:54:37,592 - root - INFO - g1_p3_88.png: Corners found.
+2025-03-05 10:54:39,314 - root - INFO - g1_p3_89.png: Corners found.
+2025-03-05 10:54:40,489 - root - INFO - g1_p3_90.png: Corners found.
+2025-03-05 10:54:41,478 - root - INFO - g1_p3_110.png: Corners found.
+2025-03-05 10:54:42,681 - root - INFO - g1_p3_111.png: Corners found.
+2025-03-05 10:54:45,497 - root - INFO - g1_p3_118.png: Corners found.
+2025-03-05 10:54:46,763 - root - INFO - g1_p3_119.png: Corners found.
+2025-03-05 10:54:47,609 - root - INFO - g1_p3_120.png: Corners found.
+2025-03-05 10:54:48,432 - root - INFO - g1_p3_121.png: Corners found.
+2025-03-05 10:54:49,265 - root - INFO - g1_p3_122.png: Corners found.
+2025-03-05 10:54:50,150 - root - INFO - g1_p3_123.png: Corners found.
+2025-03-05 10:54:51,037 - root - INFO - g1_p3_124.png: Corners found.
+2025-03-05 10:54:51,899 - root - INFO - g1_p3_125.png: Corners found.
+2025-03-05 10:54:53,134 - root - INFO - g1_p3_126.png: Corners found.
+2025-03-05 10:54:54,151 - root - INFO - g1_p3_127.png: Corners found.
+2025-03-05 10:54:55,207 - root - INFO - g1_p3_128.png: Corners found.
+2025-03-05 10:54:56,156 - root - INFO - g1_p3_129.png: Corners found.
+2025-03-05 10:54:56,976 - root - INFO - g1_p3_130.png: Corners found.
+2025-03-05 10:54:57,773 - root - INFO - g1_p3_131.png: Corners found.
+2025-03-05 10:54:58,611 - root - INFO - g1_p3_132.png: Corners found.
+2025-03-05 10:54:59,522 - root - INFO - g1_p3_133.png: Corners found.
+2025-03-05 10:55:00,302 - root - INFO - g1_p3_134.png: Corners found.
+2025-03-05 10:55:01,027 - root - INFO - g1_p3_135.png: Corners found.
+2025-03-05 10:55:01,853 - root - INFO - g1_p3_136.png: Corners found.
+2025-03-05 10:55:02,519 - root - INFO - g1_p3_137.png: Corners found.
+2025-03-05 10:55:03,289 - root - INFO - g1_p3_138.png: Corners found.
+2025-03-05 10:55:06,378 - root - INFO - g1_p3_139.png: Corners found.
+2025-03-05 10:55:07,746 - root - INFO - g1_p3_140.png: Corners found.
+2025-03-05 10:55:08,898 - root - INFO - g1_p3_141.png: Corners found.
+2025-03-05 10:55:09,870 - root - INFO - g1_p3_142.png: Corners found.
+2025-03-05 10:55:10,948 - root - INFO - g1_p3_143.png: Corners found.
+2025-03-05 10:55:12,398 - root - INFO - g1_p3_144.png: Corners found.
+2025-03-05 10:55:13,334 - root - INFO - g1_p3_145.png: Corners found.
+2025-03-05 10:55:16,493 - root - INFO - g1_p3_146.png: Corners found.
+2025-03-05 10:55:18,861 - root - INFO - g1_p3_147.png: Corners found.
+2025-03-05 10:55:20,592 - root - INFO - g1_p3_190.png: Corners found.
+2025-03-05 10:55:22,245 - root - INFO - g1_p3_200.png: Corners found.
+2025-03-05 10:55:23,895 - root - INFO - g1_p3_201.png: Corners found.
+2025-03-05 10:55:24,876 - root - INFO - g1_p3_207.png: Corners found.
+2025-03-05 10:55:25,899 - root - INFO - g1_p3_208.png: Corners found.
+2025-03-05 10:55:26,728 - root - INFO - g1_p3_209.png: Corners found.
+2025-03-05 10:55:27,513 - root - INFO - g1_p3_210.png: Corners found.
+2025-03-05 10:55:28,508 - root - INFO - g1_p3_211.png: Corners found.
+2025-03-05 10:55:29,472 - root - INFO - g1_p3_212.png: Corners found.
+2025-03-05 10:55:32,762 - root - INFO - g1_p3_213.png: Corners found.
+2025-03-05 10:55:34,235 - root - INFO - g1_p3_214.png: Corners found.
+2025-03-05 10:55:35,781 - root - INFO - g1_p3_215.png: Corners found.
+2025-03-05 10:55:36,927 - root - INFO - g1_p3_216.png: Corners found.
+2025-03-05 10:55:38,230 - root - INFO - g1_p3_217.png: Corners found.
+2025-03-05 10:55:40,458 - root - INFO - g1_p3_218.png: Corners found.
+2025-03-05 10:55:41,609 - root - INFO - g1_p3_219.png: Corners found.
+2025-03-05 10:55:43,139 - root - INFO - g1_p3_220.png: Corners found.
+2025-03-05 10:55:44,167 - root - INFO - g1_p3_221.png: Corners found.
+2025-03-05 10:55:45,188 - root - INFO - g1_p3_222.png: Corners found.
+2025-03-05 10:55:46,284 - root - INFO - g1_p3_223.png: Corners found.
+2025-03-05 10:55:47,240 - root - INFO - g1_p3_224.png: Corners found.
+2025-03-05 10:55:48,460 - root - INFO - g1_p3_225.png: Corners found.
+2025-03-05 10:55:50,335 - root - INFO - g1_p3_226.png: Corners found.
+2025-03-05 10:55:51,226 - root - INFO - g1_p3_227.png: Corners found.
+2025-03-05 10:55:52,084 - root - INFO - g1_p3_228.png: Corners found.
+2025-03-05 10:55:52,823 - root - INFO - g1_p3_229.png: Corners found.
+2025-03-05 10:55:54,005 - root - INFO - g1_p3_230.png: Corners found.
+2025-03-05 10:55:55,526 - root - INFO - g1_p3_231.png: Corners found.
+2025-03-05 10:55:56,454 - root - INFO - g1_p3_232.png: Corners found.
+2025-03-05 10:55:58,523 - root - INFO - g1_p3_233.png: Corners found.
+2025-03-05 10:56:00,436 - root - INFO - g1_p3_234.png: Corners found.
+2025-03-05 10:56:01,486 - root - INFO - g1_p3_289.png: Corners found.
+2025-03-05 10:56:02,912 - root - INFO - g1_p3_290.png: Corners found.
+2025-03-05 10:56:04,005 - root - INFO - g1_p3_291.png: Corners found.
+2025-03-05 10:56:05,181 - root - INFO - g1_p3_292.png: Corners found.
+2025-03-05 10:56:06,638 - root - INFO - g1_p3_293.png: Corners found.
+2025-03-05 10:56:07,892 - root - INFO - g1_p3_294.png: Corners found.
+2025-03-05 10:56:09,031 - root - INFO - g1_p3_295.png: Corners found.
+2025-03-05 10:56:10,165 - root - INFO - g1_p3_296.png: Corners found.
+2025-03-05 10:56:11,199 - root - INFO - g1_p3_297.png: Corners found.
+2025-03-05 10:56:12,215 - root - INFO - g1_p3_298.png: Corners found.
+2025-03-05 10:56:13,600 - root - INFO - g1_p3_299.png: Corners found.
+2025-03-05 10:56:14,806 - root - INFO - g1_p3_300.png: Corners found.
+2025-03-05 10:56:15,918 - root - INFO - g1_p3_301.png: Corners found.
+2025-03-05 10:56:16,828 - root - INFO - g1_p3_302.png: Corners found.
+2025-03-05 10:56:17,667 - root - INFO - g1_p3_303.png: Corners found.
+2025-03-05 10:56:18,600 - root - INFO - g1_p3_304.png: Corners found.
+2025-03-05 10:56:19,432 - root - INFO - g1_p3_305.png: Corners found.
+2025-03-05 10:56:20,467 - root - INFO - g1_p3_307.png: Corners found.
+2025-03-05 10:56:21,346 - root - INFO - g1_p3_308.png: Corners found.
+2025-03-05 10:56:22,137 - root - INFO - g1_p3_309.png: Corners found.
+2025-03-05 10:56:23,253 - root - INFO - g1_p3_310.png: Corners found.
+2025-03-05 10:56:24,764 - root - INFO - g1_p3_311.png: Corners found.
+2025-03-05 10:56:25,947 - root - INFO - g1_p3_312.png: Corners found.
+2025-03-05 10:56:26,768 - root - INFO - g1_p3_313.png: Corners found.
+2025-03-05 10:56:27,676 - root - INFO - g1_p3_314.png: Corners found.
+2025-03-05 10:56:28,459 - root - INFO - g1_p3_315.png: Corners found.
+2025-03-05 10:56:29,392 - root - INFO - g1_p3_316.png: Corners found.
+2025-03-05 10:56:30,819 - root - INFO - g1_p3_320.png: Corners found.
+2025-03-05 10:56:32,144 - root - INFO - g1_p3_321.png: Corners found.
+2025-03-05 10:56:34,366 - root - INFO - g1_p3_322.png: Corners found.
+2025-03-05 10:56:36,245 - root - INFO - g1_p3_323.png: Corners found.
+2025-03-05 10:56:37,251 - root - INFO - g1_p3_352.png: Corners found.
+2025-03-05 10:56:38,482 - root - INFO - g1_p3_353.png: Corners found.
+2025-03-05 10:56:40,252 - root - INFO - g1_p3_354.png: Corners found.
+2025-03-05 10:56:41,368 - root - INFO - g1_p3_355.png: Corners found.
+2025-03-05 10:56:42,786 - root - INFO - g1_p3_356.png: Corners found.
+2025-03-05 10:56:43,798 - root - INFO - g1_p3_357.png: Corners found.
+2025-03-05 10:56:44,648 - root - INFO - g1_p3_358.png: Corners found.
+2025-03-05 10:56:45,727 - root - INFO - g1_p3_359.png: Corners found.
+2025-03-05 10:56:46,575 - root - INFO - g1_p3_360.png: Corners found.
+2025-03-05 10:56:47,518 - root - INFO - g1_p3_362.png: Corners found.
+2025-03-05 10:56:48,807 - root - INFO - g1_p3_363.png: Corners found.
+2025-03-05 10:56:49,767 - root - INFO - g1_p3_364.png: Corners found.
+2025-03-05 10:56:50,740 - root - INFO - g1_p3_365.png: Corners found.
+2025-03-05 10:56:53,972 - root - INFO - g1_p3_366.png: Corners found.
+2025-03-05 10:56:55,985 - root - INFO - g1_p3_367.png: Corners found.
+2025-03-05 10:56:58,999 - root - INFO - g1_p3_368.png: Corners found.
+2025-03-05 10:57:00,466 - root - INFO - g1_p3_369.png: Corners found.
+2025-03-05 10:57:01,501 - root - INFO - g1_p3_370.png: Corners found.
+2025-03-05 10:57:04,490 - root - INFO - g1_p3_381.png: Corners found.
+2025-03-05 10:57:06,317 - root - INFO - g1_p3_382.png: Corners found.
+2025-03-05 10:57:08,190 - root - INFO - g1_p3_383.png: Corners found.
+2025-03-05 10:57:10,720 - root - INFO - g1_p3_384.png: Corners found.
+2025-03-05 10:57:11,878 - root - INFO - g1_p3_385.png: Corners found.
+2025-03-05 10:57:13,024 - root - INFO - g1_p3_386.png: Corners found.
+2025-03-05 10:57:14,149 - root - INFO - g1_p3_387.png: Corners found.
+2025-03-05 10:57:14,997 - root - INFO - g1_p3_394.png: Corners found.
+2025-03-05 10:57:15,962 - root - INFO - g1_p3_395.png: Corners found.
+2025-03-05 10:57:16,776 - root - INFO - g1_p3_396.png: Corners found.
+2025-03-05 10:57:17,561 - root - INFO - g4_p1_0.png: Corners found.
+2025-03-05 10:57:19,580 - root - INFO - g4_p1_1.png: Corners found.
+2025-03-05 10:57:20,346 - root - INFO - g4_p1_2.png: Corners found.
+2025-03-05 10:57:21,144 - root - INFO - g4_p1_3.png: Corners found.
+2025-03-05 10:57:21,921 - root - INFO - g4_p1_4.png: Corners found.
+2025-03-05 10:57:23,258 - root - INFO - g4_p1_49.png: Corners found.
+2025-03-05 10:57:24,842 - root - INFO - g4_p1_50.png: Corners found.
+2025-03-05 10:57:26,189 - root - INFO - g4_p1_51.png: Corners found.
+2025-03-05 10:57:27,198 - root - INFO - g4_p1_52.png: Corners found.
+2025-03-05 10:57:28,408 - root - INFO - g4_p1_53.png: Corners found.
+2025-03-05 10:57:29,333 - root - INFO - g4_p1_54.png: Corners found.
+2025-03-05 10:57:30,172 - root - INFO - g4_p1_55.png: Corners found.
+2025-03-05 10:57:31,011 - root - INFO - g4_p1_56.png: Corners found.
+2025-03-05 10:57:31,817 - root - INFO - g4_p1_67.png: Corners found.
+2025-03-05 10:57:32,563 - root - INFO - g4_p1_68.png: Corners found.
+2025-03-05 10:57:33,357 - root - INFO - g4_p1_69.png: Corners found.
+2025-03-05 10:57:34,167 - root - INFO - g4_p1_70.png: Corners found.
+2025-03-05 10:57:34,939 - root - INFO - g4_p1_71.png: Corners found.
+2025-03-05 10:57:35,726 - root - INFO - g4_p1_72.png: Corners found.
+2025-03-05 10:57:36,521 - root - INFO - g4_p1_80.png: Corners found.
+2025-03-05 10:57:37,825 - root - INFO - g4_p1_87.png: Corners found.
+2025-03-05 10:57:38,836 - root - INFO - g4_p1_88.png: Corners found.
+2025-03-05 10:57:39,713 - root - INFO - g4_p1_89.png: Corners found.
+2025-03-05 10:57:40,516 - root - INFO - g4_p1_90.png: Corners found.
+2025-03-05 10:57:41,308 - root - INFO - g4_p1_107.png: Corners found.
+2025-03-05 10:57:42,550 - root - INFO - g4_p1_108.png: Corners found.
+2025-03-05 10:57:43,460 - root - INFO - g4_p1_109.png: Corners found.
+2025-03-05 10:57:44,428 - root - INFO - g4_p1_110.png: Corners found.
+2025-03-05 10:57:45,232 - root - INFO - g4_p1_111.png: Corners found.
+2025-03-05 10:57:46,086 - root - INFO - g4_p1_112.png: Corners found.
+2025-03-05 10:57:46,969 - root - INFO - g4_p1_113.png: Corners found.
+2025-03-05 10:57:47,797 - root - INFO - g4_p1_114.png: Corners found.
+2025-03-05 10:57:48,541 - root - INFO - g4_p1_115.png: Corners found.
+2025-03-05 10:57:49,360 - root - INFO - g4_p1_116.png: Corners found.
+2025-03-05 10:57:50,260 - root - INFO - g4_p1_122.png: Corners found.
+2025-03-05 10:57:51,358 - root - INFO - g4_p1_123.png: Corners found.
+2025-03-05 10:57:52,549 - root - INFO - g4_p1_124.png: Corners found.
+2025-03-05 10:57:53,312 - root - INFO - g4_p1_125.png: Corners found.
+2025-03-05 10:57:54,064 - root - INFO - g4_p1_126.png: Corners found.
+2025-03-05 10:57:55,237 - root - INFO - g4_p1_127.png: Corners found.
+2025-03-05 10:57:55,954 - root - INFO - g4_p1_128.png: Corners found.
+2025-03-05 10:57:56,722 - root - INFO - g4_p1_129.png: Corners found.
+2025-03-05 10:57:57,421 - root - INFO - g4_p1_130.png: Corners found.
+2025-03-05 10:57:58,159 - root - INFO - g4_p1_131.png: Corners found.
+2025-03-05 10:57:58,875 - root - INFO - g4_p1_132.png: Corners found.
+2025-03-05 10:57:59,645 - root - INFO - g4_p1_133.png: Corners found.
+2025-03-05 10:58:00,330 - root - INFO - g4_p1_134.png: Corners found.
+2025-03-05 10:58:01,079 - root - INFO - g4_p1_135.png: Corners found.
+2025-03-05 10:58:01,860 - root - INFO - g4_p1_136.png: Corners found.
+2025-03-05 10:58:02,662 - root - INFO - g4_p1_140.png: Corners found.
+2025-03-05 10:58:03,561 - root - INFO - g4_p1_141.png: Corners found.
+2025-03-05 10:58:04,306 - root - INFO - g4_p1_142.png: Corners found.
+2025-03-05 10:58:05,088 - root - INFO - g4_p1_143.png: Corners found.
+2025-03-05 10:58:05,940 - root - INFO - g4_p1_144.png: Corners found.
+2025-03-05 10:58:06,684 - root - INFO - g4_p1_145.png: Corners found.
+2025-03-05 10:58:07,422 - root - INFO - g4_p1_146.png: Corners found.
+2025-03-05 10:58:08,151 - root - INFO - g4_p1_147.png: Corners found.
+2025-03-05 10:58:08,888 - root - INFO - g4_p1_148.png: Corners found.
+2025-03-05 10:58:09,454 - root - INFO - g4_p1_149.png: Corners found.
+2025-03-05 10:58:10,227 - root - INFO - g4_p1_150.png: Corners found.
+2025-03-05 10:58:11,135 - root - INFO - g4_p1_151.png: Corners found.
+2025-03-05 10:58:12,350 - root - INFO - g4_p1_152.png: Corners found.
+2025-03-05 10:58:13,000 - root - INFO - g4_p1_153.png: Corners found.
+2025-03-05 10:58:29,590 - root - INFO - Intrinsics error: 0.72 px for each cameras.
+2025-03-05 10:58:29,591 - root - INFO - 
+Camera c3:
+2025-03-05 10:58:30,343 - root - INFO - g2_p2_68.png: Corners not found: please label them by hand.
+2025-03-05 10:58:33,221 - root - INFO - g4_p1_0.png: Corners found.
+2025-03-05 10:58:35,187 - root - INFO - g4_p1_1.png: Corners found.
+2025-03-05 10:58:36,330 - root - INFO - g4_p1_2.png: Corners found.
+2025-03-05 10:58:37,641 - root - INFO - g4_p1_3.png: Corners found.
+2025-03-05 10:58:38,822 - root - INFO - g4_p1_4.png: Corners found.
+2025-03-05 10:58:39,726 - root - INFO - g4_p1_5.png: Corners found.
+2025-03-05 10:58:40,608 - root - INFO - g4_p1_6.png: Corners found.
+2025-03-05 10:58:41,340 - root - INFO - g4_p1_7.png: Corners found.
+2025-03-05 10:58:42,061 - root - INFO - g4_p1_8.png: Corners found.
+2025-03-05 10:58:42,694 - root - INFO - g4_p1_13.png: Corners found.
+2025-03-05 10:58:45,336 - root - INFO - g4_p1_14.png: Corners found.
+2025-03-05 10:58:46,545 - root - INFO - g4_p1_17.png: Corners found.
+2025-03-05 10:58:50,874 - root - INFO - g4_p1_18.png: Corners found.
+2025-03-05 10:58:55,234 - root - INFO - g4_p1_19.png: Corners found.
+2025-03-05 10:58:56,587 - root - INFO - g4_p1_20.png: Corners found.
+2025-03-05 10:58:57,735 - root - INFO - g4_p1_21.png: Corners found.
+2025-03-05 10:58:59,276 - root - INFO - g4_p1_22.png: Corners found.
+2025-03-05 10:59:00,960 - root - INFO - g4_p1_23.png: Corners found.
+2025-03-05 10:59:02,464 - root - INFO - g4_p1_24.png: Corners found.
+2025-03-05 10:59:03,649 - root - INFO - g4_p1_25.png: Corners found.
+2025-03-05 10:59:04,434 - root - INFO - g4_p1_26.png: Corners found.
+2025-03-05 10:59:05,285 - root - INFO - g4_p1_27.png: Corners found.
+2025-03-05 10:59:06,342 - root - INFO - g4_p1_28.png: Corners found.
+2025-03-05 10:59:08,436 - root - INFO - g4_p1_29.png: Corners found.
+2025-03-05 10:59:09,434 - root - INFO - g4_p1_30.png: Corners found.
+2025-03-05 10:59:10,455 - root - INFO - g4_p1_31.png: Corners found.
+2025-03-05 10:59:11,304 - root - INFO - g4_p1_32.png: Corners found.
+2025-03-05 10:59:12,226 - root - INFO - g4_p1_33.png: Corners found.
+2025-03-05 10:59:13,372 - root - INFO - g4_p1_34.png: Corners found.
+2025-03-05 10:59:14,205 - root - INFO - g4_p1_35.png: Corners found.
+2025-03-05 10:59:15,020 - root - INFO - g4_p1_36.png: Corners found.
+2025-03-05 10:59:15,713 - root - INFO - g4_p1_37.png: Corners found.
+2025-03-05 10:59:16,502 - root - INFO - g4_p1_38.png: Corners found.
+2025-03-05 10:59:17,238 - root - INFO - g4_p1_39.png: Corners found.
+2025-03-05 10:59:18,882 - root - INFO - g4_p1_40.png: Corners found.
+2025-03-05 10:59:19,947 - root - INFO - g4_p1_41.png: Corners found.
+2025-03-05 10:59:20,904 - root - INFO - g4_p1_42.png: Corners found.
+2025-03-05 10:59:23,208 - root - INFO - g4_p1_45.png: Corners found.
+2025-03-05 10:59:24,982 - root - INFO - g4_p1_46.png: Corners found.
+2025-03-05 10:59:28,275 - root - INFO - g4_p1_47.png: Corners found.
+2025-03-05 10:59:31,801 - root - INFO - g4_p1_48.png: Corners found.
+2025-03-05 10:59:41,312 - root - INFO - g4_p1_49.png: Corners found.
+2025-03-05 10:59:44,409 - root - INFO - g4_p1_50.png: Corners found.
+2025-03-05 10:59:45,488 - root - INFO - g4_p1_51.png: Corners found.
+2025-03-05 10:59:46,491 - root - INFO - g4_p1_52.png: Corners found.
+2025-03-05 10:59:47,407 - root - INFO - g4_p1_53.png: Corners found.
+2025-03-05 10:59:48,341 - root - INFO - g4_p1_54.png: Corners found.
+2025-03-05 10:59:49,096 - root - INFO - g4_p1_55.png: Corners found.
+2025-03-05 10:59:49,854 - root - INFO - g4_p1_56.png: Corners found.
+2025-03-05 10:59:50,705 - root - INFO - g4_p1_57.png: Corners found.
+2025-03-05 10:59:51,449 - root - INFO - g4_p1_58.png: Corners found.
+2025-03-05 10:59:52,328 - root - INFO - g4_p1_59.png: Corners found.
+2025-03-05 10:59:53,365 - root - INFO - g4_p1_60.png: Corners found.
+2025-03-05 10:59:54,203 - root - INFO - g4_p1_61.png: Corners found.
+2025-03-05 10:59:55,775 - root - INFO - g4_p1_62.png: Corners found.
+2025-03-05 10:59:57,090 - root - INFO - g4_p1_63.png: Corners found.
+2025-03-05 10:59:58,132 - root - INFO - g4_p1_64.png: Corners found.
+2025-03-05 10:59:59,139 - root - INFO - g4_p1_65.png: Corners found.
+2025-03-05 11:00:00,091 - root - INFO - g4_p1_66.png: Corners found.
+2025-03-05 11:00:02,438 - root - INFO - g4_p1_67.png: Corners found.
+2025-03-05 11:00:03,563 - root - INFO - g4_p1_68.png: Corners found.
+2025-03-05 11:00:04,399 - root - INFO - g4_p1_69.png: Corners found.
+2025-03-05 11:00:05,176 - root - INFO - g4_p1_70.png: Corners found.
+2025-03-05 11:00:06,064 - root - INFO - g4_p1_71.png: Corners found.
+2025-03-05 11:00:06,808 - root - INFO - g4_p1_72.png: Corners found.
+2025-03-05 11:00:07,636 - root - INFO - g4_p1_73.png: Corners found.
+2025-03-05 11:00:08,438 - root - INFO - g4_p1_74.png: Corners found.
+2025-03-05 11:00:09,315 - root - INFO - g4_p1_75.png: Corners found.
+2025-03-05 11:00:10,585 - root - INFO - g4_p1_76.png: Corners found.
+2025-03-05 11:00:11,429 - root - INFO - g4_p1_77.png: Corners found.
+2025-03-05 11:00:12,397 - root - INFO - g4_p1_78.png: Corners found.
+2025-03-05 11:00:13,567 - root - INFO - g4_p1_79.png: Corners found.
+2025-03-05 11:00:15,232 - root - INFO - g4_p1_82.png: Corners found.
+2025-03-05 11:00:16,998 - root - INFO - g4_p1_86.png: Corners found.
+2025-03-05 11:00:17,864 - root - INFO - g4_p1_87.png: Corners found.
+2025-03-05 11:00:20,288 - root - INFO - g4_p1_88.png: Corners found.
+2025-03-05 11:00:21,390 - root - INFO - g4_p1_89.png: Corners found.
+2025-03-05 11:00:22,348 - root - INFO - g4_p1_90.png: Corners found.
+2025-03-05 11:00:23,565 - root - INFO - g4_p1_91.png: Corners found.
+2025-03-05 11:00:25,372 - root - INFO - g4_p1_92.png: Corners found.
+2025-03-05 11:00:26,438 - root - INFO - g4_p1_93.png: Corners found.
+2025-03-05 11:00:31,410 - root - INFO - g4_p1_94.png: Corners found.
+2025-03-05 11:00:32,637 - root - INFO - g4_p1_95.png: Corners found.
+2025-03-05 11:00:36,240 - root - INFO - g4_p1_96.png: Corners found.
+2025-03-05 11:00:37,350 - root - INFO - g4_p1_97.png: Corners found.
+2025-03-05 11:00:38,413 - root - INFO - g4_p1_98.png: Corners found.
+2025-03-05 11:00:39,455 - root - INFO - g4_p1_99.png: Corners found.
+2025-03-05 11:00:40,437 - root - INFO - g4_p1_100.png: Corners found.
+2025-03-05 11:00:41,300 - root - INFO - g4_p1_101.png: Corners found.
+2025-03-05 11:00:42,099 - root - INFO - g4_p1_102.png: Corners found.
+2025-03-05 11:00:43,005 - root - INFO - g4_p1_103.png: Corners found.
+2025-03-05 11:00:43,660 - root - INFO - g4_p1_104.png: Corners found.
+2025-03-05 11:00:44,442 - root - INFO - g4_p1_105.png: Corners found.
+2025-03-05 11:00:45,128 - root - INFO - g4_p1_106.png: Corners found.
+2025-03-05 11:00:46,177 - root - INFO - g4_p1_107.png: Corners found.
+2025-03-05 11:00:47,757 - root - INFO - g4_p1_108.png: Corners found.
+2025-03-05 11:00:48,841 - root - INFO - g4_p1_109.png: Corners found.
+2025-03-05 11:00:49,880 - root - INFO - g4_p1_110.png: Corners found.
+2025-03-05 11:00:50,920 - root - INFO - g4_p1_111.png: Corners found.
+2025-03-05 11:00:51,973 - root - INFO - g4_p1_112.png: Corners found.
+2025-03-05 11:00:52,847 - root - INFO - g4_p1_113.png: Corners found.
+2025-03-05 11:00:54,063 - root - INFO - g4_p1_114.png: Corners found.
+2025-03-05 11:00:55,102 - root - INFO - g4_p1_115.png: Corners found.
+2025-03-05 11:00:56,011 - root - INFO - g4_p1_116.png: Corners found.
+2025-03-05 11:00:56,913 - root - INFO - g4_p1_117.png: Corners found.
+2025-03-05 11:00:57,794 - root - INFO - g4_p1_118.png: Corners found.
+2025-03-05 11:00:58,551 - root - INFO - g4_p1_119.png: Corners found.
+2025-03-05 11:00:59,323 - root - INFO - g4_p1_120.png: Corners found.
+2025-03-05 11:01:00,535 - root - INFO - g4_p1_121.png: Corners found.
+2025-03-05 11:01:01,466 - root - INFO - g4_p1_122.png: Corners found.
+2025-03-05 11:01:02,589 - root - INFO - g4_p1_123.png: Corners found.
+2025-03-05 11:01:03,864 - root - INFO - g4_p1_124.png: Corners found.
+2025-03-05 11:01:05,354 - root - INFO - g4_p1_125.png: Corners found.
+2025-03-05 11:01:06,257 - root - INFO - g4_p1_126.png: Corners found.
+2025-03-05 11:01:07,215 - root - INFO - g4_p1_127.png: Corners found.
+2025-03-05 11:01:08,171 - root - INFO - g4_p1_128.png: Corners found.
+2025-03-05 11:01:09,160 - root - INFO - g4_p1_129.png: Corners found.
+2025-03-05 11:01:10,092 - root - INFO - g4_p1_130.png: Corners found.
+2025-03-05 11:01:11,449 - root - INFO - g4_p1_132.png: Corners found.
+2025-03-05 11:01:12,334 - root - INFO - g4_p1_133.png: Corners found.
+2025-03-05 11:01:13,262 - root - INFO - g5_p3_1.png: Corners found.
+2025-03-05 11:01:14,845 - root - INFO - g5_p3_2.png: Corners found.
+2025-03-05 11:01:15,698 - root - INFO - g5_p3_3.png: Corners found.
+2025-03-05 11:01:16,458 - root - INFO - g5_p3_4.png: Corners found.
+2025-03-05 11:01:17,213 - root - INFO - g5_p3_5.png: Corners found.
+2025-03-05 11:01:17,980 - root - INFO - g5_p3_6.png: Corners found.
+2025-03-05 11:01:18,984 - root - INFO - g5_p3_7.png: Corners found.
+2025-03-05 11:01:19,739 - root - INFO - g5_p3_8.png: Corners found.
+2025-03-05 11:01:20,463 - root - INFO - g5_p3_26.png: Corners found.
+2025-03-05 11:01:21,214 - root - INFO - g5_p3_27.png: Corners found.
+2025-03-05 11:01:21,974 - root - INFO - g5_p3_28.png: Corners found.
+2025-03-05 11:01:22,800 - root - INFO - g5_p3_29.png: Corners found.
+2025-03-05 11:01:23,552 - root - INFO - g5_p3_30.png: Corners found.
+2025-03-05 11:01:24,254 - root - INFO - g5_p3_31.png: Corners found.
+2025-03-05 11:01:24,982 - root - INFO - g5_p3_32.png: Corners found.
+2025-03-05 11:01:25,895 - root - INFO - g5_p3_33.png: Corners found.
+2025-03-05 11:01:26,800 - root - INFO - g5_p3_34.png: Corners found.
+2025-03-05 11:01:27,552 - root - INFO - g5_p3_35.png: Corners found.
+2025-03-05 11:01:28,334 - root - INFO - g5_p3_36.png: Corners found.
+2025-03-05 11:01:29,090 - root - INFO - g5_p3_37.png: Corners found.
+2025-03-05 11:01:29,794 - root - INFO - g5_p3_38.png: Corners found.
+2025-03-05 11:01:30,493 - root - INFO - g5_p3_39.png: Corners found.
+2025-03-05 11:01:31,418 - root - INFO - g5_p3_40.png: Corners found.
+2025-03-05 11:01:32,184 - root - INFO - g5_p3_50.png: Corners found.
+2025-03-05 11:01:33,387 - root - INFO - g5_p3_51.png: Corners found.
+2025-03-05 11:01:34,304 - root - INFO - g5_p3_52.png: Corners found.
+2025-03-05 11:01:35,030 - root - INFO - g5_p3_53.png: Corners found.
+2025-03-05 11:01:35,769 - root - INFO - g5_p3_54.png: Corners found.
+2025-03-05 11:01:36,529 - root - INFO - g5_p3_55.png: Corners found.
+2025-03-05 11:01:37,357 - root - INFO - g5_p3_56.png: Corners found.
+2025-03-05 11:01:38,230 - root - INFO - g5_p3_57.png: Corners found.
+2025-03-05 11:01:39,045 - root - INFO - g5_p3_72.png: Corners found.
+2025-03-05 11:01:39,878 - root - INFO - g5_p3_73.png: Corners found.
+2025-03-05 11:01:41,043 - root - INFO - g5_p3_74.png: Corners found.
+2025-03-05 11:01:42,271 - root - INFO - g5_p3_75.png: Corners found.
+2025-03-05 11:01:43,234 - root - INFO - g5_p3_76.png: Corners found.
+2025-03-05 11:01:43,946 - root - INFO - g5_p3_77.png: Corners found.
+2025-03-05 11:01:44,706 - root - INFO - g5_p3_91.png: Corners found.
+2025-03-05 11:01:45,762 - root - INFO - g5_p3_92.png: Corners found.
+2025-03-05 11:01:46,537 - root - INFO - g5_p3_93.png: Corners found.
+2025-03-05 11:01:47,378 - root - INFO - g5_p3_111.png: Corners found.
+2025-03-05 11:01:48,122 - root - INFO - g5_p3_112.png: Corners found.
+2025-03-05 11:01:49,074 - root - INFO - g5_p3_113.png: Corners found.
+2025-03-05 11:01:50,041 - root - INFO - g5_p3_114.png: Corners found.
+2025-03-05 11:01:50,938 - root - INFO - g5_p3_115.png: Corners found.
+2025-03-05 11:01:52,003 - root - INFO - g5_p3_116.png: Corners found.
+2025-03-05 11:01:52,850 - root - INFO - g5_p3_117.png: Corners found.
+2025-03-05 11:01:53,738 - root - INFO - g5_p3_118.png: Corners found.
+2025-03-05 11:01:54,486 - root - INFO - g5_p3_119.png: Corners found.
+2025-03-05 11:01:55,286 - root - INFO - g6_p2_1.png: Corners found.
+2025-03-05 11:01:56,625 - root - INFO - g6_p2_2.png: Corners found.
+2025-03-05 11:01:57,423 - root - INFO - g6_p2_3.png: Corners found.
+2025-03-05 11:01:58,363 - root - INFO - g6_p2_14.png: Corners found.
+2025-03-05 11:01:59,514 - root - INFO - g6_p2_15.png: Corners found.
+2025-03-05 11:02:00,366 - root - INFO - g6_p2_16.png: Corners found.
+2025-03-05 11:02:01,199 - root - INFO - g6_p2_17.png: Corners found.
+2025-03-05 11:02:01,985 - root - INFO - g6_p2_18.png: Corners found.
+2025-03-05 11:02:02,745 - root - INFO - g6_p2_19.png: Corners found.
+2025-03-05 11:02:03,863 - root - INFO - g6_p2_20.png: Corners found.
+2025-03-05 11:02:04,730 - root - INFO - g6_p2_33.png: Corners found.
+2025-03-05 11:02:06,172 - root - INFO - g6_p2_34.png: Corners found.
+2025-03-05 11:02:07,113 - root - INFO - g6_p2_35.png: Corners found.
+2025-03-05 11:02:07,892 - root - INFO - g6_p2_36.png: Corners found.
+2025-03-05 11:02:08,758 - root - INFO - g6_p2_107.png: Corners found.
+2025-03-05 11:02:09,895 - root - INFO - g6_p2_108.png: Corners found.
+2025-03-05 11:02:10,782 - root - INFO - g6_p2_109.png: Corners found.
+2025-03-05 11:02:11,486 - root - INFO - g6_p2_110.png: Corners found.
+2025-03-05 11:02:12,154 - root - INFO - g6_p2_111.png: Corners found.
+2025-03-05 11:02:12,825 - root - INFO - g6_p2_112.png: Corners found.
+2025-03-05 11:02:13,392 - root - INFO - g6_p2_113.png: Corners found.
+2025-03-05 11:02:14,011 - root - INFO - g6_p2_114.png: Corners found.
+2025-03-05 11:02:14,651 - root - INFO - g6_p2_117.png: Corners found.
+2025-03-05 11:02:15,425 - root - INFO - g6_p2_118.png: Corners found.
+2025-03-05 11:02:16,151 - root - INFO - g6_p2_119.png: Corners found.
+2025-03-05 11:02:16,769 - root - INFO - g6_p2_120.png: Corners found.
+2025-03-05 11:02:17,398 - root - INFO - g6_p2_121.png: Corners found.
+2025-03-05 11:02:18,053 - root - INFO - g6_p2_137.png: Corners found.
+2025-03-05 11:02:18,844 - root - INFO - g6_p2_138.png: Corners found.
+2025-03-05 11:02:19,493 - root - INFO - g6_p2_139.png: Corners found.
+2025-03-05 11:02:20,167 - root - INFO - g6_p2_140.png: Corners found.
+2025-03-05 11:02:30,423 - root - INFO - Intrinsics error: 1.342 px for each cameras.
+2025-03-05 11:02:30,424 - root - INFO - 
+Camera c4:
+2025-03-05 11:02:30,723 - root - INFO - g1_p3_0.png: Corners found.
+2025-03-05 11:02:52,743 - root - INFO - g1_p3_1.png: Corners found.
+2025-03-05 11:02:53,806 - root - INFO - g1_p3_2.png: Corners found.
+2025-03-05 11:02:54,900 - root - INFO - g1_p3_3.png: Corners found.
+2025-03-05 11:02:55,904 - root - INFO - g1_p3_4.png: Corners found.
+2025-03-05 11:02:56,963 - root - INFO - g1_p3_5.png: Corners found.
+2025-03-05 11:02:57,753 - root - INFO - g1_p3_6.png: Corners found.
+2025-03-05 11:02:58,486 - root - INFO - g1_p3_7.png: Corners found.
+2025-03-05 11:02:59,575 - root - INFO - g1_p3_8.png: Corners found.
+2025-03-05 11:03:01,740 - root - INFO - g1_p3_9.png: Corners found.
+2025-03-05 11:03:03,061 - root - INFO - g1_p3_10.png: Corners found.
+2025-03-05 11:03:04,243 - root - INFO - g1_p3_11.png: Corners found.
+2025-03-05 11:03:05,785 - root - INFO - g1_p3_12.png: Corners found.
+2025-03-05 11:03:07,356 - root - INFO - g1_p3_13.png: Corners found.
+2025-03-05 11:03:08,632 - root - INFO - g1_p3_14.png: Corners found.
+2025-03-05 11:03:12,667 - root - INFO - g1_p3_27.png: Corners found.
+2025-03-05 11:03:14,374 - root - INFO - g1_p3_28.png: Corners found.
+2025-03-05 11:03:15,510 - root - INFO - g1_p3_29.png: Corners found.
+2025-03-05 11:03:17,446 - root - INFO - g1_p3_30.png: Corners found.
+2025-03-05 11:03:20,010 - root - INFO - g1_p3_31.png: Corners found.
+2025-03-05 11:03:21,141 - root - INFO - g1_p3_32.png: Corners found.
+2025-03-05 11:03:22,334 - root - INFO - g1_p3_33.png: Corners found.
+2025-03-05 11:03:24,032 - root - INFO - g1_p3_34.png: Corners found.
+2025-03-05 11:03:25,123 - root - INFO - g1_p3_35.png: Corners found.
+2025-03-05 11:03:26,613 - root - INFO - g1_p3_36.png: Corners not found: please label them by hand.
+2025-03-05 11:03:30,938 - root - INFO - g1_p3_42.png: Corners not found: please label them by hand.
+2025-03-05 11:03:32,319 - root - INFO - g1_p3_43.png: Corners found.
+2025-03-05 11:03:35,625 - root - INFO - g1_p3_55.png: Corners found.
+2025-03-05 11:03:37,356 - root - INFO - g1_p3_56.png: Corners found.
+2025-03-05 11:03:38,622 - root - INFO - g1_p3_58.png: Corners found.
+2025-03-05 11:03:40,316 - root - INFO - g1_p3_59.png: Corners found.
+2025-03-05 11:03:41,129 - root - INFO - g1_p3_60.png: Corners found.
+2025-03-05 11:03:42,550 - root - INFO - g1_p3_61.png: Corners found.
+2025-03-05 11:03:43,599 - root - INFO - g1_p3_62.png: Corners found.
+2025-03-05 11:03:45,493 - root - INFO - g1_p3_78.png: Corners not found: please label them by hand.
+2025-03-05 11:03:47,245 - root - INFO - g1_p3_79.png: Corners found.
+2025-03-05 11:03:48,438 - root - INFO - g1_p3_94.png: Corners found.
+2025-03-05 11:03:50,533 - root - INFO - g1_p3_97.png: Corners found.
+2025-03-05 11:03:51,757 - root - INFO - g1_p3_100.png: Corners found.
+2025-03-05 11:03:53,897 - root - INFO - g1_p3_101.png: Corners not found: please label them by hand.
+2025-03-05 11:03:55,318 - root - INFO - g1_p3_102.png: Corners found.
+2025-03-05 11:03:57,606 - root - INFO - g1_p3_103.png: Corners found.
+2025-03-05 11:03:58,651 - root - INFO - g1_p3_104.png: Corners found.
+2025-03-05 11:03:59,482 - root - INFO - g1_p3_105.png: Corners found.
+2025-03-05 11:04:00,525 - root - INFO - g1_p3_106.png: Corners found.
+2025-03-05 11:04:01,481 - root - INFO - g1_p3_107.png: Corners found.
+2025-03-05 11:04:02,437 - root - INFO - g1_p3_108.png: Corners found.
+2025-03-05 11:04:03,631 - root - INFO - g1_p3_109.png: Corners found.
+2025-03-05 11:04:04,811 - root - INFO - g1_p3_110.png: Corners found.
+2025-03-05 11:04:06,256 - root - INFO - g1_p3_117.png: Corners found.
+2025-03-05 11:04:09,705 - root - INFO - g1_p3_118.png: Corners found.
+2025-03-05 11:04:10,798 - root - INFO - g1_p3_119.png: Corners found.
+2025-03-05 11:04:11,722 - root - INFO - g1_p3_120.png: Corners found.
+2025-03-05 11:04:12,711 - root - INFO - g1_p3_121.png: Corners found.
+2025-03-05 11:04:13,863 - root - INFO - g1_p3_122.png: Corners found.
+2025-03-05 11:04:14,847 - root - INFO - g1_p3_123.png: Corners found.
+2025-03-05 11:04:15,551 - root - INFO - g1_p3_124.png: Corners found.
+2025-03-05 11:04:16,274 - root - INFO - g1_p3_125.png: Corners found.
+2025-03-05 11:04:17,487 - root - INFO - g1_p3_126.png: Corners found.
+2025-03-05 11:04:18,395 - root - INFO - g1_p3_135.png: Corners found.
+2025-03-05 11:04:21,884 - root - INFO - g1_p3_136.png: Corners found.
+2025-03-05 11:04:22,951 - root - INFO - g1_p3_137.png: Corners found.
+2025-03-05 11:04:24,683 - root - INFO - g1_p3_138.png: Corners found.
+2025-03-05 11:04:25,760 - root - INFO - g1_p3_139.png: Corners found.
+2025-03-05 11:04:26,806 - root - INFO - g1_p3_140.png: Corners found.
+2025-03-05 11:04:27,841 - root - INFO - g1_p3_141.png: Corners found.
+2025-03-05 11:04:28,987 - root - INFO - g1_p3_142.png: Corners found.
+2025-03-05 11:04:32,291 - root - INFO - g1_p3_143.png: Corners found.
+2025-03-05 11:04:33,625 - root - INFO - g1_p3_144.png: Corners found.
+2025-03-05 11:04:37,441 - root - INFO - g1_p3_145.png: Corners found.
+2025-03-05 11:04:38,939 - root - INFO - g1_p3_146.png: Corners found.
+2025-03-05 11:04:40,723 - root - INFO - g1_p3_147.png: Corners found.
+2025-03-05 11:04:42,225 - root - INFO - g1_p3_148.png: Corners found.
+2025-03-05 11:04:43,110 - root - INFO - g1_p3_149.png: Corners found.
+2025-03-05 11:04:44,101 - root - INFO - g1_p3_150.png: Corners found.
+2025-03-05 11:04:46,704 - root - INFO - g1_p3_151.png: Corners found.
+2025-03-05 11:04:48,157 - root - INFO - g1_p3_152.png: Corners found.
+2025-03-05 11:04:51,413 - root - INFO - g1_p3_153.png: Corners found.
+2025-03-05 11:04:52,598 - root - INFO - g1_p3_154.png: Corners found.
+2025-03-05 11:04:54,300 - root - INFO - g1_p3_155.png: Corners found.
+2025-03-05 11:04:56,879 - root - INFO - g1_p3_156.png: Corners found.
+2025-03-05 11:04:58,291 - root - INFO - g1_p3_157.png: Corners found.
+2025-03-05 11:04:59,980 - root - INFO - g1_p3_158.png: Corners found.
+2025-03-05 11:05:01,012 - root - INFO - g1_p3_159.png: Corners found.
+2025-03-05 11:05:01,840 - root - INFO - g1_p3_176.png: Corners found.
+2025-03-05 11:05:03,002 - root - INFO - g1_p3_177.png: Corners found.
+2025-03-05 11:05:04,111 - root - INFO - g1_p3_178.png: Corners found.
+2025-03-05 11:05:06,196 - root - INFO - g1_p3_179.png: Corners found.
+2025-03-05 11:05:07,911 - root - INFO - g1_p3_180.png: Corners found.
+2025-03-05 11:05:09,208 - root - INFO - g1_p3_181.png: Corners found.
+2025-03-05 11:05:10,385 - root - INFO - g1_p3_182.png: Corners found.
+2025-03-05 11:05:11,459 - root - INFO - g1_p3_183.png: Corners found.
+2025-03-05 11:05:12,913 - root - INFO - g1_p3_184.png: Corners found.
+2025-03-05 11:05:13,852 - root - INFO - g1_p3_185.png: Corners found.
+2025-03-05 11:05:15,189 - root - INFO - g1_p3_186.png: Corners found.
+2025-03-05 11:05:25,944 - root - INFO - g1_p3_187.png: Corners found.
+2025-03-05 11:05:28,378 - root - INFO - g1_p3_188.png: Corners found.
+2025-03-05 11:05:34,174 - root - INFO - g1_p3_189.png: Corners found.
+2025-03-05 11:05:35,833 - root - INFO - g1_p3_190.png: Corners found.
+2025-03-05 11:05:37,551 - root - INFO - g1_p3_191.png: Corners found.
+2025-03-05 11:05:38,896 - root - INFO - g1_p3_192.png: Corners found.
+2025-03-05 11:05:40,216 - root - INFO - g1_p3_193.png: Corners found.
+2025-03-05 11:05:41,441 - root - INFO - g1_p3_194.png: Corners found.
+2025-03-05 11:05:42,376 - root - INFO - g1_p3_195.png: Corners found.
+2025-03-05 11:05:43,239 - root - INFO - g1_p3_196.png: Corners found.
+2025-03-05 11:05:44,017 - root - INFO - g1_p3_197.png: Corners found.
+2025-03-05 11:05:44,769 - root - INFO - g1_p3_198.png: Corners found.
+2025-03-05 11:05:45,478 - root - INFO - g1_p3_199.png: Corners found.
+2025-03-05 11:05:46,202 - root - INFO - g1_p3_200.png: Corners found.
+2025-03-05 11:05:47,156 - root - INFO - g1_p3_201.png: Corners found.
+2025-03-05 11:05:47,989 - root - INFO - g1_p3_202.png: Corners found.
+2025-03-05 11:05:48,756 - root - INFO - g1_p3_271.png: Corners found.
+2025-03-05 11:05:50,213 - root - INFO - g1_p3_272.png: Corners found.
+2025-03-05 11:05:51,450 - root - INFO - g1_p3_279.png: Corners found.
+2025-03-05 11:05:56,149 - root - INFO - g1_p3_280.png: Corners found.
+2025-03-05 11:05:57,381 - root - INFO - g1_p3_281.png: Corners found.
+2025-03-05 11:05:58,548 - root - INFO - g1_p3_288.png: Corners found.
+2025-03-05 11:06:00,428 - root - INFO - g1_p3_289.png: Corners found.
+2025-03-05 11:06:01,762 - root - INFO - g1_p3_290.png: Corners found.
+2025-03-05 11:06:03,698 - root - INFO - g1_p3_291.png: Corners found.
+2025-03-05 11:06:07,724 - root - INFO - g1_p3_292.png: Corners found.
+2025-03-05 11:06:09,345 - root - INFO - g1_p3_333.png: Corners not found: please label them by hand.
+2025-03-05 11:06:11,031 - root - INFO - g1_p3_334.png: Corners found.
+2025-03-05 11:06:11,981 - root - INFO - g1_p3_335.png: Corners found.
+2025-03-05 11:06:13,683 - root - INFO - g1_p3_336.png: Corners found.
+2025-03-05 11:06:14,731 - root - INFO - g1_p3_337.png: Corners found.
+2025-03-05 11:06:15,549 - root - INFO - g1_p3_338.png: Corners found.
+2025-03-05 11:06:16,303 - root - INFO - g1_p3_339.png: Corners found.
+2025-03-05 11:06:17,181 - root - INFO - g1_p3_340.png: Corners found.
+2025-03-05 11:06:18,333 - root - INFO - g1_p3_341.png: Corners found.
+2025-03-05 11:06:19,343 - root - INFO - g1_p3_342.png: Corners found.
+2025-03-05 11:06:20,127 - root - INFO - g1_p3_343.png: Corners found.
+2025-03-05 11:06:20,886 - root - INFO - g1_p3_344.png: Corners found.
+2025-03-05 11:06:21,576 - root - INFO - g1_p3_345.png: Corners found.
+2025-03-05 11:06:22,311 - root - INFO - g1_p3_346.png: Corners found.
+2025-03-05 11:06:23,171 - root - INFO - g1_p3_347.png: Corners found.
+2025-03-05 11:06:25,051 - root - INFO - g1_p3_362.png: Corners found.
+2025-03-05 11:06:25,937 - root - INFO - g1_p3_363.png: Corners found.
+2025-03-05 11:06:26,743 - root - INFO - g1_p3_364.png: Corners found.
+2025-03-05 11:06:27,565 - root - INFO - g1_p3_372.png: Corners found.
+2025-03-05 11:06:28,476 - root - INFO - g1_p3_385.png: Corners found.
+2025-03-05 11:06:29,312 - root - INFO - g1_p3_386.png: Corners found.
+2025-03-05 11:06:29,997 - root - INFO - g1_p3_387.png: Corners found.
+2025-03-05 11:06:31,394 - root - INFO - g1_p3_388.png: Corners found.
+2025-03-05 11:06:32,385 - root - INFO - g1_p3_389.png: Corners found.
+2025-03-05 11:06:33,723 - root - INFO - g1_p3_390.png: Corners found.
+2025-03-05 11:06:35,543 - root - INFO - g1_p3_391.png: Corners found.
+2025-03-05 11:06:36,475 - root - INFO - g2_p2_42.png: Corners found.
+2025-03-05 11:06:38,153 - root - INFO - g2_p2_43.png: Corners found.
+2025-03-05 11:06:39,328 - root - INFO - g2_p2_44.png: Corners found.
+2025-03-05 11:06:40,564 - root - INFO - g2_p2_45.png: Corners found.
+2025-03-05 11:06:41,786 - root - INFO - g2_p2_94.png: Corners found.
+2025-03-05 11:06:43,118 - root - INFO - g2_p2_97.png: Corners found.
+2025-03-05 11:06:44,165 - root - INFO - g2_p2_98.png: Corners found.
+2025-03-05 11:06:45,069 - root - INFO - g2_p2_99.png: Corners found.
+2025-03-05 11:06:45,979 - root - INFO - g2_p2_100.png: Corners found.
+2025-03-05 11:06:47,016 - root - INFO - g2_p2_101.png: Corners found.
+2025-03-05 11:06:47,972 - root - INFO - g2_p2_106.png: Corners found.
+2025-03-05 11:06:48,992 - root - INFO - g2_p2_107.png: Corners found.
+2025-03-05 11:06:49,782 - root - INFO - g2_p2_108.png: Corners found.
+2025-03-05 11:06:50,613 - root - INFO - g2_p2_109.png: Corners found.
+2025-03-05 11:06:54,324 - root - INFO - Intrinsics error: 1.427 px for each cameras.
+2025-03-05 11:06:54,325 - root - INFO - 
+Camera c5:
+2025-03-05 11:06:54,657 - root - INFO - g1_p3_108.png: Corners found.
+2025-03-05 11:07:05,060 - root - INFO - g1_p3_109.png: Corners found.
+2025-03-05 11:07:06,695 - root - INFO - g1_p3_110.png: Corners found.
+2025-03-05 11:07:08,122 - root - INFO - g1_p3_111.png: Corners found.
+2025-03-05 11:07:10,069 - root - INFO - g1_p3_112.png: Corners found.
+2025-03-05 11:07:12,139 - root - INFO - g1_p3_113.png: Corners found.
+2025-03-05 11:07:14,136 - root - INFO - g1_p3_114.png: Corners found.
+2025-03-05 11:07:16,503 - root - INFO - g1_p3_115.png: Corners found.
+2025-03-05 11:07:17,592 - root - INFO - g1_p3_116.png: Corners found.
+2025-03-05 11:07:18,694 - root - INFO - g1_p3_117.png: Corners found.
+2025-03-05 11:07:19,872 - root - INFO - g1_p3_118.png: Corners found.
+2025-03-05 11:07:21,007 - root - INFO - g1_p3_119.png: Corners found.
+2025-03-05 11:07:21,833 - root - INFO - g1_p3_120.png: Corners found.
+2025-03-05 11:07:22,604 - root - INFO - g1_p3_121.png: Corners found.
+2025-03-05 11:07:23,420 - root - INFO - g1_p3_122.png: Corners found.
+2025-03-05 11:07:24,306 - root - INFO - g1_p3_123.png: Corners found.
+2025-03-05 11:07:25,092 - root - INFO - g1_p3_124.png: Corners found.
+2025-03-05 11:07:25,847 - root - INFO - g1_p3_125.png: Corners found.
+2025-03-05 11:07:26,691 - root - INFO - g1_p3_126.png: Corners found.
+2025-03-05 11:07:27,421 - root - INFO - g1_p3_127.png: Corners found.
+2025-03-05 11:07:28,090 - root - INFO - g1_p3_128.png: Corners found.
+2025-03-05 11:07:28,774 - root - INFO - g1_p3_129.png: Corners found.
+2025-03-05 11:07:29,440 - root - INFO - g1_p3_130.png: Corners found.
+2025-03-05 11:07:30,177 - root - INFO - g1_p3_131.png: Corners found.
+2025-03-05 11:07:30,918 - root - INFO - g1_p3_132.png: Corners found.
+2025-03-05 11:07:31,587 - root - INFO - g1_p3_133.png: Corners found.
+2025-03-05 11:07:32,232 - root - INFO - g1_p3_134.png: Corners found.
+2025-03-05 11:07:32,998 - root - INFO - g1_p3_135.png: Corners found.
+2025-03-05 11:07:33,671 - root - INFO - g1_p3_136.png: Corners found.
+2025-03-05 11:07:34,441 - root - INFO - g1_p3_137.png: Corners found.
+2025-03-05 11:07:35,118 - root - INFO - g1_p3_138.png: Corners found.
+2025-03-05 11:07:35,874 - root - INFO - g1_p3_139.png: Corners found.
+2025-03-05 11:07:36,670 - root - INFO - g1_p3_143.png: Corners found.
+2025-03-05 11:07:37,392 - root - INFO - g1_p3_144.png: Corners found.
+2025-03-05 11:07:38,184 - root - INFO - g1_p3_145.png: Corners found.
+2025-03-05 11:07:38,855 - root - INFO - g2_p2_109.png: Corners found.
+2025-03-05 11:07:39,561 - root - INFO - g2_p2_110.png: Corners found.
+2025-03-05 11:07:40,956 - root - INFO - g2_p2_111.png: Corners found.
+2025-03-05 11:07:43,091 - root - INFO - g2_p2_125.png: Corners found.
+2025-03-05 11:07:45,127 - root - INFO - g4_p1_1.png: Corners found.
+2025-03-05 11:07:47,253 - root - INFO - g4_p1_7.png: Corners found.
+2025-03-05 11:07:49,694 - root - INFO - g4_p1_8.png: Corners found.
+2025-03-05 11:07:50,719 - root - INFO - g4_p1_9.png: Corners found.
+2025-03-05 11:07:51,479 - root - INFO - g4_p1_10.png: Corners found.
+2025-03-05 11:07:52,284 - root - INFO - g4_p1_11.png: Corners found.
+2025-03-05 11:07:53,075 - root - INFO - g4_p1_12.png: Corners found.
+2025-03-05 11:07:54,174 - root - INFO - g4_p1_13.png: Corners found.
+2025-03-05 11:07:55,457 - root - INFO - g4_p1_16.png: Corners found.
+2025-03-05 11:07:57,509 - root - INFO - g4_p1_18.png: Corners not found: please label them by hand.
+2025-03-05 11:08:00,092 - root - INFO - g4_p1_28.png: Corners found.
+2025-03-05 11:08:01,511 - root - INFO - g4_p1_29.png: Corners found.
+2025-03-05 11:08:02,989 - root - INFO - g4_p1_38.png: Corners not found: please label them by hand.
+2025-03-05 11:08:04,825 - root - INFO - g4_p1_39.png: Corners found.
+2025-03-05 11:08:07,372 - root - INFO - g4_p1_40.png: Corners found.
+2025-03-05 11:08:09,037 - root - INFO - g4_p1_41.png: Corners found.
+2025-03-05 11:08:10,087 - root - INFO - g4_p1_42.png: Corners found.
+2025-03-05 11:08:11,221 - root - INFO - g4_p1_43.png: Corners found.
+2025-03-05 11:08:12,162 - root - INFO - g4_p1_44.png: Corners found.
+2025-03-05 11:08:13,094 - root - INFO - g4_p1_46.png: Corners found.
+2025-03-05 11:08:14,841 - root - INFO - g4_p1_47.png: Corners found.
+2025-03-05 11:08:16,378 - root - INFO - g4_p1_55.png: Corners not found: please label them by hand.
+2025-03-05 11:08:18,570 - root - INFO - g4_p1_58.png: Corners not found: please label them by hand.
+2025-03-05 11:08:19,880 - root - INFO - g4_p1_67.png: Corners found.
+2025-03-05 11:08:21,849 - root - INFO - g4_p1_68.png: Corners found.
+2025-03-05 11:08:23,533 - root - INFO - g4_p1_69.png: Corners found.
+2025-03-05 11:08:29,626 - root - INFO - g4_p1_70.png: Corners found.
+2025-03-05 11:08:30,869 - root - INFO - g4_p1_77.png: Corners found.
+2025-03-05 11:08:32,506 - root - INFO - g4_p1_78.png: Corners found.
+2025-03-05 11:08:33,467 - root - INFO - g4_p1_79.png: Corners found.
+2025-03-05 11:08:34,709 - root - INFO - g4_p1_80.png: Corners found.
+2025-03-05 11:08:35,978 - root - INFO - g4_p1_81.png: Corners found.
+2025-03-05 11:08:36,755 - root - INFO - g4_p1_82.png: Corners found.
+2025-03-05 11:08:37,577 - root - INFO - g4_p1_92.png: Corners found.
+2025-03-05 11:08:38,558 - root - INFO - g4_p1_93.png: Corners found.
+2025-03-05 11:08:39,397 - root - INFO - g4_p1_94.png: Corners found.
+2025-03-05 11:08:40,472 - root - INFO - g4_p1_95.png: Corners found.
+2025-03-05 11:08:41,256 - root - INFO - g4_p1_96.png: Corners found.
+2025-03-05 11:08:42,204 - root - INFO - g4_p1_97.png: Corners found.
+2025-03-05 11:08:43,259 - root - INFO - g4_p1_98.png: Corners found.
+2025-03-05 11:08:44,842 - root - INFO - g4_p1_109.png: Corners found.
+2025-03-05 11:08:45,940 - root - INFO - g4_p1_110.png: Corners found.
+2025-03-05 11:08:47,185 - root - INFO - g4_p1_111.png: Corners found.
+2025-03-05 11:08:48,280 - root - INFO - g4_p1_112.png: Corners found.
+2025-03-05 11:08:49,330 - root - INFO - g4_p1_113.png: Corners found.
+2025-03-05 11:08:50,490 - root - INFO - g4_p1_114.png: Corners found.
+2025-03-05 11:08:51,965 - root - INFO - g4_p1_115.png: Corners found.
+2025-03-05 11:08:52,977 - root - INFO - g4_p1_116.png: Corners found.
+2025-03-05 11:08:54,162 - root - INFO - g4_p1_117.png: Corners found.
+2025-03-05 11:08:55,287 - root - INFO - g4_p1_118.png: Corners found.
+2025-03-05 11:08:56,293 - root - INFO - g4_p1_119.png: Corners found.
+2025-03-05 11:08:57,272 - root - INFO - g4_p1_120.png: Corners found.
+2025-03-05 11:08:58,170 - root - INFO - g4_p1_121.png: Corners found.
+2025-03-05 11:08:58,954 - root - INFO - g4_p1_122.png: Corners found.
+2025-03-05 11:08:59,647 - root - INFO - g4_p1_123.png: Corners found.
+2025-03-05 11:09:00,329 - root - INFO - g5_p3_0.png: Corners found.
+2025-03-05 11:09:02,291 - root - INFO - g5_p3_1.png: Corners found.
+2025-03-05 11:09:03,937 - root - INFO - g5_p3_2.png: Corners found.
+2025-03-05 11:09:05,094 - root - INFO - g5_p3_3.png: Corners found.
+2025-03-05 11:09:06,903 - root - INFO - g5_p3_4.png: Corners found.
+2025-03-05 11:09:07,879 - root - INFO - g5_p3_5.png: Corners found.
+2025-03-05 11:09:08,732 - root - INFO - g5_p3_6.png: Corners found.
+2025-03-05 11:09:09,494 - root - INFO - g5_p3_7.png: Corners found.
+2025-03-05 11:09:10,235 - root - INFO - g5_p3_8.png: Corners found.
+2025-03-05 11:09:10,812 - root - INFO - g5_p3_9.png: Corners found.
+2025-03-05 11:09:11,476 - root - INFO - g5_p3_10.png: Corners found.
+2025-03-05 11:09:12,272 - root - INFO - g5_p3_11.png: Corners found.
+2025-03-05 11:09:13,074 - root - INFO - g5_p3_12.png: Corners found.
+2025-03-05 11:09:14,133 - root - INFO - g5_p3_13.png: Corners found.
+2025-03-05 11:09:14,935 - root - INFO - g5_p3_14.png: Corners found.
+2025-03-05 11:09:15,889 - root - INFO - g5_p3_15.png: Corners found.
+2025-03-05 11:09:16,791 - root - INFO - g5_p3_16.png: Corners found.
+2025-03-05 11:09:17,698 - root - INFO - g5_p3_17.png: Corners found.
+2025-03-05 11:09:18,446 - root - INFO - g5_p3_18.png: Corners found.
+2025-03-05 11:09:19,251 - root - INFO - g5_p3_19.png: Corners found.
+2025-03-05 11:09:20,054 - root - INFO - g5_p3_20.png: Corners found.
+2025-03-05 11:09:20,875 - root - INFO - g5_p3_21.png: Corners found.
+2025-03-05 11:09:21,818 - root - INFO - g5_p3_22.png: Corners found.
+2025-03-05 11:09:22,721 - root - INFO - g5_p3_23.png: Corners found.
+2025-03-05 11:09:23,502 - root - INFO - g5_p3_24.png: Corners found.
+2025-03-05 11:09:24,287 - root - INFO - g5_p3_25.png: Corners found.
+2025-03-05 11:09:25,010 - root - INFO - g5_p3_26.png: Corners found.
+2025-03-05 11:09:25,754 - root - INFO - g5_p3_27.png: Corners found.
+2025-03-05 11:09:26,494 - root - INFO - g5_p3_28.png: Corners found.
+2025-03-05 11:09:27,226 - root - INFO - g5_p3_29.png: Corners found.
+2025-03-05 11:09:27,973 - root - INFO - g5_p3_30.png: Corners found.
+2025-03-05 11:09:28,604 - root - INFO - g5_p3_31.png: Corners found.
+2025-03-05 11:09:29,271 - root - INFO - g5_p3_32.png: Corners found.
+2025-03-05 11:09:29,993 - root - INFO - g5_p3_33.png: Corners found.
+2025-03-05 11:09:30,623 - root - INFO - g5_p3_34.png: Corners found.
+2025-03-05 11:09:31,289 - root - INFO - g5_p3_35.png: Corners found.
+2025-03-05 11:09:31,922 - root - INFO - g5_p3_36.png: Corners found.
+2025-03-05 11:09:32,526 - root - INFO - g5_p3_37.png: Corners found.
+2025-03-05 11:09:33,176 - root - INFO - g5_p3_42.png: Corners found.
+2025-03-05 11:09:33,774 - root - INFO - g5_p3_43.png: Corners found.
+2025-03-05 11:09:34,382 - root - INFO - g5_p3_44.png: Corners found.
+2025-03-05 11:09:35,025 - root - INFO - g5_p3_45.png: Corners found.
+2025-03-05 11:09:35,704 - root - INFO - g5_p3_46.png: Corners found.
+2025-03-05 11:09:36,567 - root - INFO - g5_p3_47.png: Corners found.
+2025-03-05 11:09:37,255 - root - INFO - g5_p3_48.png: Corners found.
+2025-03-05 11:09:37,863 - root - INFO - g5_p3_49.png: Corners found.
+2025-03-05 11:09:38,487 - root - INFO - g5_p3_50.png: Corners found.
+2025-03-05 11:09:39,127 - root - INFO - g5_p3_51.png: Corners found.
+2025-03-05 11:09:39,858 - root - INFO - g5_p3_52.png: Corners found.
+2025-03-05 11:09:40,648 - root - INFO - g5_p3_53.png: Corners found.
+2025-03-05 11:09:41,410 - root - INFO - g5_p3_54.png: Corners found.
+2025-03-05 11:09:42,384 - root - INFO - g5_p3_55.png: Corners found.
+2025-03-05 11:09:43,280 - root - INFO - g5_p3_63.png: Corners found.
+2025-03-05 11:09:43,952 - root - INFO - g5_p3_64.png: Corners found.
+2025-03-05 11:09:44,952 - root - INFO - g5_p3_65.png: Corners found.
+2025-03-05 11:09:45,803 - root - INFO - g5_p3_66.png: Corners found.
+2025-03-05 11:09:46,869 - root - INFO - g5_p3_67.png: Corners found.
+2025-03-05 11:09:48,001 - root - INFO - g5_p3_68.png: Corners found.
+2025-03-05 11:09:48,867 - root - INFO - g5_p3_77.png: Corners found.
+2025-03-05 11:09:49,828 - root - INFO - g5_p3_78.png: Corners found.
+2025-03-05 11:09:50,702 - root - INFO - g5_p3_79.png: Corners found.
+2025-03-05 11:09:51,595 - root - INFO - g5_p3_80.png: Corners found.
+2025-03-05 11:09:52,439 - root - INFO - g5_p3_81.png: Corners found.
+2025-03-05 11:09:53,441 - root - INFO - g5_p3_86.png: Corners found.
+2025-03-05 11:09:54,345 - root - INFO - g5_p3_87.png: Corners found.
+2025-03-05 11:09:55,274 - root - INFO - g5_p3_88.png: Corners found.
+2025-03-05 11:09:56,085 - root - INFO - g5_p3_89.png: Corners found.
+2025-03-05 11:09:57,139 - root - INFO - g5_p3_90.png: Corners found.
+2025-03-05 11:09:58,298 - root - INFO - g5_p3_91.png: Corners found.
+2025-03-05 11:09:59,314 - root - INFO - g5_p3_92.png: Corners found.
+2025-03-05 11:10:00,723 - root - INFO - g5_p3_93.png: Corners found.
+2025-03-05 11:10:01,577 - root - INFO - g5_p3_94.png: Corners found.
+2025-03-05 11:10:02,372 - root - INFO - g5_p3_95.png: Corners found.
+2025-03-05 11:10:03,479 - root - INFO - g5_p3_96.png: Corners found.
+2025-03-05 11:10:04,029 - root - INFO - g5_p3_97.png: Corners found.
+2025-03-05 11:10:05,572 - root - INFO - g5_p3_98.png: Corners found.
+2025-03-05 11:10:07,272 - root - INFO - g5_p3_99.png: Corners found.
+2025-03-05 11:10:08,285 - root - INFO - g5_p3_100.png: Corners found.
+2025-03-05 11:10:09,105 - root - INFO - g5_p3_101.png: Corners found.
+2025-03-05 11:10:09,913 - root - INFO - g5_p3_102.png: Corners found.
+2025-03-05 11:10:10,786 - root - INFO - g5_p3_103.png: Corners found.
+2025-03-05 11:10:11,605 - root - INFO - g5_p3_104.png: Corners found.
+2025-03-05 11:10:12,468 - root - INFO - g5_p3_105.png: Corners found.
+2025-03-05 11:10:13,320 - root - INFO - g5_p3_106.png: Corners found.
+2025-03-05 11:10:14,075 - root - INFO - g5_p3_107.png: Corners found.
+2025-03-05 11:10:14,969 - root - INFO - g5_p3_108.png: Corners found.
+2025-03-05 11:10:15,697 - root - INFO - g5_p3_109.png: Corners found.
+2025-03-05 11:10:16,550 - root - INFO - g5_p3_110.png: Corners found.
+2025-03-05 11:10:17,233 - root - INFO - g5_p3_111.png: Corners found.
+2025-03-05 11:10:18,383 - root - INFO - g5_p3_112.png: Corners found.
+2025-03-05 11:10:19,147 - root - INFO - g5_p3_113.png: Corners found.
+2025-03-05 11:10:20,150 - root - INFO - g5_p3_114.png: Corners found.
+2025-03-05 11:10:20,931 - root - INFO - g5_p3_115.png: Corners found.
+2025-03-05 11:10:21,721 - root - INFO - g5_p3_116.png: Corners found.
+2025-03-05 11:10:22,483 - root - INFO - g5_p3_117.png: Corners found.
+2025-03-05 11:10:23,180 - root - INFO - g5_p3_118.png: Corners found.
+2025-03-05 11:10:23,911 - root - INFO - g5_p3_119.png: Corners found.
+2025-03-05 11:10:24,569 - root - INFO - g5_p3_120.png: Corners found.
+2025-03-05 11:10:25,187 - root - INFO - g5_p3_121.png: Corners found.
+2025-03-05 11:10:25,924 - root - INFO - g5_p3_122.png: Corners found.
+2025-03-05 11:10:26,843 - root - INFO - g5_p3_123.png: Corners found.
+2025-03-05 11:10:28,189 - root - INFO - g5_p3_129.png: Corners found.
+2025-03-05 11:10:29,099 - root - INFO - g5_p3_130.png: Corners found.
+2025-03-05 11:10:30,146 - root - INFO - g5_p3_131.png: Corners found.
+2025-03-05 11:10:30,897 - root - INFO - g5_p3_132.png: Corners found.
+2025-03-05 11:10:31,642 - root - INFO - g5_p3_133.png: Corners found.
+2025-03-05 11:10:32,820 - root - INFO - g5_p3_134.png: Corners found.
+2025-03-05 11:10:43,614 - root - INFO - Intrinsics error: 1.145 px for each cameras.
+2025-03-05 11:10:43,617 - root - INFO - 
+Camera c6:
+2025-03-05 11:10:43,962 - root - INFO - g1_p3_0.png: Corners found.
+2025-03-05 11:10:49,604 - root - INFO - g1_p3_1.png: Corners found.
+2025-03-05 11:10:50,530 - root - INFO - g1_p3_10.png: Corners found.
+2025-03-05 11:10:51,672 - root - INFO - g1_p3_11.png: Corners found.
+2025-03-05 11:10:52,830 - root - INFO - g1_p3_12.png: Corners found.
+2025-03-05 11:10:54,636 - root - INFO - g1_p3_13.png: Corners found.
+2025-03-05 11:10:56,588 - root - INFO - g1_p3_14.png: Corners found.
+2025-03-05 11:10:57,674 - root - INFO - g1_p3_17.png: Corners found.
+2025-03-05 11:11:01,546 - root - INFO - g1_p3_27.png: Corners found.
+2025-03-05 11:11:05,342 - root - INFO - g1_p3_28.png: Corners found.
+2025-03-05 11:11:06,283 - root - INFO - g1_p3_29.png: Corners found.
+2025-03-05 11:11:07,650 - root - INFO - g1_p3_30.png: Corners found.
+2025-03-05 11:11:09,147 - root - INFO - g1_p3_31.png: Corners found.
+2025-03-05 11:11:10,545 - root - INFO - g1_p3_39.png: Corners found.
+2025-03-05 11:11:11,512 - root - INFO - g1_p3_40.png: Corners found.
+2025-03-05 11:11:12,467 - root - INFO - g1_p3_41.png: Corners found.
+2025-03-05 11:11:13,997 - root - INFO - g1_p3_42.png: Corners found.
+2025-03-05 11:11:15,330 - root - INFO - g1_p3_43.png: Corners found.
+2025-03-05 11:11:16,328 - root - INFO - g1_p3_45.png: Corners found.
+2025-03-05 11:11:17,332 - root - INFO - g1_p3_46.png: Corners found.
+2025-03-05 11:11:18,234 - root - INFO - g1_p3_47.png: Corners found.
+2025-03-05 11:11:19,089 - root - INFO - g1_p3_48.png: Corners found.
+2025-03-05 11:11:20,094 - root - INFO - g1_p3_62.png: Corners found.
+2025-03-05 11:11:21,048 - root - INFO - g1_p3_63.png: Corners found.
+2025-03-05 11:11:21,878 - root - INFO - g1_p3_64.png: Corners found.
+2025-03-05 11:11:23,194 - root - INFO - g1_p3_65.png: Corners found.
+2025-03-05 11:11:24,463 - root - INFO - g1_p3_66.png: Corners found.
+2025-03-05 11:11:25,457 - root - INFO - g1_p3_67.png: Corners found.
+2025-03-05 11:11:26,573 - root - INFO - g1_p3_68.png: Corners found.
+2025-03-05 11:11:27,576 - root - INFO - g1_p3_69.png: Corners found.
+2025-03-05 11:11:34,366 - root - INFO - g1_p3_70.png: Corners found.
+2025-03-05 11:11:35,215 - root - INFO - g1_p3_71.png: Corners found.
+2025-03-05 11:11:36,048 - root - INFO - g1_p3_72.png: Corners found.
+2025-03-05 11:11:37,104 - root - INFO - g1_p3_73.png: Corners found.
+2025-03-05 11:11:38,743 - root - INFO - g1_p3_74.png: Corners found.
+2025-03-05 11:11:40,036 - root - INFO - g1_p3_75.png: Corners found.
+2025-03-05 11:11:40,805 - root - INFO - g1_p3_76.png: Corners found.
+2025-03-05 11:11:41,496 - root - INFO - g1_p3_77.png: Corners found.
+2025-03-05 11:11:42,090 - root - INFO - g1_p3_78.png: Corners found.
+2025-03-05 11:11:42,715 - root - INFO - g1_p3_79.png: Corners found.
+2025-03-05 11:11:43,536 - root - INFO - g1_p3_80.png: Corners found.
+2025-03-05 11:11:44,378 - root - INFO - g1_p3_83.png: Corners found.
+2025-03-05 11:11:45,072 - root - INFO - g1_p3_99.png: Corners found.
+2025-03-05 11:11:45,683 - root - INFO - g1_p3_100.png: Corners found.
+2025-03-05 11:11:46,719 - root - INFO - g1_p3_101.png: Corners found.
+2025-03-05 11:11:47,321 - root - INFO - g1_p3_102.png: Corners found.
+2025-03-05 11:11:50,925 - root - INFO - g1_p3_103.png: Corners found.
+2025-03-05 11:11:52,143 - root - INFO - g1_p3_104.png: Corners found.
+2025-03-05 11:11:52,999 - root - INFO - g1_p3_105.png: Corners found.
+2025-03-05 11:11:54,004 - root - INFO - g1_p3_106.png: Corners found.
+2025-03-05 11:11:54,938 - root - INFO - g1_p3_107.png: Corners found.
+2025-03-05 11:11:55,947 - root - INFO - g1_p3_108.png: Corners found.
+2025-03-05 11:11:56,727 - root - INFO - g1_p3_109.png: Corners found.
+2025-03-05 11:11:57,418 - root - INFO - g1_p3_110.png: Corners found.
+2025-03-05 11:11:58,139 - root - INFO - g1_p3_111.png: Corners found.
+2025-03-05 11:11:58,971 - root - INFO - g1_p3_112.png: Corners found.
+2025-03-05 11:11:59,716 - root - INFO - g1_p3_113.png: Corners found.
+2025-03-05 11:12:00,508 - root - INFO - g1_p3_114.png: Corners found.
+2025-03-05 11:12:01,818 - root - INFO - g1_p3_116.png: Corners found.
+2025-03-05 11:12:02,582 - root - INFO - g1_p3_117.png: Corners found.
+2025-03-05 11:12:03,335 - root - INFO - g1_p3_118.png: Corners found.
+2025-03-05 11:12:04,043 - root - INFO - g1_p3_122.png: Corners found.
+2025-03-05 11:12:04,803 - root - INFO - g1_p3_123.png: Corners found.
+2025-03-05 11:12:06,375 - root - INFO - g1_p3_124.png: Corners found.
+2025-03-05 11:12:07,030 - root - INFO - g1_p3_125.png: Corners found.
+2025-03-05 11:12:07,631 - root - INFO - g1_p3_126.png: Corners found.
+2025-03-05 11:12:08,184 - root - INFO - g1_p3_127.png: Corners found.
+2025-03-05 11:12:08,756 - root - INFO - g1_p3_128.png: Corners found.
+2025-03-05 11:12:09,344 - root - INFO - g1_p3_129.png: Corners found.
+2025-03-05 11:12:09,968 - root - INFO - g1_p3_130.png: Corners found.
+2025-03-05 11:12:10,949 - root - INFO - g1_p3_147.png: Corners not found: please label them by hand.
+2025-03-05 11:12:12,341 - root - INFO - g1_p3_148.png: Corners found.
+2025-03-05 11:12:14,551 - root - INFO - g1_p3_149.png: Corners found.
+2025-03-05 11:12:15,620 - root - INFO - g1_p3_150.png: Corners found.
+2025-03-05 11:12:16,455 - root - INFO - g1_p3_151.png: Corners found.
+2025-03-05 11:12:17,738 - root - INFO - g1_p3_152.png: Corners found.
+2025-03-05 11:12:18,789 - root - INFO - g1_p3_153.png: Corners found.
+2025-03-05 11:12:19,897 - root - INFO - g1_p3_154.png: Corners found.
+2025-03-05 11:12:20,944 - root - INFO - g2_p2_0.png: Corners found.
+2025-03-05 11:12:22,678 - root - INFO - g2_p2_1.png: Corners found.
+2025-03-05 11:12:23,638 - root - INFO - g2_p2_2.png: Corners found.
+2025-03-05 11:12:24,438 - root - INFO - g2_p2_3.png: Corners found.
+2025-03-05 11:12:25,117 - root - INFO - g2_p2_4.png: Corners found.
+2025-03-05 11:12:25,720 - root - INFO - g2_p2_5.png: Corners found.
+2025-03-05 11:12:26,355 - root - INFO - g2_p2_6.png: Corners found.
+2025-03-05 11:12:27,537 - root - INFO - g2_p2_7.png: Corners found.
+2025-03-05 11:12:28,628 - root - INFO - g2_p2_8.png: Corners found.
+2025-03-05 11:12:30,236 - root - INFO - g2_p2_9.png: Corners found.
+2025-03-05 11:12:32,204 - root - INFO - g2_p2_10.png: Corners found.
+2025-03-05 11:12:32,796 - root - INFO - g2_p2_11.png: Corners found.
+2025-03-05 11:12:33,408 - root - INFO - g2_p2_12.png: Corners found.
+2025-03-05 11:12:33,976 - root - INFO - g2_p2_13.png: Corners found.
+2025-03-05 11:12:34,561 - root - INFO - g2_p2_14.png: Corners found.
+2025-03-05 11:12:35,130 - root - INFO - g2_p2_15.png: Corners found.
+2025-03-05 11:12:35,828 - root - INFO - g2_p2_16.png: Corners found.
+2025-03-05 11:12:36,362 - root - INFO - g2_p2_17.png: Corners found.
+2025-03-05 11:12:36,972 - root - INFO - g2_p2_18.png: Corners found.
+2025-03-05 11:12:37,604 - root - INFO - g2_p2_40.png: Corners found.
+2025-03-05 11:12:38,315 - root - INFO - g2_p2_41.png: Corners found.
+2025-03-05 11:12:39,025 - root - INFO - g2_p2_42.png: Corners found.
+2025-03-05 11:12:39,609 - root - INFO - g2_p2_43.png: Corners found.
+2025-03-05 11:12:41,670 - root - INFO - g2_p2_44.png: Corners found.
+2025-03-05 11:12:42,362 - root - INFO - g2_p2_45.png: Corners found.
+2025-03-05 11:12:42,951 - root - INFO - g2_p2_46.png: Corners found.
+2025-03-05 11:12:43,542 - root - INFO - g2_p2_47.png: Corners found.
+2025-03-05 11:12:44,112 - root - INFO - g2_p2_48.png: Corners found.
+2025-03-05 11:12:45,011 - root - INFO - g2_p2_49.png: Corners found.
+2025-03-05 11:12:45,644 - root - INFO - g2_p2_50.png: Corners found.
+2025-03-05 11:12:46,352 - root - INFO - g2_p2_51.png: Corners found.
+2025-03-05 11:13:33,808 - root - INFO - g2_p2_52.png: Corners found.
+2025-03-05 11:13:35,786 - root - INFO - g2_p2_53.png: Corners found.
+2025-03-05 11:13:36,604 - root - INFO - g2_p2_54.png: Corners found.
+2025-03-05 11:13:37,379 - root - INFO - g2_p2_55.png: Corners found.
+2025-03-05 11:13:38,219 - root - INFO - g2_p2_56.png: Corners found.
+2025-03-05 11:13:38,953 - root - INFO - g2_p2_57.png: Corners found.
+2025-03-05 11:13:39,654 - root - INFO - g2_p2_58.png: Corners found.
+2025-03-05 11:13:40,225 - root - INFO - g2_p2_59.png: Corners found.
+2025-03-05 11:13:40,857 - root - INFO - g2_p2_60.png: Corners found.
+2025-03-05 11:13:41,568 - root - INFO - g2_p2_61.png: Corners found.
+2025-03-05 11:13:42,229 - root - INFO - g2_p2_62.png: Corners found.
+2025-03-05 11:13:42,832 - root - INFO - g2_p2_63.png: Corners found.
+2025-03-05 11:13:43,412 - root - INFO - g2_p2_64.png: Corners found.
+2025-03-05 11:13:43,992 - root - INFO - g2_p2_65.png: Corners found.
+2025-03-05 11:13:44,586 - root - INFO - g2_p2_66.png: Corners found.
+2025-03-05 11:13:45,181 - root - INFO - g2_p2_74.png: Corners found.
+2025-03-05 11:13:45,741 - root - INFO - g2_p2_75.png: Corners found.
+2025-03-05 11:13:46,434 - root - INFO - g2_p2_76.png: Corners found.
+2025-03-05 11:13:47,241 - root - INFO - g2_p2_77.png: Corners found.
+2025-03-05 11:13:47,913 - root - INFO - g2_p2_78.png: Corners found.
+2025-03-05 11:13:48,451 - root - INFO - g2_p2_79.png: Corners found.
+2025-03-05 11:13:49,003 - root - INFO - g2_p2_80.png: Corners found.
+2025-03-05 11:13:49,586 - root - INFO - g2_p2_89.png: Corners found.
+2025-03-05 11:13:50,137 - root - INFO - g2_p2_90.png: Corners found.
+2025-03-05 11:13:50,678 - root - INFO - g2_p2_91.png: Corners found.
+2025-03-05 11:13:51,126 - root - INFO - g2_p2_92.png: Corners found.
+2025-03-05 11:13:52,244 - root - INFO - g2_p2_93.png: Corners found.
+2025-03-05 11:13:52,994 - root - INFO - g2_p2_94.png: Corners found.
+2025-03-05 11:13:53,516 - root - INFO - g2_p2_95.png: Corners found.
+2025-03-05 11:13:54,192 - root - INFO - g2_p2_96.png: Corners found.
+2025-03-05 11:13:54,858 - root - INFO - g2_p2_97.png: Corners found.
+2025-03-05 11:13:55,379 - root - INFO - g2_p2_98.png: Corners found.
+2025-03-05 11:13:55,928 - root - INFO - g2_p2_99.png: Corners found.
+2025-03-05 11:13:56,490 - root - INFO - g2_p2_100.png: Corners found.
+2025-03-05 11:13:57,042 - root - INFO - g2_p2_101.png: Corners found.
+2025-03-05 11:13:57,687 - root - INFO - g2_p2_102.png: Corners found.
+2025-03-05 11:13:58,257 - root - INFO - g2_p2_103.png: Corners found.
+2025-03-05 11:13:58,896 - root - INFO - g2_p2_104.png: Corners found.
+2025-03-05 11:13:59,421 - root - INFO - g2_p2_105.png: Corners found.
+2025-03-05 11:14:00,060 - root - INFO - g2_p2_106.png: Corners found.
+2025-03-05 11:14:00,612 - root - INFO - g2_p2_107.png: Corners found.
+2025-03-05 11:14:01,178 - root - INFO - g2_p2_108.png: Corners found.
+2025-03-05 11:14:01,728 - root - INFO - g2_p2_109.png: Corners found.
+2025-03-05 11:14:02,303 - root - INFO - g2_p2_110.png: Corners found.
+2025-03-05 11:14:03,011 - root - INFO - g2_p2_111.png: Corners found.
+2025-03-05 11:14:03,524 - root - INFO - g2_p2_112.png: Corners found.
+2025-03-05 11:14:04,331 - root - INFO - g2_p2_113.png: Corners found.
+2025-03-05 11:14:04,977 - root - INFO - g2_p2_114.png: Corners found.
+2025-03-05 11:14:05,676 - root - INFO - g2_p2_115.png: Corners found.
+2025-03-05 11:14:06,462 - root - INFO - g2_p2_116.png: Corners found.
+2025-03-05 11:14:07,127 - root - INFO - g2_p2_117.png: Corners found.
+2025-03-05 11:14:07,722 - root - INFO - g2_p2_118.png: Corners found.
+2025-03-05 11:14:08,309 - root - INFO - g2_p2_119.png: Corners found.
+2025-03-05 11:14:08,921 - root - INFO - g2_p2_120.png: Corners found.
+2025-03-05 11:14:09,527 - root - INFO - g2_p2_128.png: Corners found.
+2025-03-05 11:14:10,054 - root - INFO - g2_p2_129.png: Corners found.
+2025-03-05 11:14:10,687 - root - INFO - g2_p2_130.png: Corners found.
+2025-03-05 11:14:11,358 - root - INFO - g2_p2_131.png: Corners found.
+2025-03-05 11:14:11,879 - root - INFO - g2_p2_132.png: Corners found.
+2025-03-05 11:14:12,449 - root - INFO - g2_p2_133.png: Corners found.
+2025-03-05 11:14:13,024 - root - INFO - g2_p2_134.png: Corners found.
+2025-03-05 11:14:13,613 - root - INFO - g2_p2_135.png: Corners found.
+2025-03-05 11:14:14,346 - root - INFO - g2_p2_136.png: Corners found.
+2025-03-05 11:14:14,825 - root - INFO - g2_p2_137.png: Corners found.
+2025-03-05 11:14:15,830 - root - INFO - g2_p2_138.png: Corners found.
+2025-03-05 11:14:16,497 - root - INFO - g3_p4_1.png: Corners found.
+2025-03-05 11:14:17,032 - root - INFO - g3_p4_2.png: Corners found.
+2025-03-05 11:14:19,662 - root - INFO - g3_p4_3.png: Corners found.
+2025-03-05 11:14:20,607 - root - INFO - g3_p4_45.png: Corners found.
+2025-03-05 11:14:21,657 - root - INFO - g3_p4_46.png: Corners found.
+2025-03-05 11:14:22,415 - root - INFO - g3_p4_68.png: Corners found.
+2025-03-05 11:14:24,183 - root - INFO - g3_p4_69.png: Corners found.
+2025-03-05 11:14:24,877 - root - INFO - g3_p4_70.png: Corners found.
+2025-03-05 11:14:25,522 - root - INFO - g3_p4_71.png: Corners found.
+2025-03-05 11:14:26,175 - root - INFO - g3_p4_72.png: Corners found.
+2025-03-05 11:14:26,847 - root - INFO - g3_p4_73.png: Corners found.
+2025-03-05 11:14:27,965 - root - INFO - g3_p4_74.png: Corners found.
+2025-03-05 11:14:28,689 - root - INFO - g3_p4_75.png: Corners found.
+2025-03-05 11:14:29,359 - root - INFO - g3_p4_76.png: Corners found.
+2025-03-05 11:14:30,065 - root - INFO - g3_p4_77.png: Corners found.
+2025-03-05 11:14:31,342 - root - INFO - g3_p4_78.png: Corners found.
+2025-03-05 11:14:32,792 - root - INFO - g3_p4_87.png: Corners found.
+2025-03-05 11:14:34,075 - root - INFO - g3_p4_89.png: Corners found.
+2025-03-05 11:14:35,121 - root - INFO - g3_p4_90.png: Corners found.
+2025-03-05 11:14:35,979 - root - INFO - g3_p4_91.png: Corners found.
+2025-03-05 11:14:36,610 - root - INFO - g3_p4_92.png: Corners found.
+2025-03-05 11:14:37,498 - root - INFO - g3_p4_93.png: Corners found.
+2025-03-05 11:14:38,279 - root - INFO - g3_p4_94.png: Corners found.
+2025-03-05 11:14:39,020 - root - INFO - g3_p4_95.png: Corners found.
+2025-03-05 11:14:39,826 - root - INFO - g3_p4_96.png: Corners found.
+2025-03-05 11:14:40,484 - root - INFO - g3_p4_97.png: Corners found.
+2025-03-05 11:14:41,347 - root - INFO - g3_p4_130.png: Corners found.
+2025-03-05 11:14:42,273 - root - INFO - Intrinsics error: 0.948 px for each cameras.
+2025-03-05 11:19:39,389 - pyswarms.single.global_best - INFO - Optimize for 300 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-03-05 11:26:53,098 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 29.01800314016771, best pos: [    0.0456     0.3014     0.3225     4.6229    -1.3611    65.0911
+     1.2258     0.2396     3.1663 -1494.7199   -55.4905   146.9503
+     2.0845     0.0354     2.346  -1570.9369   771.833   1915.0872
+    -0.1046    -0.7318    -0.136   1160.1616  -116.716    220.7148
+     0.2615    -0.105      3.3496  -758.6053   -75.9075  -228.8847
+     0.1023    -0.2364     0.4548  -128.7439   312.3224   231.3304]
