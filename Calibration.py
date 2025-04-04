@@ -44,23 +44,20 @@ class calibration():
             imgp = cv2.cornerSubPix(gray, corners, (5, 5), (-1,-1), criteria)
             return ret, img, imgp
         else:
-            return ret, img, corners
-
+            return ret, img, corners, None
+    
     # To find images where we see the checkerboard, for individual cameras
     def save_images_checkerboard(self, path, dir, cam):
         for fname in os.listdir(os.path.join(dir, cam)):
             savepath = os.path.join(path, 'calibration', 'intrinsics', cam)
             if not os.path.isdir(savepath):
                 os.makedirs(savepath)
-            
-            ret, img, _ = self.findCorners(os.path.join(dir, cam, fname), subpix = False)
+            savename = dir[-4:] + '_' + cam + fname
 
+            ret, img, _ = self.findCorners(os.path.join(dir, cam, fname), subpix = False)
             if ret == True:
-                cv2.imwrite(os.path.join(savepath, fname), img)
+                cv2.imwrite(os.path.join(savepath, savename), img)
             
-            num_files = sum(1 for entry in os.scandir(savepath) if entry.is_file())
-            if num_files > 200:
-                return
         return
     
     def refine_image_selection(self, path, dir, cam, K, D, image_size:tuple, angle_threshold:float, coverage_threshold:tuple):
@@ -148,13 +145,12 @@ class calibration():
 
         imnames = [str(imname).split('/')[-1] for imname in cali['pathColor'].tolist()]
         users = cali['user'].tolist()
+        timestamps = cali['timestamp'].tolist()
 
         indices = []
         for i, u in enumerate(users):
             if int(u) == int(user[1:]):
                 indices.append(i)
-
-        timestamps = cali['timestamp'].tolist()
 
         info = np.array([imnames, timestamps])
         info = info[:,indices]
@@ -184,19 +180,23 @@ class calibration():
                             # Lret, Limg, _ = self.findCorners(os.path.join(path, user, cam1, cali1[0,i]), subpix=False)
                             # Rret, Rimg, _ = self.findCorners(os.path.join(path, user, cam2, cali2[0,j]), subpix=False)
                             # if Lret == True and Rret == True:
+
+                            name1 = user + '_' + cam1 + cali1[0,i]
+                            name2 = user + '_' + cam2 + cali2[0,j]
                             
-                            im1In = cali1[0,i] in list(os.listdir(os.path.join(path_intrinsics, cam1)))
-                            im2In = cali2[0,j] in list(os.listdir(os.path.join(path_intrinsics, cam2)))
+                            im1In = name1 in list(os.listdir(os.path.join(path_intrinsics, cam1)))
+                            im2In = name2 in list(os.listdir(os.path.join(path_intrinsics, cam2)))
 
                             if im1In and im2In:
                             
                             #if cali1[0,i] in os.listdir(os.path.join(path, 'calibration', 'intrinsics', cam1)) and cali2[0,j] in os.listdir(os.path.join(path, 'calibration', 'intrinsics', cam2)):
                                 #print(cali1[0,i], cali2[0,j])
-                                Limg = cv2.imread(os.path.join(path_intrinsics, cam1, cali1[0,i]))
-                                cv2.imwrite(os.path.join(path_stereo, f'{i}_{j}_{cam1}_{cali1[0,i]}'), Limg)
 
-                                Rimg = cv2.imread(os.path.join(path_intrinsics, cam2, cali2[0,j]))
-                                cv2.imwrite(os.path.join(path_stereo, f'{i}_{j}_{cam2}_{cali2[0,j]}'), Rimg)
+                                Limg = cv2.imread(os.path.join(path_intrinsics, cam1, name1))
+                                cv2.imwrite(os.path.join(path_stereo, f'{i}_{j}_{cam1}_{name1}'), Limg)
+
+                                Rimg = cv2.imread(os.path.join(path_intrinsics, cam2, name2))
+                                cv2.imwrite(os.path.join(path_stereo, f'{i}_{j}_{cam2}_{name2}'), Rimg)
         return
 
 

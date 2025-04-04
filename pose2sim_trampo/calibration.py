@@ -598,6 +598,19 @@ def calibrate_intrinsics(calib_dir, intrinsics_config_dict):
                 if isinstance(imgp_confirmed, np.ndarray):
                     imgpoints.append(imgp_confirmed)
                     objpoints.append(objp_confirmed)
+
+                    ### Save image when corners are confirmed ###
+                    # Create subfolder for confirmed images
+                    confirmed_dir = os.path.join(calib_dir, 'corners_confirmed', cam)
+                    os.makedirs(confirmed_dir, exist_ok=True)
+
+                    # Save image in new location
+                    img = cv2.imread(img_path)
+                    confirmed_img_path = os.path.join(confirmed_dir, os.path.basename(img_path))
+                    cv2.imwrite(confirmed_img_path, img)
+                    print(f'Image saved: {confirmed_img_path}')
+                    ###
+
             else:
                 imgp_confirmed = findCorners(img_path, intrinsics_corners_nb, objp=objp, show=show_detection_intrinsics)
                 if isinstance(imgp_confirmed, np.ndarray):
