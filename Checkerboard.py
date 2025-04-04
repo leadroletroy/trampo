@@ -11,6 +11,8 @@ from pose2sim_trampo.common import euclidean_distance
 
 class Checkerboard():
     def __init__(self, checkerboard, square_size):
+        self.type = 'checker' 
+        
         self.checkerboard = checkerboard
         self.square_size = square_size
 
@@ -46,59 +48,11 @@ class Checkerboard():
         else:
             return ret, corners, None, None
     
-    # To find images where we see the checkerboard, for individual cameras
-    def save_images_checkerboard(self, path, dir, cam):
-        for fname in os.listdir(os.path.join(dir, cam)):
-            savepath = os.path.join(path, 'calibration', 'intrinsics', cam)
-            if not os.path.isdir(savepath):
-                os.makedirs(savepath)
-            savename = dir[-4:] + '_' + cam + fname
-
-            ret, img, _ = self.findCorners(os.path.join(dir, cam, fname), subpix = False)
-            if ret == True:
-                cv2.imwrite(os.path.join(savepath, savename), img)
-            
-        return
-    
-    def refine_image_selection(self, path, dir, cam, K, D, image_size:tuple, angle_threshold:float, coverage_threshold:tuple):
-        image_area = image_size[0] * image_size[1]
-        mask_covered = np.zeros(image_size, dtype=np.uint8)
-        
-        for fname in os.listdir(os.path.join(path, cam)):
-            savepath = os.path.join(path, dir, cam)
-            if not os.path.isdir(savepath):
-                os.makedirs(savepath)
-            
-            ret, img, corners = self.findCorners(os.path.join(path, cam, fname), subpix = False)
-
-            if ret == True:
-                # Get angle between camera axis and image
-                ret, rvec, _ = cv2.solvePnP(self.objpoints, corners, K, D)
-                R, _ = cv2.Rodrigues(rvec)
-                trace = np.trace(R)
-                theta = np.arccos((trace - 1) / 2)  # Compute the angle in radians
-                angle = np.degrees(theta)  # Convert to degrees
-                if angle > 90:
-                    angle = 180 - angle
-
-                # Get proportion of the image covered by the checkerboard
-                x_min, y_min = np.min(corners, axis=0)[0]
-                x_max, y_max = np.max(corners, axis=0)[0]
-                mask_covered[int(x_min):int(x_max), int(y_min):int(y_max)] = 1
-                checkerboard_area = (x_max - x_min) * (y_max - y_min)
-                coverage = checkerboard_area / image_area
-
-                if coverage_threshold[0] < coverage < coverage_threshold[1] and angle < angle_threshold:
-                    cv2.imwrite(os.path.join(savepath, fname), img)
-        
-        total_area_covered = np.sum(mask_covered) / image_area
-            
-        return total_area_covered
     
     def calibrate_intrinsics(self, calib_dir, image_size, camera_matrix, dist_coeffs=np.zeros(5, dtype=np.float32)):
         intrinsics_extension = 'png'
 
-        ret, C, S, D, K, R, T = [], [], [], [], [], [], []
+        ret, C, S, D, K = [], [], [], [], []
         intrinsics_cam_listdirs_names = next(os.walk(os.path.join(calib_dir)))[1]
 
         for i,cam in enumerate(intrinsics_cam_listdirs_names):
@@ -121,17 +75,15 @@ class Checkerboard():
             # calculate intrinsics
             img = cv2.imread(str(img_path))
             objpoints = np.array(objpoints)
-            ret_cam, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, image_size, camera_matrix[i], dist_coeffs[i], flags=(cv2.CALIB_USE_INTRINSIC_GUESS+cv2.CALIB_USE_LU))
+            ret_cam, mtx, dist, _, _ = cv2.calibrateCamera(objpoints, imgpoints, image_size, camera_matrix[i], dist_coeffs[i], flags=(cv2.CALIB_USE_INTRINSIC_GUESS+cv2.CALIB_USE_LU))
             h, w = [np.float32(i) for i in img.shape[:-1]]
             ret.append(ret_cam)
             C.append(cam)
             S.append([w, h])
             D.append(dist)
             K.append(mtx)
-            R.append([0.0, 0.0, 0.0])
-            T.append([0.0, 0.0, 0.0])
 
-        return ret, C, S, D, K, R, T
+        return ret, C, S, D, K
 
 
     # To keep only the images where the checkerboard is seen simultaneously by 2 cameras

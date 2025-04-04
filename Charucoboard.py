@@ -6,6 +6,8 @@ import os
 
 class Charucoboard():
     def __init__(self, checkerboard, square_size, marker_size, aruco_name):
+        self.type = 'charuco'
+    
         self.checkerboard = checkerboard
         self.square_size = square_size
         self.marker_size = marker_size
@@ -25,8 +27,6 @@ class Charucoboard():
         img = cv2.aruco.CharucoBoard.generateImage(board, (LENGTH_PX, int(LENGTH_PX*size_ratio)), marginSize=MARGIN_PX)
         cv2.imshow("img", img)
         cv2.waitKey(1)
-
-    create_and_save_new_board()
 
     # Charuco-specific functions
     def findCorners(self, img=None, im_name=None):
