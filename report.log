@@ -7991,3 +7991,9 @@ Camera c6:
      0.9303    -2.8937    -0.0815   490.6938 -1614.5824 -1634.6394
     -0.1349     0.0269    -2.1777  -520.9657  3531.7928  4463.8015
      0.9667    -3.2931    -3.489   1165.8387  -600.8255 -3669.6917]
+2025-04-08 11:21:14,148 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-04-08 11:21:48,207 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-04-08 11:22:42,486 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-04-08 11:25:19,110 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-04-08 11:25:55,271 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
+2025-04-08 13:43:19,274 - pyswarms.single.global_best - INFO - Optimize for 500 iters with {'c1': 1.5, 'c2': 1.5, 'w': 0.7}
