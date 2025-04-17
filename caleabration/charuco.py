@@ -15,7 +15,7 @@ class Charucoboard():
         
         self.aruco_dict = cv2.aruco.getPredefinedDictionary(aruco_name)
         self.charuco_board = cv2.aruco.CharucoBoard(checkerboard, square_size, marker_size, self.aruco_dict)
-
+        
     # Test Charuco Board creation
     def create_and_save_new_board(self):
         LENGTH_PX = 1080
@@ -26,10 +26,12 @@ class Charucoboard():
         size_ratio = self.checkerboard[1] / self.checkerboard[0]
         img = cv2.aruco.CharucoBoard.generateImage(board, (LENGTH_PX, int(LENGTH_PX*size_ratio)), marginSize=MARGIN_PX)
         cv2.imshow("img", img)
-        cv2.waitKey(2000)
+        cv2.waitKey(1000)
+        cv2.imwrite('board_big.jpg', img)
+        cv2.destroyAllWindows()
 
     # Charuco-specific functions
-    def findCorners(self, img=None, im_name=None):
+    def findCorners(self, img=None, im_name=None, filter=False):
         if im_name is not None:
             img = cv2.imread(im_name)
         
@@ -38,26 +40,50 @@ class Charucoboard():
         
         gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
         params = cv2.aruco.DetectorParameters()
+        params.cornerRefinementMethod = cv2.aruco.CORNER_REFINE_SUBPIX
+        params.minDistanceToBorder = 5
+
         markerCorners, markerIds, _  = cv2.aruco.detectMarkers(gray, self.aruco_dict, parameters=params)
 
         if markerCorners is not None and markerIds is not None:
             # Interpolate ChArUco corners
             retval, charucoCorners, charucoIds = cv2.aruco.interpolateCornersCharuco(markerCorners, markerIds, gray, self.charuco_board)
 
-            if retval and len(charucoCorners) >= 6:
-                return True, markerCorners, markerIds, charucoCorners, charucoIds
+            if retval and len(charucoCorners) > 6:
+                
+                # Filtrage
+                if filter:
+                    filtered_ints, filtered_points = [], []
+                    exclude = [0, 8, 16]
+                    for i, p in zip(charucoIds, charucoCorners):
+                        if i not in exclude:
+                            filtered_ints.append(i)
+                            filtered_points.append(p)
+                    charucoIds = np.array(filtered_ints, dtype=np.int32)
+                    charucoCorners = np.array(filtered_points, dtype=np.float32)
+                
+                charucoIds = np.array(charucoIds, dtype=np.int32)
+                charucoCorners = np.array(charucoCorners, dtype=np.float32)
+
+                if len(charucoCorners) > 6:
+                    return True, markerCorners, markerIds, charucoCorners, charucoIds
             
         return False, None, None, None, None
 
-    def calibrate_intrinsics(self, calib_dir, cams, image_size, camera_matrix=None, dist_coeffs=None):
+    def calibrate_intrinsics(self, calib_dir, cams, image_size=None, camera_matrix=None, dist_coeffs=None):
         intrinsics_extension = 'png'
         ret, C, S, D, K = [], [], [], [], []
+
+        flags = cv2.CALIB_USE_LU
+        if camera_matrix is not None:
+            flags += cv2.CALIB_USE_INTRINSIC_GUESS
 
         for cam in cams:
             image_files = sorted(glob.glob(os.path.join(calib_dir, cam, "*.png")))  # Adjust extension if needed
             if len(image_files) == 0:
-                raise ValueError(f'The folder {os.path.join(calib_dir, cam)} does not contain images with .{intrinsics_extension}')
-            
+                print(f"Not enough valid images for calibration of {cam}!")
+                continue
+                
             # Data storage
             marker_corners = []
             marker_ids = []
@@ -68,19 +94,25 @@ class Charucoboard():
             # Process each image
             for img_path in image_files:
 
+                if image_size is None:
+                    image_size = cv2.imread(img_path)[:,:,-1].shape
+
                 ret_c, markerCorners, markerIds, charucoCorners, charucoIds = self.findCorners(im_name = img_path)
-                
+
                 if ret_c:
-                    marker_corners.append(np.array(markerCorners, dtype=np.float32))
-                    marker_ids.append(np.array(markerIds, dtype=np.int32))
-                    marker_counter.append(len(markerCorners))
-                    charuco_corners.append(np.array(charucoCorners, dtype=np.float32))
-                    charuco_ids.append(np.array(charucoIds, dtype=np.int32)) 
+                    #marker_corners.append(np.array(markerCorners, dtype=np.float32))
+                    #marker_ids.append(np.array(markerIds, dtype=np.int32))
+                    #marker_counter.append(len(markerCorners))
+                    charuco_corners.append(charucoCorners)
+                    charuco_ids.append(charucoIds)
             
             # Ensure we have enough valid frames
-            if len(marker_corners) < 10:
-                print(f"Not enough valid images for calibration of {cam}! Need at least 10.")
+            if len(charuco_corners) < 1:
+                print(f"Not enough valid images for calibration of {cam}!")
                 continue
+                
+            #charuco_corners = [np.array(p, dtype=np.float32) for p in charuco_corners]
+            #charuco_ids = [np.array(p, dtype=np.int32) for p in charuco_ids]
 
             # Run calibration
             ret_cam, mtx, dist, _, _ = cv2.aruco.calibrateCameraCharuco(
@@ -90,20 +122,19 @@ class Charucoboard():
                 imageSize=image_size,
                 cameraMatrix=camera_matrix,  # Use initialized matrix
                 distCoeffs=dist_coeffs,
-                flags=cv2.CALIB_USE_INTRINSIC_GUESS+cv2.CALIB_USE_LU
+                flags=flags
             )
 
             """ marker_corners = np.concatenate(marker_corners)
             marker_ids_concat = np.concatenate(marker_ids)
             marker_counter = np.array(marker_counter)
 
-            # Run calibration
             ret_cam, mtx, dist, _, _ = cv2.aruco.calibrateCameraAruco(
                 marker_corners, marker_ids_concat, marker_counter,
                 self.charuco_board, image_size,
                 cameraMatrix=camera_matrix,  # Use initialized matrix
                 distCoeffs=dist_coeffs,
-                flags=cv2.CALIB_USE_INTRINSIC_GUESS+cv2.CALIB_USE_LU
+                flags=flags
             ) """
 
             # Save results

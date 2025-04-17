@@ -33,7 +33,7 @@ class Calibration():
     
 
     # To find images where we see the checkerboard, for individual cameras
-    def saveImagesBoard(self, path, intrinsics_extension, manual_confirmation=False):
+    def saveImagesBoard(self, path, intrinsics_extension, manual_confirmation=False, filter=False, skip=10):
         output_dir = os.path.join(path, 'corners_found')
         os.makedirs(output_dir, exist_ok=True)  # Ensure output folder exists
 
@@ -42,7 +42,10 @@ class Calibration():
         image_area = self.image_size[0] * self.image_size[1]
         mask_covered = np.zeros((8, self.image_size[0], self.image_size[1]), dtype=np.uint8)
 
-        print("Appuyez sur 'Y' pour garder, 'N' pour ignorer, ou 'Q' pour quitter.")
+        if manual_confirmation:
+            print("Appuyez sur 'Y' pour garder, 'N' pour ignorer, ou 'Q' pour quitter.")
+        else:
+            print('Images saving...')
 
         for i, cam in enumerate(intrinsics_cam_listdirs_names):
             os.makedirs(os.path.join(output_dir, cam), exist_ok=True)
@@ -50,28 +53,26 @@ class Calibration():
             if intrinsics_extension in ['jpg', 'png']:
                 for fname in os.listdir(os.path.join(path, 'intrinsics', cam)):
 
-                    if int(fname.split('.')[0]) % 10 == 0:
+                    if int(re.findall(r'\d+', fname)[0]) % skip == 0:
 
                         img = cv2.imread(os.path.join(path, 'intrinsics', cam, fname))
-                        ret, markerCorners, markerIds, charucoCorners, charucoIds = self.Board.findCorners(img=img)
+                        ret, markerCorners, markerIds, charucoCorners, charucoIds = self.Board.findCorners(img=img, filter=filter)
 
                         if ret:
                             # Get proportion of the image covered by the checkerboard
                             corners = charucoCorners.squeeze()
                             if corners.shape[0] > 2:
                                 x_min, y_min = np.min(corners, axis=0)
-                                #y_min = np.min(corners, axis=0)[1]
                                 x_max, y_max = np.max(corners, axis=0)
-                                #y_max = np.max(corners, axis=0)[1]
                                 mask_covered[i, int(x_min):int(x_max), int(y_min):int(y_max)] = 1
 
                                 if manual_confirmation:
                                     # Visualisation des coins Charuco détectés
                                     img_with_charuco_corners = img.copy()
                                     # Optional: draw green outlines around the detected markers
-                                    img_with_charuco_corners = cv2.aruco.drawDetectedMarkers(img_with_charuco_corners, markerCorners, markerIds)
+                                    #img_with_charuco_corners = cv2.aruco.drawDetectedMarkers(img_with_charuco_corners, markerCorners, markerIds)
                                     img_with_charuco_corners = cv2.aruco.drawDetectedCornersCharuco(img_with_charuco_corners, charucoCorners, charucoIds)
-                                    cv2.imshow(f'{cam}_ {fname}', img_with_charuco_corners)
+                                    cv2.imshow(f'{cam}_{fname}', img_with_charuco_corners)
                                     cv2.waitKey(100)
 
                                     # Demander à l'utilisateur si l'image est bonne
@@ -135,7 +136,6 @@ class Calibration():
 
         cv2.destroyAllWindows()
         print(f"Saved {valid_frame_count} valid frames.")
-        
 
         return valid_frame_count, total_area_covered, mask_covered
     
@@ -160,33 +160,33 @@ class Calibration():
 
                 im_saved = 0
                 for name1 in os.listdir(path_cam1):
-                    t1 = self.getFrameCount(name1)
+                    #t1 = self.getFrameCount(name1)
 
                     for name2 in os.listdir(path_cam2):
-                        t2 = self.getFrameCount(name2)
+                        #t2 = self.getFrameCount(name2)
                         
-                        if t1 == t2:
-                            Lret, Lcorners, Lcharuco_corners, Lcharuco_ids = self.Board.findCorners(im_name=os.path.join(path_cam1, name1))
-                            Rret, Rcorners, Rcharuco_corners, Rcharuco_ids = self.Board.findCorners(im_name=os.path.join(path_cam2, name2))
+                        if name1 == name2: #t1 == t2:
+                            Lret, LmarkerCorners, LmarkerIds, LcharucoCorners, LcharucoIds = self.Board.findCorners(im_name=os.path.join(path_cam1, name1))
+                            Rret, RmarkerCorners, RmarkerIds, RcharucoCorners, RcharucoIds = self.Board.findCorners(im_name=os.path.join(path_cam2, name2))
 
                             Ncommon_ids = 0
                             if self.Board.type == 'charuco' and Lret and Rret:
-                                _, _, _, common_ids = self.Board.getObjectImagePoints(Lcharuco_corners, Lcharuco_ids, Rcharuco_corners, Rcharuco_ids)
+                                _, _, _, common_ids = self.Board.getObjectImagePoints(LcharucoCorners, LcharucoIds, RcharucoCorners, RcharucoIds)
                                 if common_ids is not None:
                                     Ncommon_ids = len(common_ids)
 
                             if self.Board.type == 'checker' or Ncommon_ids > 1:
-                                stereo_images['Name'].append(f'{cam1}_{cam2}_{name1}')
+                                stereo_images['Name'].append(name1)
                                 stereo_images['Camera'].append(cam1)
-                                stereo_images['Corners'].append(Lcorners)
-                                stereo_images['Charuco_Corners'].append(Lcharuco_corners)
-                                stereo_images['Ids'].append(Lcharuco_ids)
+                                stereo_images['Corners'].append(LmarkerCorners)
+                                stereo_images['Charuco_Corners'].append(LcharucoCorners)
+                                stereo_images['Ids'].append(LcharucoIds)
 
-                                stereo_images['Name'].append(f'{cam1}_{cam2}_{name2}')
+                                stereo_images['Name'].append(name2)
                                 stereo_images['Camera'].append(cam2)
-                                stereo_images['Corners'].append(Rcorners)
-                                stereo_images['Charuco_Corners'].append(Rcharuco_corners)
-                                stereo_images['Ids'].append(Rcharuco_ids)
+                                stereo_images['Corners'].append(RmarkerCorners)
+                                stereo_images['Charuco_Corners'].append(RcharucoCorners)
+                                stereo_images['Ids'].append(RcharucoIds)
 
                                 im_saved += 1
                     
@@ -218,12 +218,14 @@ class Calibration():
             obj_points = []  # 3D world coordinates
             img_points_left = []  # 2D image coordinates (left camera)
             img_points_right = []  # 2D image coordinates (right camera)
+            Nobj = 0
 
             for charuco_corners_l, charuco_ids_l, charuco_corners_r, charuco_ids_r in zip(Left_corners, Left_ids, Right_corners, Right_ids):
                 # Find common detected corners (based on Charuco IDs)
                 obj_pts, img_pts_l, img_pts_r, common_ids = self.Board.getObjectImagePoints(charuco_corners_l, charuco_ids_l, charuco_corners_r, charuco_ids_r)
-                if common_ids is not None and len(common_ids) >= 6:
+                if common_ids is not None and len(common_ids) >= 1:
                     obj_points.append(obj_pts)
+                    Nobj += len(obj_pts)
                     img_points_left.append(img_pts_l)
                     img_points_right.append(img_pts_r)
 
@@ -232,7 +234,7 @@ class Calibration():
             for i in range(len(Left_corners)):
                 obj_points.append(self.Board.objpoints)
 
-        if len(obj_points) > 1:
+        if Nobj > 6:
             (ret, K1, D1, K2, D2, R, t, E, F) = cv2.stereoCalibrate(obj_points, img_points_left, img_points_right, k1, d1, k2, d2, self.image_size, criteria=criteria, flags=flags)
             
             T = np.vstack((np.hstack((R,t)),np.array([0,0,0,1])))
