@@ -5,7 +5,7 @@ import glob
 import os
 
 class Charucoboard():
-    def __init__(self, checkerboard, square_size, marker_size, aruco_name):
+    def __init__(self, checkerboard, square_size, marker_size, aruco_name, legacy):
         self.type = 'charuco'
     
         self.checkerboard = checkerboard
@@ -15,16 +15,15 @@ class Charucoboard():
         
         self.aruco_dict = cv2.aruco.getPredefinedDictionary(aruco_name)
         self.charuco_board = cv2.aruco.CharucoBoard(checkerboard, square_size, marker_size, self.aruco_dict)
-        
+        self.charuco_board.setLegacyPattern(legacy)
+
     # Test Charuco Board creation
     def create_and_save_new_board(self):
         LENGTH_PX = 1080
         MARGIN_PX = 40
 
-        dictionary = cv2.aruco.getPredefinedDictionary(self.aruco_name)
-        board = cv2.aruco.CharucoBoard(self.checkerboard, self.square_size, self.marker_size, dictionary)
         size_ratio = self.checkerboard[1] / self.checkerboard[0]
-        img = cv2.aruco.CharucoBoard.generateImage(board, (LENGTH_PX, int(LENGTH_PX*size_ratio)), marginSize=MARGIN_PX)
+        img = cv2.aruco.CharucoBoard.generateImage(self.charuco_board, (LENGTH_PX, int(LENGTH_PX*size_ratio)), marginSize=MARGIN_PX)
         cv2.imshow("img", img)
         cv2.waitKey(1000)
         cv2.imwrite('board_big.jpg', img)
@@ -95,7 +94,7 @@ class Charucoboard():
             for img_path in image_files:
 
                 if image_size is None:
-                    image_size = cv2.imread(img_path)[:,:,-1].shape
+                    image_size = cv2.imread(img_path)[:,:,0].shape
 
                 ret_c, markerCorners, markerIds, charucoCorners, charucoIds = self.findCorners(im_name = img_path)
 

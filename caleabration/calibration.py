@@ -40,7 +40,7 @@ class Calibration():
         intrinsics_cam_listdirs_names = next(os.walk(os.path.join(path, 'intrinsics')))[1]
         valid_frame_count = 0
         image_area = self.image_size[0] * self.image_size[1]
-        mask_covered = np.zeros((8, self.image_size[0], self.image_size[1]), dtype=np.uint8)
+        mask_covered = np.zeros((len(intrinsics_cam_listdirs_names), self.image_size[0], self.image_size[1]), dtype=np.uint8)
 
         if manual_confirmation:
             print("Appuyez sur 'Y' pour garder, 'N' pour ignorer, ou 'Q' pour quitter.")
@@ -237,12 +237,14 @@ class Calibration():
         if Nobj > 6:
             (ret, K1, D1, K2, D2, R, t, E, F) = cv2.stereoCalibrate(obj_points, img_points_left, img_points_right, k1, d1, k2, d2, self.image_size, criteria=criteria, flags=flags)
             
-            T = np.vstack((np.hstack((R,t)),np.array([0,0,0,1])))
-            
+            T = np.vstack((np.hstack((R, t)), np.array([0, 0, 0, 1])))
+
             StereoParams['Transformation'] = T
             StereoParams['Essential'] = E
             StereoParams['Fundamental'] = F
             StereoParams['MeanError'] = ret
+            StereoParams['Nobj'] = Nobj
+
             calibrated = True
 
         return calibrated, StereoParams
