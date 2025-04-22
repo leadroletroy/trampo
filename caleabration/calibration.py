@@ -175,7 +175,7 @@ class Calibration():
                                 if common_ids is not None:
                                     Ncommon_ids = len(common_ids)
 
-                            if self.Board.type == 'checker' or Ncommon_ids > 1:
+                            if self.Board.type == 'checker' or Ncommon_ids >= 6:
                                 stereo_images['Name'].append(name1)
                                 stereo_images['Camera'].append(cam1)
                                 stereo_images['Corners'].append(LmarkerCorners)

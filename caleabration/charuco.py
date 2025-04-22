@@ -15,6 +15,7 @@ class Charucoboard():
         
         self.aruco_dict = cv2.aruco.getPredefinedDictionary(aruco_name)
         self.charuco_board = cv2.aruco.CharucoBoard(checkerboard, square_size, marker_size, self.aruco_dict)
+        
         self.charuco_board.setLegacyPattern(legacy)
 
     # Test Charuco Board creation
@@ -38,34 +39,34 @@ class Charucoboard():
             raise ValueError('No image nor image path specified')
         
         gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-        params = cv2.aruco.DetectorParameters()
-        params.cornerRefinementMethod = cv2.aruco.CORNER_REFINE_SUBPIX
-        params.minDistanceToBorder = 5
 
-        markerCorners, markerIds, _  = cv2.aruco.detectMarkers(gray, self.aruco_dict, parameters=params)
+        charucoParams = cv2.aruco.CharucoParameters()
+        detectorParams = cv2.aruco.DetectorParameters()
+        charuco_detector = cv2.aruco.CharucoDetector(self.charuco_board, charucoParams, detectorParams)
 
-        if markerCorners is not None and markerIds is not None:
+        charucoCorners, charucoIds, markerCorners, markerIds = charuco_detector.detectBoard(gray)
+
+        """ if markerCorners is not None and markerIds is not None:
             # Interpolate ChArUco corners
             retval, charucoCorners, charucoIds = cv2.aruco.interpolateCornersCharuco(markerCorners, markerIds, gray, self.charuco_board)
+        """
+        if charucoCorners is not None and len(charucoCorners) >= 6:
+            # Filtrage
+            if filter:
+                filtered_ints, filtered_points = [], []
+                exclude = [0, 8, 16]
+                for i, p in zip(charucoIds, charucoCorners):
+                    if i not in exclude:
+                        filtered_ints.append(i)
+                        filtered_points.append(p)
+                charucoIds = np.array(filtered_ints, dtype=np.int32)
+                charucoCorners = np.array(filtered_points, dtype=np.float32)
+            
+            charucoIds = np.array(charucoIds, dtype=np.int32)
+            charucoCorners = np.array(charucoCorners, dtype=np.float32)
 
-            if retval and len(charucoCorners) > 6:
-                
-                # Filtrage
-                if filter:
-                    filtered_ints, filtered_points = [], []
-                    exclude = [0, 8, 16]
-                    for i, p in zip(charucoIds, charucoCorners):
-                        if i not in exclude:
-                            filtered_ints.append(i)
-                            filtered_points.append(p)
-                    charucoIds = np.array(filtered_ints, dtype=np.int32)
-                    charucoCorners = np.array(filtered_points, dtype=np.float32)
-                
-                charucoIds = np.array(charucoIds, dtype=np.int32)
-                charucoCorners = np.array(charucoCorners, dtype=np.float32)
-
-                if len(charucoCorners) > 6:
-                    return True, markerCorners, markerIds, charucoCorners, charucoIds
+            if len(charucoCorners) >= 6:
+                return True, markerCorners, markerIds, charucoCorners, charucoIds
             
         return False, None, None, None, None
 
@@ -83,7 +84,7 @@ class Charucoboard():
                 print(f"Not enough valid images for calibration of {cam}!")
                 continue
                 
-            # Data storage
+            """ # Data storage
             marker_corners = []
             marker_ids = []
             marker_counter = []
@@ -108,12 +109,37 @@ class Charucoboard():
             # Ensure we have enough valid frames
             if len(charuco_corners) < 1:
                 print(f"Not enough valid images for calibration of {cam}!")
-                continue
-                
-            #charuco_corners = [np.array(p, dtype=np.float32) for p in charuco_corners]
-            #charuco_ids = [np.array(p, dtype=np.int32) for p in charuco_ids]
+                continue """
+            
+            # Listes pour stocker les points d'image et d'objet
+            all_image_points = []
+            all_object_points = []
 
-            # Run calibration
+            # Parcourir les images pour détecter les coins ChArUco
+            for image_path in image_files:
+                image = cv2.imread(image_path)
+                _, _, _, charucoCorners, charucoIds = self.findCorners(img=image)
+
+                if charucoCorners is not None and charucoIds is not None and len(charucoIds) >= 4:
+                    obj_points, img_points = self.charuco_board.matchImagePoints(charucoCorners, charucoIds)
+
+                    if obj_points is not None and img_points is not None and len(obj_points) >= 4:
+                        obj_points = np.asarray(obj_points, dtype=np.float32).reshape(-1, 1, 3)
+                        img_points = np.asarray(img_points, dtype=np.float32).reshape(-1, 1, 2)
+
+                        all_object_points.append(obj_points)
+                        all_image_points.append(img_points)
+
+            if len(all_object_points) < 4:
+                print(f"Not enough valid images for calibration of {cam}!")
+                continue
+
+            print("\nNombre d'images retenues :", len(all_object_points))
+            image_size = (image.shape[1], image.shape[0])
+            
+            ret_cam, mtx, dist, _, _ = cv2.calibrateCamera(all_object_points, all_image_points, image_size, camera_matrix, dist_coeffs,flags=flags)
+            
+            """ # Run calibration
             ret_cam, mtx, dist, _, _ = cv2.aruco.calibrateCameraCharuco(
                 charucoCorners=charuco_corners,
                 charucoIds=charuco_ids,
@@ -123,8 +149,7 @@ class Charucoboard():
                 distCoeffs=dist_coeffs,
                 flags=flags
             )
-
-            """ marker_corners = np.concatenate(marker_corners)
+            marker_corners = np.concatenate(marker_corners)
             marker_ids_concat = np.concatenate(marker_ids)
             marker_counter = np.array(marker_counter)
 
@@ -137,7 +162,7 @@ class Charucoboard():
             ) """
 
             # Save results
-            h, w = map(np.float32, image_size)
+            h, w = map(np.int32, image_size)
             ret.append(ret_cam)
             C.append(cam)
             S.append([w, h])
@@ -145,7 +170,7 @@ class Charucoboard():
             K.append(mtx)
 
             # Print results
-            print(f"\nCalibration completed for camera: {cam}")
+            print(f"Calibration completed for camera: {cam}")
             print(f'Error: {ret_cam:.4f}')
             print("Camera Matrix:\n", mtx)
             print("Distortion Coefficients:\n", dist)
