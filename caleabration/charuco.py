@@ -31,7 +31,7 @@ class Charucoboard():
         cv2.destroyAllWindows()
 
     # Charuco-specific functions
-    def findCorners(self, img=None, im_name=None, filter=False):
+    def findCorners(self, img=None, im_name=None):
         if im_name is not None:
             img = cv2.imread(im_name)
         
@@ -42,7 +42,7 @@ class Charucoboard():
 
         charucoParams = cv2.aruco.CharucoParameters()
         detectorParams = cv2.aruco.DetectorParameters()
-        charuco_detector = cv2.aruco.CharucoDetector(self.charuco_board, charucoParams, detectorParams)
+        charuco_detector = cv2.aruco.CharucoDetector(self.charuco_board)
 
         charucoCorners, charucoIds, markerCorners, markerIds = charuco_detector.detectBoard(gray)
 
@@ -51,16 +51,6 @@ class Charucoboard():
             retval, charucoCorners, charucoIds = cv2.aruco.interpolateCornersCharuco(markerCorners, markerIds, gray, self.charuco_board)
         """
         if charucoCorners is not None and len(charucoCorners) >= 6:
-            # Filtrage
-            if filter:
-                filtered_ints, filtered_points = [], []
-                exclude = [0, 8, 16]
-                for i, p in zip(charucoIds, charucoCorners):
-                    if i not in exclude:
-                        filtered_ints.append(i)
-                        filtered_points.append(p)
-                charucoIds = np.array(filtered_ints, dtype=np.int32)
-                charucoCorners = np.array(filtered_points, dtype=np.float32)
             
             charucoIds = np.array(charucoIds, dtype=np.int32)
             charucoCorners = np.array(charucoCorners, dtype=np.float32)

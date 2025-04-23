@@ -33,7 +33,7 @@ class Calibration():
     
 
     # To find images where we see the checkerboard, for individual cameras
-    def saveImagesBoard(self, path, intrinsics_extension, manual_confirmation=False, filter=False, skip=10):
+    def saveImagesBoard(self, path, intrinsics_extension, manual_confirmation=False, skip=10):
         output_dir = os.path.join(path, 'corners_found')
         os.makedirs(output_dir, exist_ok=True)  # Ensure output folder exists
 
@@ -56,7 +56,7 @@ class Calibration():
                     if int(re.findall(r'\d+', fname)[0]) % skip == 0:
 
                         img = cv2.imread(os.path.join(path, 'intrinsics', cam, fname))
-                        ret, markerCorners, markerIds, charucoCorners, charucoIds = self.Board.findCorners(img=img, filter=filter)
+                        ret, markerCorners, markerIds, charucoCorners, charucoIds = self.Board.findCorners(img=img)
 
                         if ret:
                             # Get proportion of the image covered by the checkerboard
