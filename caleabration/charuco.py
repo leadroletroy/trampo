@@ -46,10 +46,6 @@ class Charucoboard():
 
         charucoCorners, charucoIds, markerCorners, markerIds = charuco_detector.detectBoard(gray)
 
-        """ if markerCorners is not None and markerIds is not None:
-            # Interpolate ChArUco corners
-            retval, charucoCorners, charucoIds = cv2.aruco.interpolateCornersCharuco(markerCorners, markerIds, gray, self.charuco_board)
-        """
         if charucoCorners is not None and len(charucoCorners) >= 6:
             
             charucoIds = np.array(charucoIds, dtype=np.int32)
@@ -61,7 +57,6 @@ class Charucoboard():
         return False, None, None, None, None
 
     def calibrate_intrinsics(self, calib_dir, cams, image_size=None, camera_matrix=None, dist_coeffs=None):
-        intrinsics_extension = 'png'
         ret, C, S, D, K = [], [], [], [], []
 
         flags = cv2.CALIB_USE_LU
@@ -73,33 +68,6 @@ class Charucoboard():
             if len(image_files) == 0:
                 print(f"Not enough valid images for calibration of {cam}!")
                 continue
-                
-            """ # Data storage
-            marker_corners = []
-            marker_ids = []
-            marker_counter = []
-            charuco_corners = []  # Detected charuco corners
-            charuco_ids = []  # Corresponding IDs
-
-            # Process each image
-            for img_path in image_files:
-
-                if image_size is None:
-                    image_size = cv2.imread(img_path)[:,:,0].shape
-
-                ret_c, markerCorners, markerIds, charucoCorners, charucoIds = self.findCorners(im_name = img_path)
-
-                if ret_c:
-                    #marker_corners.append(np.array(markerCorners, dtype=np.float32))
-                    #marker_ids.append(np.array(markerIds, dtype=np.int32))
-                    #marker_counter.append(len(markerCorners))
-                    charuco_corners.append(charucoCorners)
-                    charuco_ids.append(charucoIds)
-            
-            # Ensure we have enough valid frames
-            if len(charuco_corners) < 1:
-                print(f"Not enough valid images for calibration of {cam}!")
-                continue """
             
             # Listes pour stocker les points d'image et d'objet
             all_image_points = []
@@ -128,28 +96,6 @@ class Charucoboard():
             image_size = (image.shape[1], image.shape[0])
             
             ret_cam, mtx, dist, _, _ = cv2.calibrateCamera(all_object_points, all_image_points, image_size, camera_matrix, dist_coeffs,flags=flags)
-            
-            """ # Run calibration
-            ret_cam, mtx, dist, _, _ = cv2.aruco.calibrateCameraCharuco(
-                charucoCorners=charuco_corners,
-                charucoIds=charuco_ids,
-                board=self.charuco_board,
-                imageSize=image_size,
-                cameraMatrix=camera_matrix,  # Use initialized matrix
-                distCoeffs=dist_coeffs,
-                flags=flags
-            )
-            marker_corners = np.concatenate(marker_corners)
-            marker_ids_concat = np.concatenate(marker_ids)
-            marker_counter = np.array(marker_counter)
-
-            ret_cam, mtx, dist, _, _ = cv2.aruco.calibrateCameraAruco(
-                marker_corners, marker_ids_concat, marker_counter,
-                self.charuco_board, image_size,
-                cameraMatrix=camera_matrix,  # Use initialized matrix
-                distCoeffs=dist_coeffs,
-                flags=flags
-            ) """
 
             # Save results
             h, w = map(np.int32, image_size)
@@ -165,7 +111,7 @@ class Charucoboard():
             print("Camera Matrix:\n", mtx)
             print("Distortion Coefficients:\n", dist)
 
-        return ret, C, S, D, K
+        return ret, C, S, D, K 
 
 
     def GenerateImagepoints(self, Left_Paths:list, Right_Paths:list):

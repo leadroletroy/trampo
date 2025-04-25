@@ -33,9 +33,12 @@ class Calibration():
     
 
     # To find images where we see the checkerboard, for individual cameras
-    def saveImagesBoard(self, path, intrinsics_extension, manual_confirmation=False, skip=10):
+    def saveImagesBoard(self, path, intrinsics_extension, manual_confirmation=False, save_corners=False, skip=10):
         output_dir = os.path.join(path, 'corners_found')
         os.makedirs(output_dir, exist_ok=True)  # Ensure output folder exists
+
+        output_dir_corners = os.path.join(path, 'corners_found_shown')
+        os.makedirs(output_dir_corners, exist_ok=True)  # Ensure output folder exists
 
         intrinsics_cam_listdirs_names = next(os.walk(os.path.join(path, 'intrinsics')))[1]
         valid_frame_count = 0
@@ -49,61 +52,76 @@ class Calibration():
 
         for i, cam in enumerate(intrinsics_cam_listdirs_names):
             os.makedirs(os.path.join(output_dir, cam), exist_ok=True)
+            os.makedirs(os.path.join(output_dir_corners, cam), exist_ok=True)
             # Process frames
             if intrinsics_extension in ['jpg', 'png']:
                 for fname in os.listdir(os.path.join(path, 'intrinsics', cam)):
 
-                    if int(re.findall(r'\d+', fname)[0]) % skip == 0:
+                    if int(re.findall(r'\d+', fname)[-1]) % skip == 0:
 
                         img = cv2.imread(os.path.join(path, 'intrinsics', cam, fname))
-                        ret, markerCorners, markerIds, charucoCorners, charucoIds = self.Board.findCorners(img=img)
 
-                        if ret:
-                            # Get proportion of the image covered by the checkerboard
-                            corners = charucoCorners.squeeze()
-                            if corners.shape[0] > 2:
-                                x_min, y_min = np.min(corners, axis=0)
-                                x_max, y_max = np.max(corners, axis=0)
-                                mask_covered[i, int(x_min):int(x_max), int(y_min):int(y_max)] = 1
+                        frame_filename = os.path.join(output_dir, cam, f"{self.Board.type}_frame_{fname.split('.')[0]}.png")
+                        if not frame_filename in os.listdir(os.path.join(path, 'intrinsics', cam)):
 
-                                if manual_confirmation:
-                                    # Visualisation des coins Charuco détectés
-                                    img_with_charuco_corners = img.copy()
-                                    # Optional: draw green outlines around the detected markers
-                                    #img_with_charuco_corners = cv2.aruco.drawDetectedMarkers(img_with_charuco_corners, markerCorners, markerIds)
-                                    img_with_charuco_corners = cv2.aruco.drawDetectedCornersCharuco(img_with_charuco_corners, charucoCorners, charucoIds)
-                                    cv2.imshow(f'{cam}_{fname}', img_with_charuco_corners)
-                                    cv2.waitKey(100)
+                            ret, markerCorners, markerIds, charucoCorners, charucoIds = self.Board.findCorners(img=img)
 
-                                    # Demander à l'utilisateur si l'image est bonne
-                                    key = cv2.waitKey(0) & 0xFF
+                            if ret:
+                                # Get proportion of the image covered by the checkerboard
+                                corners = charucoCorners.squeeze()
+                                if corners.shape[0] > 2:
+                                    x_min, y_min = np.min(corners, axis=0)
+                                    x_max, y_max = np.max(corners, axis=0)
+                                    mask_covered[i, int(x_min):int(x_max), int(y_min):int(y_max)] = 1
 
-                                    if key == ord('Y') or key == ord('y'):
+                                    if manual_confirmation or save_corners:
+                                        # Visualisation des coins Charuco détectés
+                                        img_with_charuco_corners = img.copy()
+                                        img_with_charuco_corners = cv2.aruco.drawDetectedMarkers(img_with_charuco_corners, markerCorners, markerIds)
+                                        img_with_charuco_corners = cv2.aruco.drawDetectedCornersCharuco(img_with_charuco_corners, charucoCorners, charucoIds)
+                                        
+                                        if manual_confirmation:
+                                            cv2.imshow(f'{cam}_{fname}', img_with_charuco_corners)
+                                            cv2.waitKey(100)
+
+                                            # Demander à l'utilisateur si l'image est bonne
+                                            key = cv2.waitKey(0) & 0xFF
+
+                                            if key == ord('Y') or key == ord('y'):
+                                                # Save image in /corners_found
+                                                frame_filename = os.path.join(output_dir, cam, f"{self.Board.type}_frame_{fname.split('.')[0]}.png")
+                                                cv2.imwrite(frame_filename, img)
+                                                cv2.destroyAllWindows()
+                                                valid_frame_count += 1
+
+                                            elif key == ord('N') or key == ord('n'):
+                                                cv2.destroyAllWindows()
+                                                continue
+
+                                            elif key == ord('Q') or key == ord('q'):
+                                                cv2.destroyAllWindows()
+                                                break
+                                        
+                                        if save_corners:
+                                            frame_filename = os.path.join(output_dir_corners, cam, f"{self.Board.type}_frame_{fname.split('.')[0]}.png")
+                                            cv2.imwrite(frame_filename, img_with_charuco_corners)
+
+                                            frame_filename = os.path.join(output_dir, cam, f"{self.Board.type}_frame_{fname.split('.')[0]}.png")
+                                            cv2.imwrite(frame_filename, img)
+                                            valid_frame_count += 1
+                                    
+                                    else:
                                         # Save image in /corners_found
                                         frame_filename = os.path.join(output_dir, cam, f"{self.Board.type}_frame_{fname.split('.')[0]}.png")
                                         cv2.imwrite(frame_filename, img)
-                                        cv2.destroyAllWindows()
                                         valid_frame_count += 1
-
-                                    elif key == ord('N') or key == ord('n'):
-                                        cv2.destroyAllWindows()
-                                        continue
-
-                                    elif key == ord('Q') or key == ord('q'):
-                                        cv2.destroyAllWindows()
-                                        break
-                                
-                                else:
-                                    # Save image in /corners_found
-                                    frame_filename = os.path.join(output_dir, cam, f"{self.Board.type}_frame_{fname.split('.')[0]}.png")
-                                    cv2.imwrite(frame_filename, img)
-                                    valid_frame_count += 1
             
             # Process video
             if intrinsics_extension in ['mp4', 'avi', 'mjpeg']:
                 video_path = glob.glob(os.path.join(path, 'intrinsics', cam, f'*.{intrinsics_extension}'))
                 if len(video_path) == 0:
-                    raise ValueError(f'The folder {os.path.join(path, 'intrinsics', cam)} does not contain any .{intrinsics_extension} video files.')
+                    print(f'The folder {os.path.join(path, 'intrinsics', cam)} does not contain any .{intrinsics_extension} video files.')
+                    continue
 
                 frame_count = 0
 
@@ -116,19 +134,27 @@ class Calibration():
                         if not ret:
                             break
                         
-                        ret, corners, _, _ = self.Board.findCorners(img=frame)
-                        if ret:
-                            # Get proportion of the image covered by the checkerboard
-                            corners = corners.squeeze()
-                            if corners.shape[0] > 2:
-                                x_min, y_min = np.min(corners, axis=0)[0]
-                                x_max, y_max = np.max(corners, axis=0)[0]
-                                mask_covered[int(x_min):int(x_max), int(y_min):int(y_max)] = 1
+                        if frame_count % skip == 0:
+                            ret, markerCorners, markerIds, charucoCorners, charucoIds = self.Board.findCorners(img=frame)
+                            if ret:
+                                # Get proportion of the image covered by the checkerboard
+                                corners = charucoCorners.squeeze()
+                                if corners.shape[0] > 2:
+                                    x_min, y_min = np.min(corners, axis=0)
+                                    x_max, y_max = np.max(corners, axis=0)
+                                    mask_covered[i, int(x_min):int(x_max), int(y_min):int(y_max)] = 1
 
-                                # Save image in /corners_found
-                                frame_filename = os.path.join(output_dir, cam, f"{self.Board.type}_frame_{frame_count:03d}.png")
-                                cv2.imwrite(frame_filename, frame)
-                                valid_frame_count += 1
+                                    # Save image in /corners_found
+                                    frame_filename = os.path.join(output_dir, cam, f"{self.Board.type}_frame_{frame_count:03d}.png")
+                                    cv2.imwrite(frame_filename, frame)
+                                    valid_frame_count += 1
+
+                                    if save_corners:
+                                        img_with_charuco_corners = img.copy()
+                                        img_with_charuco_corners = cv2.aruco.drawDetectedMarkers(img_with_charuco_corners, markerCorners, markerIds)
+                                        img_with_charuco_corners = cv2.aruco.drawDetectedCornersCharuco(img_with_charuco_corners, charucoCorners, charucoIds)
+                                        frame_filename = os.path.join(output_dir, cam, f"{self.Board.type}_frame_{fname.split('.')[0]}.png")
+                                        cv2.imwrite(frame_filename, img_with_charuco_corners)
                         frame_count += 1
 
             total_area_covered = np.sum(mask_covered[i]) / image_area
@@ -141,7 +167,11 @@ class Calibration():
     
     def getFrameCount(self, name):
         name_no_ext = name.split('.')[0]
-        frame_count = name_no_ext.split('_')[-1]
+        frame_count = (name_no_ext.split('_')[3].split('-')[0], name_no_ext.split('_')[-1])
+
+
+        'charuco_frame_extrinsic2_009-camera001_frame00000.png'
+
         return frame_count
 
     def saveStereoData(self, path, cams):
@@ -150,7 +180,7 @@ class Calibration():
         path_corners = os.path.join(path, 'corners_found')
 
         # maximal number of images per camera pair
-        Nmax = 50
+        Nmax = 100
 
         for cam1 in cams:
             path_cam1 = os.path.join(path_corners, cam1)
@@ -160,12 +190,12 @@ class Calibration():
 
                 im_saved = 0
                 for name1 in os.listdir(path_cam1):
-                    #t1 = self.getFrameCount(name1)
+                    t1 = self.getFrameCount(name1)
 
                     for name2 in os.listdir(path_cam2):
-                        #t2 = self.getFrameCount(name2)
+                        t2 = self.getFrameCount(name2)
                         
-                        if name1 == name2: #t1 == t2:
+                        if t1 == t2:
                             Lret, LmarkerCorners, LmarkerIds, LcharucoCorners, LcharucoIds = self.Board.findCorners(im_name=os.path.join(path_cam1, name1))
                             Rret, RmarkerCorners, RmarkerIds, RcharucoCorners, RcharucoIds = self.Board.findCorners(im_name=os.path.join(path_cam2, name2))
 
@@ -190,7 +220,7 @@ class Calibration():
 
                                 im_saved += 1
                     
-                        if im_saved == Nmax:
+                        if im_saved >= Nmax:
                             break
                 
                 print(cam1, cam2, im_saved)

@@ -1,9 +1,8 @@
 ### Convert .avi to .mp4
-
 import cv2
 
-input_file = r'C:\Users\LEA\Desktop\Poly\Trampo\video_test\c8\focusloin_Camera 18_M11463.avi'
-output_file = r'C:\Users\LEA\Desktop\Poly\Trampo\video_test\c8\M11463.mp4'
+input_file = r'D:\Images\CRME\intrinsics\focusloin-Camera12(M11139).avi'
+output_file = r'D:\Images\CRME\intrinsics\focusloin-Camera12(M11139).mp4'
 
 cap = cv2.VideoCapture(input_file)
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # Codec for MP4
