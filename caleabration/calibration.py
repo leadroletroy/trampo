@@ -33,14 +33,14 @@ class Calibration():
     
 
     # To find images where we see the checkerboard, for individual cameras
-    def saveImagesBoard(self, path, intrinsics_extension, manual_confirmation=False, save_corners=False, skip=10):
+    def saveImagesBoard(self, path, intrinsics_extension, dirname='intrinsics', manual_confirmation=False, save_corners=False, skip=10):
         output_dir = os.path.join(path, 'corners_found')
         os.makedirs(output_dir, exist_ok=True)  # Ensure output folder exists
 
         output_dir_corners = os.path.join(path, 'corners_found_shown')
         os.makedirs(output_dir_corners, exist_ok=True)  # Ensure output folder exists
 
-        intrinsics_cam_listdirs_names = next(os.walk(os.path.join(path, 'intrinsics')))[1]
+        intrinsics_cam_listdirs_names = next(os.walk(os.path.join(path, dirname)))[1]
         valid_frame_count = 0
         image_area = self.image_size[0] * self.image_size[1]
         mask_covered = np.zeros((len(intrinsics_cam_listdirs_names), self.image_size[0], self.image_size[1]), dtype=np.uint8)
@@ -55,14 +55,14 @@ class Calibration():
             os.makedirs(os.path.join(output_dir_corners, cam), exist_ok=True)
             # Process frames
             if intrinsics_extension in ['jpg', 'png']:
-                for fname in os.listdir(os.path.join(path, 'intrinsics', cam)):
+                for fname in os.listdir(os.path.join(path, dirname, cam)):
 
                     if int(re.findall(r'\d+', fname)[-1]) % skip == 0:
 
-                        img = cv2.imread(os.path.join(path, 'intrinsics', cam, fname))
+                        img = cv2.imread(os.path.join(path, dirname, cam, fname))
 
                         frame_filename = os.path.join(output_dir, cam, f"{self.Board.type}_frame_{fname.split('.')[0]}.png")
-                        if not frame_filename in os.listdir(os.path.join(path, 'intrinsics', cam)):
+                        if not frame_filename in os.listdir(os.path.join(path, dirname, cam)):
 
                             ret, markerCorners, markerIds, charucoCorners, charucoIds = self.Board.findCorners(img=img)
 
@@ -118,9 +118,9 @@ class Calibration():
             
             # Process video
             if intrinsics_extension in ['mp4', 'avi', 'mjpeg']:
-                video_path = glob.glob(os.path.join(path, 'intrinsics', cam, f'*.{intrinsics_extension}'))
+                video_path = glob.glob(os.path.join(path, dirname, cam, f'*.{intrinsics_extension}'))
                 if len(video_path) == 0:
-                    print(f'The folder {os.path.join(path, 'intrinsics', cam)} does not contain any .{intrinsics_extension} video files.')
+                    print(f'The folder {os.path.join(path, dirname, cam)} does not contain any .{intrinsics_extension} video files.')
                     continue
 
                 frame_count = 0
@@ -167,16 +167,13 @@ class Calibration():
     
     def getFrameCount(self, name):
         name_no_ext = name.split('.')[0]
-        frame_count = (name_no_ext.split('_')[3].split('-')[0], name_no_ext.split('_')[-1])
-
-
-        'charuco_frame_extrinsic2_009-camera001_frame00000.png'
-
+        frame_count = (name_no_ext.split('-')[0], name_no_ext.split('_')[-1])
+        #print(frame_count)
         return frame_count
 
-    def saveStereoData(self, path, cams):
+    def saveStereoData(self, path, cams, savename='stereo_data'):
         # Create array of all stereo images with 'im_name, img_pts, cam_ timestamp'
-        stereo_images = {'Name':[], 'Camera':[], 'Corners':[], 'Charuco_Corners':[], 'Ids':[]}
+        stereo_images = {'Name':[], 'Camera':[], 'Corners':[], 'Charuco_Corners':[], 'Charuco_Ids':[]}
         path_corners = os.path.join(path, 'corners_found')
 
         # maximal number of images per camera pair
@@ -210,13 +207,13 @@ class Calibration():
                                 stereo_images['Camera'].append(cam1)
                                 stereo_images['Corners'].append(LmarkerCorners)
                                 stereo_images['Charuco_Corners'].append(LcharucoCorners)
-                                stereo_images['Ids'].append(LcharucoIds)
+                                stereo_images['Charuco_Ids'].append(LcharucoIds)
 
                                 stereo_images['Name'].append(name2)
                                 stereo_images['Camera'].append(cam2)
                                 stereo_images['Corners'].append(RmarkerCorners)
                                 stereo_images['Charuco_Corners'].append(RcharucoCorners)
-                                stereo_images['Ids'].append(RcharucoIds)
+                                stereo_images['Charuco_Ids'].append(RcharucoIds)
 
                                 im_saved += 1
                     
@@ -225,13 +222,36 @@ class Calibration():
                 
                 print(cam1, cam2, im_saved)
             
-        with open('stereo_data.pkl', 'wb') as f:
+        with open(savename + '.pkl', 'wb') as f:
             pickle.dump(stereo_images, f)
-
         return
 
+    def saveImagePoints(self, path, cams, savename='image_points'):
+        # Create array of all stereo images with 'im_name, img_pts, cam_ timestamp'
+        images_data = {'Name':[], 'Camera':[], 'Marker_Corners':[], 'Charuco_Corners':[], 'Marker_Ids':[], 'Charuco_Ids':[]}
+        path_corners = os.path.join(path, 'corners_found')
 
-    def StereoCalibration(self, leftparams, rightparams, Left_corners, Left_ids, Right_corners, Right_ids):
+        for cam in cams:
+            path_cam = os.path.join(path_corners, cam)
+            im_saved = 0
+
+            for name in os.listdir(path_cam):
+                ret, markerCorners, markerIds, charucoCorners, charucoIds = self.Board.findCorners(im_name=os.path.join(path_cam, name))
+                if ret:
+                    images_data['Name'].append(name)
+                    images_data['Camera'].append(cam)
+                    images_data['Marker_Corners'].append(markerCorners)
+                    images_data['Charuco_Corners'].append(charucoCorners)
+                    images_data['Charuco_Ids'].append(charucoIds)
+                    images_data['Marker_Ids'].append(markerIds)
+
+                    im_saved += 1
+            
+        with open(savename + '.pkl', 'wb') as f:
+            pickle.dump(images_data, f)
+        return
+
+    def StereoCalibration(self, leftparams, rightparams, Left_corners, Left_ids, Right_corners, Right_ids, fix_intrinsic=True):
         StereoParams = {}
         calibrated = False
         
@@ -240,9 +260,10 @@ class Calibration():
         k2 = rightparams['Intrinsic']
         d2 = rightparams['Distortion']
         
-        criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 1e-5)
+        criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 1e-6)
         flags = 0
-        flags |= cv2.CALIB_FIX_INTRINSIC
+        if fix_intrinsic:
+            flags |= cv2.CALIB_FIX_INTRINSIC
 
         if self.Board.type == 'charuco':
             obj_points = []  # 3D world coordinates
@@ -277,7 +298,7 @@ class Calibration():
 
             calibrated = True
 
-        return calibrated, StereoParams
+        return calibrated, StereoParams, K1, D1, K2, D2
 
 
     def SaveParameters(self, camL, camR, Stereo_Params, Left_Params, Right_Params):
