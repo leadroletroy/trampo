@@ -33,7 +33,7 @@ class Calibration():
     
 
     # To find images where we see the checkerboard, for individual cameras
-    def saveImagesBoard(self, path, intrinsics_extension, dirname='intrinsics', manual_confirmation=False, save_corners=False, skip=10):
+    def saveImagesBoard(self, path, intrinsics_extension, dirname='intrinsics', show_coverage=True, manual_confirmation=False, save_corners=False, skip=10):
         output_dir = os.path.join(path, 'corners_found')
         os.makedirs(output_dir, exist_ok=True)  # Ensure output folder exists
 

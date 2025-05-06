@@ -23,7 +23,7 @@ def plot_frame(ax, T, label="Frame", length=500):
     return
 
 
-worldTcam_all = np.load('WorldTCam_opt.npz')['arr_0']
+#worldTcam_all = np.load('WorldTCam_opt.npz')['arr_0']
 cams = ['M11139', 'M11140', 'M11141', 'M11458', 'M11459', 'M11461', 'M11462', 'M11463']
 
 # Plot frames
