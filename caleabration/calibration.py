@@ -66,7 +66,7 @@ class Calibration():
 
                             ret, markerCorners, markerIds, charucoCorners, charucoIds = self.Board.findCorners(img=img)
 
-                            if ret:
+                            if ret and charucoCorners is not None:
                                 # Get proportion of the image covered by the checkerboard
                                 corners = charucoCorners.squeeze()
                                 if corners.shape[0] > 2:
@@ -282,8 +282,15 @@ class Calibration():
 
         elif self.Board.type == 'checker':
             obj_points = []
-            for i in range(len(Left_corners)):
+            img_points_left = []  # 2D image coordinates (left camera)
+            img_points_right = []  # 2D image coordinates (right camera)
+            Nobj = 0
+                
+            for charuco_corners_l, charuco_ids_l, charuco_corners_r, charuco_ids_r in zip(Left_corners, Left_ids, Right_corners, Right_ids):
                 obj_points.append(self.Board.objpoints)
+                Nobj += len(self.Board.objpoints)
+                img_points_left.append(charuco_corners_l)
+                img_points_right.append(charuco_corners_r)
 
         if Nobj > 6:
             (ret, K1, D1, K2, D2, R, t, E, F) = cv2.stereoCalibrate(obj_points, img_points_left, img_points_right, k1, d1, k2, d2, self.image_size, criteria=criteria, flags=flags)

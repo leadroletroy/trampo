@@ -70,9 +70,9 @@ class Checkerboard():
         # If corners are found, refine corners
         if ret == True and subpix == True: 
             imgp = cv2.cornerSubPix(gray, corners, (5, 5), (-1,-1), criteria)
-            return ret, imgp, None, None
+            return ret, None, None, imgp, None
         else:
-            return ret, corners, None, None
+            return ret, None, None, corners, None
     
     
     def calibrate_intrinsics(self, calib_dir, image_size, camera_matrix, dist_coeffs=np.zeros(5, dtype=np.float32)):
@@ -93,7 +93,7 @@ class Checkerboard():
             
             # find corners
             for img_path in img_vid_files:
-                _, _, imgp_confirmed = self.findCorners(img_path)
+                _, _, _, imgp_confirmed, _ = self.findCorners(im_name=img_path)
                 if isinstance(imgp_confirmed, np.ndarray):
                     imgpoints.append(imgp_confirmed)
                     objpoints.append(self.objpoints)
@@ -101,7 +101,7 @@ class Checkerboard():
             # calculate intrinsics
             img = cv2.imread(str(img_path))
             objpoints = np.array(objpoints)
-            ret_cam, mtx, dist, _, _ = cv2.calibrateCamera(objpoints, imgpoints, image_size, camera_matrix[i], dist_coeffs[i], flags=(cv2.CALIB_USE_INTRINSIC_GUESS+cv2.CALIB_USE_LU))
+            ret_cam, mtx, dist, _, _ = cv2.calibrateCamera(objpoints, imgpoints, image_size, camera_matrix, dist_coeffs, flags=(cv2.CALIB_USE_INTRINSIC_GUESS+cv2.CALIB_USE_LU))
             h, w = [np.float32(i) for i in img.shape[:-1]]
             ret.append(ret_cam)
             C.append(cam)
@@ -109,11 +109,17 @@ class Checkerboard():
             D.append(dist)
             K.append(mtx)
 
+            # Print results
+            print(f"Calibration completed for camera: {cam}")
+            print(f'Error: {ret_cam:.4f}')
+            print("Camera Matrix:\n", mtx)
+            print("Distortion Coefficients:\n", dist)
+
         return ret, C, S, D, K
 
 
     # To keep only the images where the checkerboard is seen simultaneously by 2 cameras
-    def retrieve_cali_info(self, path, user, cam):
+    def retrieve_cali_info(self, path, cam):
         cali = pd.read_csv(os.path.join(path, f'cali{cam}.csv'), sep=';')
         list_of_column_names = list(cali.columns)
 
@@ -125,13 +131,13 @@ class Checkerboard():
         users = cali['user'].tolist()
         timestamps = cali['timestamp'].tolist()
 
-        indices = []
-        for i, u in enumerate(users):
-            if int(u) == int(user[1:]):
-                indices.append(i)
+        # indices = []
+        # for i, u in enumerate(users):
+        #     if int(u) == int(user[1:]):
+        #         indices.append(i)
 
-        info = np.array([imnames, timestamps])
-        info = info[:,indices]
+        info = np.array([users, imnames, timestamps])
+        # info = info[:,indices]
 
         return info
 
@@ -184,8 +190,8 @@ class Checkerboard():
         Left_Paths_copy, Right_Paths_copy = [], []
         for Lname, Rname in zip(Left_Paths, Right_Paths):
 
-            Lret, Limg, Limgp = self.findCorners(Lname)
-            Rret, Rimg, Rimgp = self.findCorners(Rname)
+            Lret, _, _, Limgp, _ = self.findCorners(im_name=Lname)
+            Rret, _, _, Rimgp, _ = self.findCorners(im_name=Rname)
 
             if Lret and Rret:
                 Left_imgpoints.append(Limgp)
