@@ -4,7 +4,7 @@ import numpy as np
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
-points_array_m = np.load(r'Points3D_crossTrampo.npz')['arr_0']
+points_array_m = np.load(r'Points3D.npz')['arr_0']
 
 ax.scatter(points_array_m[:, 0], points_array_m[:, 1], points_array_m[:, 2],
            c='red', marker='o', s=30)
