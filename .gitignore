@@ -1,0 +1,37 @@
+# Ignore environnements
+.venv
+
+# Ignorer vidéos, outputs, caches
+*.mp4
+*.avi
+*.mov
+*.log
+*.tmp
+__pycache__/
+*.pyc
+.vscode/
+*.ckpt
+
+# Ignorer dossiers spécifiques
+4DHumans/4D-Humans
+4DHumans/outputs
+
+vitpose/ViTPose
+
+SMPLAnthropometry
+MultiHMR
+
+Pose2Sim/pose
+Pose2Sim/pose_1
+Pose2Sim/pose_2
+Pose2Sim/pose-3d
+Pose2Sim/pose-associated
+Pose2Sim/video_1
+Pose2Sim/video_2_vit
+Pose2Sim/video_vit
+Pose2Sim/test_RTM
+
+calibration/data_trampo
+
+metrics/results
+
