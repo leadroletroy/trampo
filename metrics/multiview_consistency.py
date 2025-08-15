@@ -178,7 +178,8 @@ def retrieve_common_id(keypts_cam):
     id_per_frame_per_cam = {}
 
     for cam, data in keypts_cam.items():
-        id_count = {i:0 for i in range(-1, 20)}
+        id_per_frame_per_cam[cam] = {}
+        id_count = {i:0 for i in range(-1, 100)}
 
         sorted_frames = sorted(data.keys())
         for frame in sorted_frames:
@@ -192,7 +193,7 @@ def retrieve_common_id(keypts_cam):
             elif len(output) == 1:
                 id = output[0]['id']
                 id_count[id] += 1
-                id_per_frame_per_cam.setdefault(cam, {}).setdefault(frame, []).append(id)
+                id_per_frame_per_cam[cam].setdefault(frame, []).append(id)
 
             else:
                 for d in output:
@@ -206,6 +207,57 @@ def retrieve_common_id(keypts_cam):
                 id_per_frame_per_cam.setdefault(cam, {}).setdefault(frame, []).append(most_seen_id)
 
     return id_per_frame_per_cam
+
+
+def find_best_matching_ids(keypts_cam, P_all, N):
+    cameras = list(keypts_cam.keys())
+
+    pts_athlete = {c:{f:[] for f in range(0, N)} for c in cameras}
+
+    for c1 in cameras:
+        data1 = keypts_cam[c1]
+        P1 = P_all[c1]
+
+        for c2 in cameras[cameras.index(c1)+1:]:
+            data2 = keypts_cam[c2]
+            P2 = P_all[c2]
+
+            for idx in range(N):
+                error_min = 100
+                frame_idx = f'frame_{idx:05d}.png'  # f'frame_{idx:05d}.png' for ViTPose OR f'{idx:06d}' for 4DHumans
+                if frame_idx in data1.keys() and frame_idx in data2.keys():
+
+                    for detection1 in data1[frame_idx]:
+                        points1 = detection1['keypoints'] # 'keypoints' OR 'keypoints_2d'
+
+                        for detection2 in data2[frame_idx]:
+                            points2 = detection2['keypoints']
+
+                            if len(points1) > 0 and len(points2) > 0:
+
+                                pts1 = np.asarray(points1)[:,0:2]
+                                pts2 = np.asarray(points2)[:,0:2]
+
+                                points_4d = cv2.triangulatePoints(P1, P2, pts1.T, pts2.T)
+                                points_3d = (points_4d[:3] / points_4d[3]).T  # Nx3
+                                points_3d_h = np.hstack((points_3d, np.ones((points_3d.shape[0], 1)))).T  # 4xN
+
+                                pts1_reproj_h = P1 @ points_3d_h  # 3xN
+                                pts1_reproj = (pts1_reproj_h[:2] / pts1_reproj_h[2]).T  # Nx2
+
+                                pts2_reproj_h = P2 @ points_3d_h  # 3xN
+                                pts2_reproj = (pts2_reproj_h[:2] / pts2_reproj_h[2]).T  # Nx2
+
+                                error1 = np.linalg.norm(pts1 - pts1_reproj, axis=1)
+                                error2 = np.linalg.norm(pts2 - pts2_reproj, axis=1)
+
+                                if (error1 < error_min).all() and (error2 < error_min).all():
+                                    pts_athlete[c1][frame_idx] = pts1
+                                    pts_athlete[c2][frame_idx] = pts2
+                                    error_min = np.max([error1, error2])
+
+    return pts_athlete
+
 
 def vis_keypoints_mvt(keypts_per_cam, cam):
     keypts = keypts_per_cam[cam]
@@ -399,72 +451,82 @@ def triangulate_reproject(keypoints_detections, cameras, N_images):
 
     return error_cam_1_filtered, error_cam_2_filtered, error_cam, triangulated_points
 
-def reproject(keypoints_detections, cameras, N_images):
-    error_cam_1 = {f'{c1[-2:]}-{c2[-2:]}':[] for c1 in cameras for c2 in cameras}
+def triangulate_reproject_athlete(pts_athlete, cameras, N_images):
+    error_cam_1 = {f'{c1[-2:]}-{c2[-2:]}':[] for c1 in cameras for c2 in cameras if c2 > c1}
     error_cam_2 = deepcopy(error_cam_1)
 
-    error_cam = [{f'{c1[-2:]}-{c2[-2:]}':[] for c1 in cameras for c2 in cameras} for _ in range(8)]
+    error_cam = {f'{c[-2:]}':[] for c in cameras}
 
-    P_all = computeP('/home/lea/trampo/Pose2Sim/Calibration/Calib.toml')
-
-    T = np.load('/mnt/D494C4CF94C4B4F0/Trampoline_avril2025/Calib_trampo_avril2025/results_calib/calib_0429/WorldTCam_opt.npz')['arr_0']
+    triangulated_points = {f'{c1}-{c2}':[] for c1 in range(8) for c2 in range(8) if c1 < c2}
 
     for c1 in range(8):
-        T1 = T[c1]
-        for c2 in range(c1, 8):
-            T2 = T[c2]
-            if c1 != c2:
-                for frame_idx in range(N_images):
+        for c2 in range(c1+1, 8):
 
-                    try:
-                        pts3d_1 = np.asarray(keypoints_detections[frame_idx][cameras[c1]])[0, :, :]
-                        pts3d_2 = np.asarray(keypoints_detections[frame_idx][cameras[c2]])[0, :, :]
-                    except KeyError:
-                        continue
+            P1 = P_all[c1]
+            P2 = P_all[c2]
+            
+            for frame_idx in (set(pts_athlete[c1]) & set(pts_athlete[c2])):
+                pts1 = np.asarray(pts_athlete[c1][frame_idx]).squeeze()
+                pts2 = np.asarray(pts_athlete[c2][frame_idx]).squeeze()
 
-                    #TODO: ajouter filtre pour vérifier qu'il s'agit de la même personne (en remplacement de [0, :, :] ci-haut)
-                    
-                    pts3d_1 *= 1000 # convert to mm
-                    pts3d_2 *= 1000 # convert to mm
+                if len(pts1) > 0 and len(pts2) > 0:
 
-                    pts3d_1_h = np.hstack((pts3d_1, np.ones((pts3d_1.shape[0], 1)))).T  # 4xN
-                    pts3d_2_h = np.hstack((pts3d_2, np.ones((pts3d_2.shape[0], 1)))).T  # 4xN
+                    points_4d = cv2.triangulatePoints(P1, P2, pts1.T, pts2.T)
+                    points_3d = (points_4d[:3] / points_4d[3]).T  # Nx3
+                    points_3d_h = np.hstack((points_3d, np.ones((points_3d.shape[0], 1)))).T  # 4xN
 
-                    #print('Original points')
-                    #print(pts3d_1)
+                    triangulated_points[f'{c1}-{c2}'].append(points_3d)
 
-                    # FORMULA: 1T2 = inv(T1) @ T2
+                    pts1_reproj_h = P1 @ points_3d_h  # 3xN
+                    pts1_reproj = (pts1_reproj_h[:2] / pts1_reproj_h[2]).T  # Nx2
 
-                    pts4d_1_2 = np.linalg.inv(T2) @ T1 @ pts3d_1_h # 4xN
-                    pts4d_2_1 = np.linalg.inv(T1) @ T2 @ pts3d_2_h # 4xN
+                    pts2_reproj_h = P2 @ points_3d_h  # 3xN
+                    pts2_reproj = (pts2_reproj_h[:2] / pts2_reproj_h[2]).T  # Nx2
 
-                    pts3d_1_2 = pts4d_1_2.T[:, :3] / pts4d_1_2.T[:, 3].reshape(-1, 1) # Nx3
-                    pts3d_2_1 = pts4d_2_1.T[:, :3] / pts4d_2_1.T[:, 3].reshape(-1, 1) # Nx3
-
-                    #print('Reprojected points')
-                    #print(pts3d_2_1)
-
-                    error1 = np.linalg.norm(pts3d_1 - pts3d_2_1, axis=1)
-                    error2 = np.linalg.norm(pts3d_2 - pts3d_1_2, axis=1)
+                    error1 = np.linalg.norm(pts1 - pts1_reproj, axis=1)
+                    error2 = np.linalg.norm(pts2 - pts2_reproj, axis=1)
                     error_cam_1[f'{cameras[c1][-2:]}-{cameras[c2][-2:]}'].append(np.mean(error1))
                     error_cam_2[f'{cameras[c1][-2:]}-{cameras[c2][-2:]}'].append(np.mean(error2))
 
-                    """ for c in range(8):
+                    for c in range(8):
                         try:
-                            pts = np.asarray(keypoints_detections[frame_idx][cameras[c]])[0, :, :]
+                            pts = np.asarray(pts_athlete[c][frame_idx]).squeeze()
                         except KeyError:
                             continue
-
                         pts_reproj_h = P_all[c] @ points_3d_h
                         pts_reproj = (pts_reproj_h[:2] / pts_reproj_h[2]).T 
                         error = np.linalg.norm(pts - pts_reproj, axis=1)
 
-                        error_cam[c][f'{cameras[c1][-2:]}-{cameras[c2][-2:]}'].append(np.mean(error)) """
+                        error_cam[f'{cameras[c][-2:]}'].append(np.mean(error))
 
-    error_cam_1_filtered = {k: v for k, v in error_cam_1.items() if len(v) > 0}
-    error_cam_2_filtered = {k: v for k, v in error_cam_2.items() if len(v) > 0}
+    #print(error_cam)
+    return error_cam_1, error_cam_2, error_cam, triangulated_points
+            
 
-    return error_cam_1_filtered, error_cam_2_filtered, error_cam
+def distance_3d(keypts_cam, cameras, N):
+    error_cam = {f'{c1[-2:]}-{c2[-2:]}':[] for c1 in cameras for c2 in cameras if c2 > c1}
+
+    for c1 in range(8):
+        data1 = keypts_cam[c1]
+
+        for c2 in range(c1+1, 8):
+            data2 = keypts_cam[c2]
+
+            for idx in range(N):
+                frame_idx = f'{idx:06d}'  # f'{idx:06d}' for 4DHumans OR f'frame_{idx:05d}.png' for ViTPose
+                if frame_idx in data1.keys() and frame_idx in data2.keys():
+
+                    for detection1 in data1[frame_idx]:
+                        points1 = detection1['keypoints_3d']
+
+                        for detection2 in data2[frame_idx]:
+                            points2 = detection2['keypoints_3d']
+
+                            d = np.linalg.norm(points1 - points2, axis=1)  # distance entre chaque point
+                            error_cam[f'{cameras[c1][-2:]}-{cameras[c2][-2:]}'].append(np.mean(d))
+
+    return error_cam
+
 
 def compute_mpjpe_variance(keypoints_list):
     """
@@ -509,7 +571,7 @@ def save_mpjpe_variance(triangulated_points):
                 print(f'Per-joint variance: {per_joint_error} \n')
     return
 
-def plot_view_consistency(error_cam, no_outliers=True):
+def plot_view_consistency(error_cam, input_data, title, no_outliers=True):
 
     error_cam = {k: error_cam[k] for k in sorted(error_cam)}
 
@@ -559,65 +621,72 @@ def plot_view_consistency(error_cam, no_outliers=True):
     # Mise en page
     avec_sans_out = 'sans' if no_outliers else 'avec'
     plt.title(f"Erreur de reprojection par paire de caméras ({avec_sans_out} outliers)")
-    plt.xlabel("Paire de caméras")
-    plt.ylabel("Erreur de reprojection (pixels)")
+    plt.xlabel("Paire de caméras utilisée pour la triangulation")
+    plt.ylabel(f"Erreur de reprojection {'pixels' if input_data=='2d' else 'mm'}")
     plt.grid(True, axis='y', linestyle='--', alpha=0.6)
     plt.tight_layout()
-    plt.savefig(f'Reproj_all_{avec_sans_out}_outliers')
+    plt.savefig(f'Reproj_{title}_{avec_sans_out}_outliers')
     plt.show()
     
     return
 
-def plot_consistency_per_view(error_cam, cameras):
-    for v, error_cam_i in enumerate(error_cam):
-        error_cam_i = {k: error_cam_i[k] for k in sorted(error_cam_i)}
-        error_cam_i = {k: v for k, v in error_cam_i.items() if len(v) > 0}
+def plot_consistency_per_view(error_cam, input_data, title, no_outliers=True):
+    error_cam = {k: error_cam[k] for k in sorted(error_cam)}
 
-        labels = []
-        data_filtered = []
-        means = []
-        stds = []
-        used_images = 0
+    labels = []
+    data_filtered = []
+    means = []
+    stds = []
 
-        #print("Outliers par paire de caméras :")
-        for key, val in error_cam_i.items():
-            val_filtered, outliers = remove_outliers(val)
+    print("Outliers par caméra :")
+    for key, val in error_cam.items():
+        if no_outliers:
+            val_filtered, outliers = remove_outliers(val, 2, np.inf)
             if len(val_filtered) == 0:
+                print('Only outliers, skip')
                 continue  # skip if all values are outliers
+        else:
+            val_filtered = val
+            outliers = []
             
-            used_images += len(val_filtered)
-            labels.append(key)
-            data_filtered.append(val_filtered)
-            mean_val = np.mean(val_filtered)
-            std_val = np.std(val_filtered)
-            means.append(mean_val)
-            stds.append(std_val)
+        labels.append(key)
+        data_filtered.append(val_filtered)
+        mean_val = np.mean(val_filtered)
+        std_val = np.std(val_filtered)
+        means.append(mean_val)
+        stds.append(std_val)
+        print(f"{key}: {len(val_filtered)} accepted, mean = {np.mean(val_filtered)}")
+        if len(outliers) > 0:
+            print(f"{key}: {len(outliers)} outlier(s), mean = {np.mean(outliers)}")
+        
+    # Création du boxplot sans outliers
+    plt.figure(figsize=(7,7))
 
-        # Création du boxplot sans outliers
-        plt.figure(figsize=(14,7))
-        box = plt.boxplot(data_filtered, labels=labels, patch_artist=True,
-                            showfliers=False, medianprops={'color': 'red'})
+    box = plt.boxplot(data_filtered, labels=labels, patch_artist=True,
+                      showfliers=False, medianprops={'color': 'red'})
 
-        # Couleurs personnalisées (facultatif)
-        colors = plt.cm.viridis(np.linspace(0, 1, len(data_filtered)))
-        for patch, color in zip(box['boxes'], colors):
-            patch.set_facecolor(color)
+    # Couleurs personnalisées (facultatif)
+    colors = plt.cm.viridis(np.linspace(0, 1, len(data_filtered)))
+    for patch, color in zip(box['boxes'], colors):
+        patch.set_facecolor(color)
 
-        # Ajouter les moyennes et écarts-types
-        for i, (mean, std) in enumerate(zip(means, stds)):
-            plt.text(i + 1, mean, f"μ = {mean:.0f}\nσ = {std:.0f}", 
-                    ha='center', fontsize=8, color='green',
-                    bbox=dict(facecolor='white', edgecolor='none', boxstyle='round,pad=0.3', alpha=0.7))
+    # Ajouter les moyennes et écarts-types
+    for i, (mean, std) in enumerate(zip(means, stds)):
+        plt.text(i + 1, mean, f"μ = {mean:.0f}\nσ = {std:.0f}", 
+                ha='center', fontsize=8, color='green',
+                bbox=dict(facecolor='white', edgecolor='none', boxstyle='round,pad=0.3', alpha=0.7))
 
-        # Mise en page
-        plt.title(f"Erreur de reprojection sur la vue {v+1} ({cameras[v]}) par paire de caméras (sans outliers, {used_images} projections)")
-        plt.xlabel("Paire de caméras")
-        plt.ylabel("Erreur de reprojection (pixels)")
-        plt.ylim(0, 500)
-        plt.grid(True, axis='y', linestyle='--', alpha=0.6)
-        plt.tight_layout()
-        plt.savefig(f'Reproj_vue{v+1}')
-        plt.show()
+    # Mise en page
+    avec_sans_out = 'sans' if no_outliers else 'avec'
+    plt.title(f"Erreur de reprojection par caméra ({avec_sans_out} outliers)")
+    plt.xlabel("Caméra utilisée pour la reprojection")
+    plt.ylabel(f"Erreur de reprojection {'pixels' if input_data=='2d' else 'mm'}")
+    plt.grid(True, axis='y', linestyle='--', alpha=0.6)
+    plt.ylim(0, np.max(means))
+    plt.tight_layout()
+    plt.savefig(f'Reproj_{title}_{avec_sans_out}_outliers')
+    plt.show()
+    
     return
 
 def save_error(error, filename):
@@ -638,57 +707,59 @@ if __name__ == "__main__":
     print('ARGV:', sys.argv, input_data, '\n')
 
     video_path = '/mnt/D494C4CF94C4B4F0/Trampoline_avril2025/Images_trampo_avril2025/20250429/'
-    root_path = '/home/lea/trampo/metrics/SMPL_keypoints'
+    root_path = '/mnt/D494C4CF94C4B4F0/Trampoline_avril2025/Images_trampo_avril2025/20250429_keypts' # '/home/lea/trampo/metrics/results/SMPL_keypoints' OR '/mnt/D494C4CF94C4B4F0/Trampoline_avril2025/Images_trampo_avril2025/20250429_keypts'
 
     cameras = ['M11139', 'M11140', 'M11141', 'M11458', 'M11459', 'M11461', 'M11462', 'M11463']
-    routines = sorted([os.path.basename(f).split('-')[0] for f in os.listdir(root_path)])
+    P_all, K_all = computeP('/home/lea/trampo/Pose2Sim/Calibration/Calib.toml')
+
+    routines = set(sorted([os.path.basename(f).split('-')[0] for f in os.listdir(root_path)]))
 
     error_cam_all = {}
     triangulated_points_all = {f'{c1[-2:]}-{c2[-2:]}':[] for c1 in cameras for c2 in cameras}
-    error_cam_per_view_all = [{f'{c1[-2:]}-{c2[-2:]}':[] for c1 in cameras for c2 in cameras} for _ in range(8)]
+    error_cam_per_view_all = {f'{c[-2:]}':[] for c in cameras}
 
     for routine in tqdm(routines):
-        paths = [routine+'-Camera1_M11139_2d.pkl', routine+'-Camera2_M11140_2d.pkl', routine+'-Camera3_M11141_2d.pkl', routine+'-Camera4_M11458_2d.pkl',
-                 routine+'-Camera5_M11459_2d.pkl', routine+'-Camera6_M11461_2d.pkl', routine+'-Camera7_M11462_2d.pkl', routine+'-Camera8_M11463_2d.pkl',]
+        paths = [routine+'-Camera1_M11139.pkl', routine+'-Camera2_M11140.pkl', routine+'-Camera3_M11141.pkl', routine+'-Camera4_M11458.pkl',
+                 routine+'-Camera5_M11459.pkl', routine+'-Camera6_M11461.pkl', routine+'-Camera7_M11462.pkl', routine+'-Camera8_M11463.pkl',]
 
         if all_views_processed(root_path, paths, routine):
             N_images = len(os.listdir(video_path+routine+'-Camera1_M11139'))
             keypts_cam = retrieve_keypts(root_path, paths)
 
             if input_data == '2d':
-                print('2d data processing')
-                #id_per_frame_per_cam = find_athlete(keypts_cam)
-                id_per_frame_per_cam = retrieve_common_id(keypts_cam)
-                keypts_per_cam = select_keypoints_athlete(keypts_cam, id_per_frame_per_cam)
-                keypoints_detections = create_dict_all_detections(keypts_cam, N_images, cameras, id_per_frame_per_cam, input_data)
+                pts_athlete = find_best_matching_ids(keypts_cam, P_all, N_images)
 
-                error_cam_1, error_cam_2, error_cam_per_view, triangulated_points = triangulate_reproject(keypoints_detections, cameras, N_images)
+                error_cam_1, error_cam_2, error_cam_per_view, triangulated_points = triangulate_reproject_athlete(pts_athlete, cameras, N_images)
+
+                #id_per_frame_per_cam = find_athlete(keypts_cam)
+                #id_per_frame_per_cam = retrieve_common_id(keypts_cam)
+                #keypts_per_cam = select_keypoints_athlete(keypts_cam, id_per_frame_per_cam)
+                #keypoints_detections = create_dict_all_detections(keypts_cam, N_images, cameras, id_per_frame_per_cam, input_data)
+                #error_cam_1, error_cam_2, error_cam_per_view, triangulated_points = triangulate_reproject(keypoints_detections, cameras, N_images)
+
+                all_keys = set(error_cam_1) | set(error_cam_2) | set(error_cam_all)
+
+                error_cam_all = {k: error_cam_1.get(k, []) + error_cam_2.get(k, []) + error_cam_all.get(k, []) for k in all_keys}
+                error_cam_per_view_all = {k: error_cam_per_view.get(k, []) + error_cam_per_view_all.get(k, []) for k in set(error_cam_per_view_all)}
+
+                for key, el in triangulated_points.items():
+                    triangulated_points_all = {key: triangulated_points_all.get(key, []) + el}
                 
             elif input_data == '3d':
-                print('3d data processing')
-                id_per_frame_per_cam = retrieve_common_id(keypts_cam)
-                keypts_per_cam = select_keypoints_athlete(keypts_cam, id_per_frame_per_cam)
-                keypoints_detections = create_dict_all_detections(keypts_cam, N_images, cameras, id_per_frame_per_cam, input_data)
+                error_cam = distance_3d(keypts_cam, cameras, N_images)
+                error_cam_all = {k: error_cam.get(k, []) + error_cam_all.get(k, []) for k in error_cam.keys()}
 
-                error_cam_1, error_cam_2, error_cam_per_view = reproject(keypoints_detections, cameras, N_images)
-
-            all_keys = set(error_cam_1) | set(error_cam_2) | set(error_cam_all)
-
-            error_cam_all = {k: error_cam_1.get(k, []) + error_cam_2.get(k, []) + error_cam_all.get(k, []) for k in all_keys}
-
-            for i, el in enumerate(error_cam_per_view):
-                error_cam_per_view_all[i] = {k: error_cam_per_view_all[i].get(k, []) + el.get(k, []) for k in all_keys}
+            # for i, el in enumerate(error_cam_per_view):
+            #     error_cam_per_view_all[i] = {k: error_cam_per_view_all[i].get(k, []) + el.get(k, []) for k in all_keys}
             
-            for key, el in triangulated_points.items():
-                triangulated_points_all = {key: triangulated_points_all.get(key, []) + el}
 
-    print(triangulated_points.keys())
+    save_error(error_cam_all, 'error_vit_2d.json')
+    save_error(error_cam_per_view_all, 'error_vit_allcam.json')
+    #save_points(triangulated_points_all, 'triangulated_points_vit_filt.pkl')
+    plot_view_consistency(error_cam_all, input_data, 'vit', no_outliers=False)
 
-    save_error(error_cam_all, 'error_4dhumans_filt.json')
-    save_error(error_cam_per_view, 'error_4dhumans_perview_filt.json')
-    save_points(triangulated_points_all, 'triangulated_points_filt.pkl')
-    plot_view_consistency(error_cam_all, no_outliers=False)
-    plot_consistency_per_view(error_cam_per_view_all, cameras)
+    #plot_view_consistency(error_cam_per_view_all, input_data, 'vit_allcam', no_outliers=False)
+    plot_consistency_per_view(error_cam_per_view_all, input_data, 'vit_allcam', no_outliers=False)
 
-    save_mpjpe_variance(triangulated_points_all)
+    #save_mpjpe_variance(triangulated_points_all)
 

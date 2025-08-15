@@ -1,0 +1,8 @@
+M11462 - M11463
+N: 265
+Mean joint variance: 6.30 mm
+Min joint variance: 0.08 mm
+Max joint variance: 968.99 mm
+Per-joint variance: [ 5.402   5.3137  5.7948  4.94    6.1188  5.3211  5.9846  4.2028  8.1535
+  8.9018 10.3579  5.9714 13.4012  3.7363  4.787   3.663   5.0843] 
+

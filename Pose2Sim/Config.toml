@@ -18,12 +18,12 @@
 
 
 [project]
-multi_person = true # true for trials with multiple participants. If false, only the person with lowest reprojection error is analyzed.
+multi_person = false # true for trials with multiple participants. If false, only the person with lowest reprojection error is analyzed.
 participant_height = 'auto' # 'auto', float (eg 1.72), or list of floats (eg [1.72, 1.40])  # meters  # Only used for marker augmentation 
 participant_mass = 70.0             # float (eg 70.0), or list of floats (eg [70.0, 63.5])  # kg      # Only used for marker augmentation and scaling, no impact on results unless you need to further compute forces
 
-frame_rate = 'auto' # fps # int or 'auto'. If 'auto', finds from video (or defaults to 60 fps if you work with images) 
-frame_range = 'auto' # 'auto', 'all', or range like [10,300]. If 'auto', will trim around the frames with low reprojection error (useful if a person enters/exits the scene)
+frame_rate = 120 # fps # int or 'auto'. If 'auto', finds from video (or defaults to 60 fps if you work with images) 
+frame_range = 'all' # 'auto', 'all', or range like [10,300]. If 'auto', will trim around the frames with low reprojection error (useful if a person enters/exits the scene)
 
 ## If cameras are not synchronized, designates the frame range of the camera with the shortest recording time
 ## N.B.: If you want a time range instead, use frame_range = time_range * frame_rate
@@ -37,7 +37,7 @@ exclude_from_batch = [] # List of trials to be excluded from batch analysis, ['<
 [pose]
 vid_img_extension = 'mp4' # any video or image extension
 
-pose_model = 'Body'  #With RTMLib: 
+pose_model = 'BODY_25'      #With RTMLib: 
                          # - Body_with_feet (default HALPE_26 model), 
                          # - Whole_body_wrist (COCO_133_WRIST: body + feet + 2 hand_points), 
                          # - Whole_body (COCO_133: body + feet + hands), 
@@ -174,7 +174,7 @@ calibration_type = 'convert' # 'convert' or 'calculate'
 
    [personAssociation.single_person]
    reproj_error_threshold_association = 20 # px
-   tracked_keypoint = 'RShoulder' # If the neck is not detected by the pose_model, check skeleton.py 
+   tracked_keypoint = 'RHip' # If the neck is not detected by the pose_model, check skeleton.py 
                # and choose a stable point for tracking the person of interest (e.g., 'right_shoulder' or 'RShoulder')
    
    [personAssociation.multi_person]
@@ -183,12 +183,12 @@ calibration_type = 'convert' # 'convert' or 'calculate'
 
 
 [triangulation]
-reproj_error_threshold_triangulation = 20 # px
+reproj_error_threshold_triangulation = 50 # px
 likelihood_threshold_triangulation = 0.3
 min_cameras_for_triangulation = 2
 interpolation = 'linear' #linear, slinear, quadratic, cubic, or none
                         # 'none' if you don't want to interpolate missing points
-interp_if_gap_smaller_than = 10 # do not interpolate bigger gaps
+interp_if_gap_smaller_than = 20 # do not interpolate bigger gaps
 fill_large_gaps_with = 'last_value' # 'last_value', 'nan', or 'zeros' 
 show_interp_indices = true # true or false (lowercase). For each keypoint, return the frames that need to be interpolated
 handle_LR_swap = false # Better if few cameras (eg less than 4) with risk of limb swapping (eg camera facing sagittal plane), otherwise slightly less accurate and slower

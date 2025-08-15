@@ -11,6 +11,7 @@ __pycache__/
 *.pyc
 .vscode/
 *.ckpt
+*.json
 
 # Ignorer dossiers spécifiques
 4DHumans/4D-Humans
@@ -24,8 +25,17 @@ MultiHMR
 Pose2Sim/pose
 Pose2Sim/pose_1
 Pose2Sim/pose_2
-Pose2Sim/pose-3d
+Pose2Sim/pose_3
+Pose2Sim/pose_all_vit
+Pose2Sim/pose_all_4dhumans
+Pose2Sim/pose-3d-ViT
+Pose2Sim/pose-associated-ViT
 Pose2Sim/pose-associated
+Pose2Sim/pose-3d
+Pose2Sim/pose-3d-4DHumans
+Pose2Sim/pose-3d-4DHumans-multiperson
+Pose2Sim/pose-3d-4DHumans-multi
+Pose2Sim/pose-3d-vit-multi
 Pose2Sim/video_1
 Pose2Sim/video_2_vit
 Pose2Sim/video_vit
@@ -34,4 +44,10 @@ Pose2Sim/test_RTM
 calibration/data_trampo
 
 metrics/results
-
+metrics/meshes
+metrics/models
+metrics/SMPL_keypoints
+metrics/3dregistrationFigs
+metrics/Pose2Sim_triangulation_figs
+metrics/figs
+metrics/errors
