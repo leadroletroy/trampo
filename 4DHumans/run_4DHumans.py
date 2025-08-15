@@ -17,7 +17,7 @@ MAX_CPU = 95.0       # in %
 MAX_RAM = 85.0       # in %
 MAX_GPU_MEM_UTIL = 0.90  # GPU VRAM usage (0.90 = 90%)
 
-cameras = ['Camera1_M11139', 'Camera2_M11140', 'Camera3_M11141', 'Camera4_M11458', 'Camera5_M11459', 'camera6_M11461', 'Camera7_M11462', 'Camera8_M11463']
+cameras = ['Camera1_M11139', 'Camera2_M11140', 'Camera3_M11141', 'Camera4_M11458', 'Camera5_M11459', 'Camera6_M11461', 'Camera7_M11462', 'Camera8_M11463']
 
 #cameras = ['Camera4_M11458', 'Camera5_M11459', 'camera6_M11461', 'Camera7_M11462', 'Camera8_M11463']
 
@@ -30,7 +30,7 @@ routines = ['1_partie_0429_000-', '1_partie_0429_001-', '1_partie_0429_002-', '1
             '1_partie_0429_021-', '1_partie_0429_022-', '1_partie_0429_023-', '1_partie_0429_024-',
             '1_partie_0429_025-', '1_partie_0429_026-', '1_partie_0429_027-']
 
-video_sources = [path+'/'+routine+cam+'.mp4' for cam in cameras for routine in routines]
+video_sources = [path+'/'+routine+cam+'.mp4' for routine in routines for cam in cameras]
 
 def monitor_and_kill(proc, stop_event):
     while not stop_event.is_set() and proc.poll() is None:
@@ -82,7 +82,7 @@ def run_tracking(video_path):
 def main():
     for video_path in video_sources:
         output_path = 'demo_' + video_path.split('/')[-1].split('.')[0]+'.pkl'
-        if output_path not in os.listdir('/home/lea/trampo/4DHumans/outputs/results'):
+        if output_path not in os.listdir('/home/lea/trampo/4DHumans/outputs/results_focal'):
             stop_event = threading.Event()
             process = run_tracking(video_path)
 
@@ -97,6 +97,8 @@ def main():
             time.sleep(10)
         else:
             print(f'SKIPPING {output_path}, already exists.')
+        
+        break
 
 if __name__ == "__main__":
     main()
