@@ -12,6 +12,11 @@ __pycache__/
 .vscode/
 *.ckpt
 *.json
+*.trc
+*.png
+*.jpg
+*.npz
+*.pth
 
 # Ignorer dossiers spécifiques
 4DHumans/4D-Humans
@@ -22,7 +27,7 @@ vitpose/ViTPose
 SMPLAnthropometry
 MultiHMR
 
-Pose2Sim/pose
+MODELS_2D3D/Pose2Sim/pose*
 Pose2Sim/pose_1
 Pose2Sim/pose_2
 Pose2Sim/pose_3
@@ -51,3 +56,5 @@ metrics/3dregistrationFigs
 metrics/Pose2Sim_triangulation_figs
 metrics/figs
 metrics/errors
+
+MODELS_2D3D/finetuning_multiview/YOLO
