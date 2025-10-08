@@ -218,14 +218,19 @@ def draw_skeleton(points_2d, color, ax, model='vit'):
             (10, 12)
             ]
     
-    for i, j in skeleton:
+    if type(color) == str:
+        color_list = [color for _ in range(len(skeleton))]
+    if type(color) == list:
+        color_list = color
+
+    for n, (i, j) in enumerate(skeleton):
         xline = [points_2d[i][0], points_2d[j][0]]
         yline = [points_2d[i][1], points_2d[j][1]]
         if points_2d[i].shape[-1] == 3:
             zline = [points_2d[i][2], points_2d[j][2]]
-            ax.plot(xline, yline, zline, color=color)
+            ax.plot(xline, yline, zline, color=color_list[n])
         else:
-            ax.plot(xline, yline, color=color)
+            ax.plot(xline, yline, color=color_list[n])
     return
 
 ### Visualize joints alignment across time

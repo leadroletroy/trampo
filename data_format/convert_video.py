@@ -4,6 +4,13 @@ import os
 from tqdm import tqdm
 import glob
 
+def convert_video_name(input_file):
+    name_no_spaces = input_file.replace(" ", "")
+    name_no_par = name_no_spaces.replace("(", "_").replace(")", "")
+    output_file = name_no_par.split('.')[0] + '.mp4'
+
+    return output_file
+
 def avi_to_mp4(input_file, output_file=None):
     cap = cv2.VideoCapture(input_file)
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # Codec for MP4
@@ -12,9 +19,7 @@ def avi_to_mp4(input_file, output_file=None):
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
     if output_file == None:
-        name_no_spaces = input_file.replace(" ", "")
-        name_no_par = name_no_spaces.replace("(", "_").replace(")", "")
-        output_file = name_no_par.split('.')[0] + '.mp4'
+        output_file = convert_video_name(input_file)
 
     out = cv2.VideoWriter(output_file, fourcc, fps, (width, height))
 
@@ -26,7 +31,7 @@ def avi_to_mp4(input_file, output_file=None):
 
     cap.release()
     out.release()
-    print("Conversion complete! ✅")
+    #print("Conversion complete! ✅")
 
 
 def mp4_to_png(video_path, output_folder=None):
@@ -94,10 +99,11 @@ def png_to_mp4(image_folder, output_video_path=None, fps=120):
 # Example usage
 if __name__ == "__main__":
 
-    path = "/media/lea/store/Trampoline_avril2025/Videos_trampo_avril2025/20250429"
+    path = "/mnt/D494C4CF94C4B4F0/Trampoline_avril2025/Videos_trampo_avril2025/20250428PM"
 
-    for file in os.listdir(path):
-        if file.split('.')[-1] == 'mp4':
+    for file in tqdm(sorted(os.listdir(path))):
+        if file.split('.')[-1] == 'avi':
             video_file = os.path.join(path, file)
-            #avi_to_mp4(video_file)
-            mp4_to_png(video_file, )
+            if not os.path.isfile(convert_video_name(video_file)):
+                avi_to_mp4(video_file)
+            #mp4_to_png(video_file, )
