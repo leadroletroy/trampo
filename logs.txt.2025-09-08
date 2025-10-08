@@ -1,0 +1,178 @@
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 10:51:44
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 10:54:04
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 10:55:28
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 10:56:20
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:10:27
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:10:58
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:11:35
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:18:08
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:18:38
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:30:14
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:30:59
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:32:21
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:33:38
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:35:19
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:39:14
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:40:45
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:45:00
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+--> Mean reprojection error for RHip point on all frames is nan px, which roughly corresponds to nan mm. 
+--> In average, 8.0 cameras had to be excluded to reach the demanded 20 px error threshold after excluding points with likelihood below 0.3.
+
+Tracked json files are stored in /home/lea/trampo/Pose2Sim/pose-associated.
+
+Associating persons took 00h00m13s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:45:14
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:47:17
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+--> Mean reprojection error for RHip point on all frames is nan px, which roughly corresponds to nan mm. 
+--> In average, 8.0 cameras had to be excluded to reach the demanded 20 px error threshold after excluding points with likelihood below 0.0.
+
+Tracked json files are stored in /home/lea/trampo/Pose2Sim/pose-associated.
+
+Associating persons took 00h00m13s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Monday 08. September 2025, 11:47:31
+Project directory: /home/lea/trampo/Pose2Sim
+---------------------------------------------------------------------
+
