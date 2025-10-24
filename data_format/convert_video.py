@@ -99,7 +99,7 @@ def png_to_mp4(image_folder, output_video_path=None, fps=120):
 # Example usage
 if __name__ == "__main__":
 
-    path = "/mnt/D494C4CF94C4B4F0/Trampoline_avril2025/Videos_trampo_avril2025/20250428PM"
+    path = "/mnt/D494C4CF94C4B4F0/Trampoline_avril2025/Videos_trampo_avril2025/20250428AM"
 
     for file in tqdm(sorted(os.listdir(path))):
         if file.split('.')[-1] == 'avi':

@@ -1,5 +1,6 @@
 import numpy as np
 import math
+import time
 import torch
 import cv2
 import itertools as it
@@ -46,7 +47,6 @@ def show_prob(prob_x, prob_y):
 
     plt.tight_layout()
     plt.show()
-
 
 def decode_simcc(x_logits, y_logits, input_size, T=1.0):
     """
@@ -96,42 +96,11 @@ def decode_simcc(x_logits, y_logits, input_size, T=1.0):
 
     return coords, conf
 
-
 def simcc_to_heatmap(x_logits, y_logits):
     prob_x = F.softmax(x_logits, dim=-1)  # (B, K, Wx)
     prob_y = F.softmax(y_logits, dim=-1)  # (B, K, Hy)
     heatmaps = prob_y[..., :, None] * prob_x[..., None, :]  # (B, K, Hy, Wx)
     return heatmaps
-
-def show_all_keypoints(x_logits, y_logits, input_size, b=0):
-    """
-    Visualize all keypoints with decoded coordinates overlaid.
-    
-    x_logits: (B, K, Wx)
-    y_logits: (B, K, Hy)
-    input_size: (H, W)
-    b: batch index to visualize
-    """
-    coords = decode_simcc(x_logits, y_logits, input_size)  # (B, K, 2)
-    heatmaps = simcc_to_heatmap(x_logits, y_logits)        # (B, K, Hy, Wx)
-
-    """ B, K, H, W = heatmaps.shape
-    fig, axes = plt.subplots(3, 6, figsize=(15, 8))
-    axes = axes.flatten()
-
-    for k in range(K):
-        hm = heatmaps[b, k].detach().cpu()
-        x, y = coords[b, k].detach().cpu()
-
-        axes[k].imshow(hm, cmap="jet")
-        axes[k].scatter([x], [y], c="white", marker="x", s=40)
-        axes[k].set_title(f"K={k}")
-        #axes[k].axis("off")
-
-    plt.tight_layout()
-    plt.show() """
-
-    return coords
 
 def resize_and_pad_keep_aspect(crop, target_size=(256, 192)):
     """
@@ -204,79 +173,73 @@ def predict_multiview_with_grad(
     training=False,
     freeze_bn=False,
     T=0.1,
-    num_kpts=17
+    num_kpts=17,
+    detections=None,  # <-- NEW optional mask (B,V) of bools
 ):
     """
     Batched multi-view inference so pose_estimator sees many crops at once.
-
-    Args:
-      detector: mmdet detector (frozen)
-      pose_estimator: pose model
-      images: torch.Tensor (B, V, C, H, W) in [0,1]
-      pose_batch_size: number of crops forwarded together
-      training: bool, if True enables gradients
-      freeze_bn: if True and training==True, BN layers are kept in eval() (good for tiny batches)
-      use_softargmax: if True and training==True, uses differentiable soft-argmax (simcc -> coords)
-      T: temperature for soft-argmax / softmax
-
-    Returns:
-      keypoints_per_view: dict v -> list of (keypoints_img (K,2), scores (K,))
-      meta_list (optional): list of meta dicts for each crop (useful for mapping losses)
+    Only processes views where detections[b,v] == True if detections is given.
     """
-    device = 'cuda:0' #torch.device(device or ("cpu" if torch.cuda.is_available() else "cpu"))
+
+    device = device or ("cuda:0" if torch.cuda.is_available() else "cpu")
     pose_estimator = pose_estimator.to(device)
 
-    # Freeze detector (no grads) and put it in eval
+    # Freeze detector (no grads)
     detector.eval()
     for p in detector.parameters():
         p.requires_grad = False
 
     B, V, C, H, W = images.size()
-    keypoints_per_view = {v: [] for v in range(V)}
 
-    # to numpy for detector (mmdet expects uint8 BGR/ RGB arrays depending on your setup)
+    # Convert to numpy for detector
     imgs_np = images.permute(0, 1, 3, 4, 2).cpu().numpy() * 255
     imgs_np = imgs_np.astype(np.uint8)
 
-    # collect crops + metadata
-    crop_tensors = []
-    metas = []  # store mapping so we can place outputs back into keypoints_per_view
-    model_input_size = (256, 192)  # (H, W) — make sure this matches your resize_and_pad function
+    crop_tensors, metas = [], []
+    model_input_size = (256, 192)
     max_persons = 0
 
     for b in range(B):
         for v in range(V):
+            # NEW: skip if detection mask exists and is False
+            if detections is not None and not bool(detections[b, v]):
+                continue
+
             img = imgs_np[b, v]
-            det_result = inference_detector(detector, img)  # still per-image detection
+            det_result = inference_detector(detector, img)
             pred_instance = det_result.pred_instances.cpu().numpy()
             bboxes = pred_instance.bboxes
-            bboxes = bboxes[np.logical_and(pred_instance.labels == 0, pred_instance.scores > bbox_thr)]
+            bboxes = bboxes[np.logical_and(pred_instance.labels == 0,
+                                           pred_instance.scores > bbox_thr)]
             max_persons = max(max_persons, len(bboxes))
 
             for bbox in bboxes:
                 x1, y1, x2, y2 = map(int, bbox.tolist())
                 if x2 <= x1 or y2 <= y1:
                     continue
-                crop = img[y1:y2, x1:x2]
 
+                crop = img[y1:y2, x1:x2]
                 crop_resized, scale, pads = resize_and_pad_keep_aspect(crop, model_input_size)
-                # crop_resized is HxWxC (numpy uint8)
-                crop_tensor = torch.from_numpy(crop_resized).permute(2, 0, 1).float() / 255.0  # (C,H,W)
+                crop_tensor = torch.from_numpy(crop_resized).permute(2, 0, 1).float() / 255.0
                 crop_tensors.append(crop_tensor)
 
-                origin_bbox = torch.tensor([x1, y1], dtype=torch.float32, device=device)
-                pads = torch.tensor(pads, dtype=torch.int16, device=device)
                 metas.append({
                     'b': b, 'v': v,
-                    'origin': origin_bbox,
+                    'origin': torch.tensor([x1, y1], dtype=torch.float32, device=device),
                     'scale': scale,
-                    'pads': pads
+                    'pads': torch.tensor(pads, dtype=torch.int16, device=device)
                 })
 
     if len(crop_tensors) == 0:
-        return keypoints_per_view, metas  # nothing detected
+        # Nothing detected at all
+        keypoints_all = torch.full(
+            (B, V, 1, num_kpts, 3),
+            torch.nan,
+            dtype=torch.float32,
+            device=device)
+        return keypoints_all
 
-    # prepare model mode
+    # Prepare pose estimator
     if training:
         pose_estimator.train()
         if freeze_bn:
@@ -284,42 +247,33 @@ def predict_multiview_with_grad(
     else:
         pose_estimator.eval()
 
-    # --- Prepare tensor for results
     keypoints_all = torch.full(
         (B, V, max_persons, num_kpts, 3),
         torch.nan,
         dtype=torch.float32,
         device=device)
 
-    # run pose model in chunks
-    with torch.set_grad_enabled(True):
-        batch = torch.stack(crop_tensors, dim=0).to(device)  # (N_batch, C, H, W)
-
-        out_x, out_y = pose_estimator(batch, None, mode='tensor') # out_x: (N_batch, K, W)  out_y: (N_batch, K, H)
-        # decode_simcc should return (N_batch, K, 2), (N_batch, K) — adjust if different in your util
+    # Pose inference
+    with torch.set_grad_enabled(training):
+        batch = torch.stack(crop_tensors, dim=0).to(device)
+        out_x, out_y = pose_estimator(batch, None, mode='tensor')
         keypoints_batch, scores_batch = decode_simcc(out_x, out_y, input_size=model_input_size, T=T)
 
-        # map back to image coords and store results
-        local_indices = {b:{v: 0 for v in range(V)} for b in range(B)}
-        for j in range(len(crop_tensors)):  # within this chunk
-            meta = metas[j]
-            batch_idx = meta['b']
-            view_idx = meta['v']
-            local_idx = local_indices[batch_idx][view_idx]
-            local_indices[batch_idx][view_idx] += 1
+        local_indices = {b: {v: 0 for v in range(V)} for b in range(B)}
+        for j, meta in enumerate(metas):
+            b, v = meta['b'], meta['v']
+            local_idx = local_indices[b][v]
+            local_indices[b][v] += 1
 
-            kp_crop = keypoints_batch[j]        # (K,2)
-            sc = None if scores_batch is None else scores_batch[j]  # (K,)
+            kp_crop = keypoints_batch[j]
+            sc = None if scores_batch is None else scores_batch[j]
 
-            # map_keypoints_to_bbox might expect numpy coords; ensure types match
             kp_bbox = map_keypoints_to_bbox(kp_crop, meta['scale'], meta['pads'])
-            origin = meta['origin']
-            kp_img = kp_bbox + origin  # (K,2)
-            # append to correct view
+            kp_img = kp_bbox + meta['origin']
             data = torch.cat([kp_img, sc.unsqueeze(-1)], dim=1)
-            keypoints_all[batch_idx, view_idx, local_idx] = data
+            keypoints_all[b, v, local_idx] = data
 
-    return keypoints_all #, metas, results_per_crop
+    return keypoints_all
 
 
 def persons_combinations(keypoints_per_view):
@@ -402,50 +356,6 @@ def get_persons(keypoints_all, combination, batch_idx):
 
     return keypoints_selected, scores_selected
 
-
-def euclidean_distance(q1, q2):
-    """
-    Compute mean per-joint position error (MPJPE) in 2D.
-
-    Args:
-        q1, q2: tensors of shape (N_cams, K, 2)
-
-    Returns:
-        per_camera: (N_cams,) tensor with mean error per camera
-        global_error: scalar with mean error across all cameras and joints
-    """
-    # difference (N_cams, K, 2)
-    dist = q2 - q1
-
-    # mask invalid entries (NaNs)
-    valid_mask = ~torch.isnan(dist).any(dim=-1)  # (N_cams, K)
-
-    # squared distances (dx^2 + dy^2)
-    dist_sq = (dist ** 2).sum(dim=-1)  # (N_cams, K)
-
-    # replace NaNs with 0 before sqrt
-    dist_sq = torch.where(valid_mask, dist_sq, torch.zeros_like(dist_sq))
-
-    # Euclidean distances (N_cams, K)
-    euc_dist = torch.sqrt(dist_sq)
-
-    # per-camera MPJPE (mean across keypoints, ignoring NaNs)
-    per_camera = torch.zeros(euc_dist.shape[0], device=euc_dist.device)
-    for i in range(euc_dist.shape[0]):
-        if valid_mask[i].any():
-            per_camera[i] = euc_dist[i, valid_mask[i]].mean()
-        else:
-            per_camera[i] = float("inf")  # no valid keypoints
-
-    # global MPJPE (mean across all cameras + keypoints, ignoring NaNs)
-    if valid_mask.any():
-        global_error = euc_dist[valid_mask].mean()
-    else:
-        global_error = torch.tensor(float("inf"), device=euc_dist.device)
-
-    #print(per_camera.size(), torch.min(per_camera), torch.mean(per_camera))
-    return per_camera, global_error
-
 def get_loss(pred, reproj):
     mask = (pred != 0).any(dim=-1) & (reproj != 0).any(dim=-1)  # (N_cams, K)
     mask = mask.unsqueeze(-1)  # (N_cams, K, 1) so it can broadcast with coords
@@ -458,72 +368,97 @@ def get_loss(pred, reproj):
     return loss
 
 def triangulate(points, P):
+    """
+    Triangulate 3D points from multiple views.
+    Args:
+        points: torch.Tensor (N_combs, N_cams, K, 2) - 2D points from multiple views
+        P: torch.Tensor (N_combs, N_cams, 3, 4) - Projection matrices
+    Returns:
+        Q: torch.Tensor (N_combs, K, 3) - 3D points
+    """
+    N_combs, N_cams, K, _ = points.shape
+    x_all = points[..., 0]  # (N_combs, N_cams, K)
+    y_all = points[..., 1]  # (N_combs, N_cams, K)
 
-    x_all = points[:,:,0] #.reshape((-1))
-    y_all = points[:,:,1] #.reshape((-1))
-    n_cams, n_kpts = x_all.shape
-
-    # Build A matrix per camera per keypoint
-    # P[:, None] -> (n_cams, 1, 3, 4)
-    # x_all.T -> (n_kpts, n_cams)
-    P = P.unsqueeze(1)
-    P_expanded = P.expand(-1, n_kpts, 3, 4)  # (n_cams, n_kpts, 3, 4)
+    # Expand P to match points shape
+    P = P.unsqueeze(2)  # (N_combs, N_cams, 1, 3, 4)
+    P_expanded = P.expand(-1, -1, K, -1, -1)  # (N_combs, N_cams, K, 3, 4)
 
     # Select rows 0,1,2 of P
-    P0 = P_expanded[..., 0, :]  # (n_cams, n_kpts, 4)
+    P0 = P_expanded[..., 0, :]  # (N_combs, N_cams, K, 4)
     P1 = P_expanded[..., 1, :]
     P2 = P_expanded[..., 2, :]
 
-    x = x_all.unsqueeze(-1)  # (n_kpts, n_cams, 1)
-    y = y_all.unsqueeze(-1)
+    # Reshape x, y to match P dimensions
+    x = x_all.unsqueeze(-1)  # (N_combs, N_cams, K, 1)
+    y = y_all.unsqueeze(-1)  # (N_combs, N_cams, K, 1)
 
-    # Build A rows: (n_cams, n_kpts, 4)
-    A1 = P0 - x * P2
+    # Build A matrix rows
+    A1 = P0 - x * P2  # (N_combs, N_cams, K, 4)
     A2 = P1 - y * P2
-
-    # Stack camera equations along rows: (n_cams*2, n_kpts, 4)
-    A = torch.cat([A1, A2], dim=0)
-
-    # Permute to (n_kpts, n_cams*2, 4)
-    A = A.permute(1, 0, 2)
+    A = torch.cat([A1, A2], dim=1)  # (N_combs, N_cams*2, K, 4)
+    A = A.permute(0, 2, 1, 3).reshape(N_combs * K, N_cams * 2, 4)
 
     # Batched SVD: returns U, S, Vh with shapes (n_kpts, m, m)
     # We only need Vh
-    U, S, Vh = torch.linalg.svd(A)
+    _, _, Vh = torch.linalg.svd(A)
 
     # Last column of V (last row of Vh) is solution
-    Q_hom = Vh[:, -1, :]  # (n_kpts, 4)
-
-    # Normalize homogeneous coordinates
-    Q = Q_hom[:, :3] / Q_hom[:, 3:4]
-
+    Q_hom = Vh[..., -1, :]  # (n_kpts, 4)
+    Q_hom = Q_hom.reshape(N_combs, K, 4)
+    Q = Q_hom[..., :3] / Q_hom[..., 3:4]
     return Q
 
-def triangulate_comb(comb, coords, Ks, Ts):
+def triangulate_comb(combs, coords, Ks, Ts):
+    """Vectorized version that handles multiple combinations at once"""
+    device = combs.device
+    batch_size = combs.shape[0]
+    
+    # Create projection matrices for all cameras
     Rt = Ts[:, :3, :]
-    P_all = (Ks @ Rt).squeeze()
-
-    # Filter coords and projection_matrices containing nans
-    coords_filt = [coords[i] for i in range(len(comb)) if not torch.isnan(comb[i]).item()]
-    projection_matrices_filt = [P_all[i] for i in range(len(comb)) if not torch.isnan(comb[i]).item()]
-    N_cams = len(coords_filt)
-
-    if N_cams > 1:
-        coords_tensor = torch.stack(coords_filt)
-        projection_matrices_tensor = torch.stack(projection_matrices_filt)
-        Q_comb = triangulate(coords_tensor, projection_matrices_tensor)
+    P_all = (Ks @ Rt).squeeze()  # (N_cams, 3, 4)
     
-    else:
-        Q_comb = torch.tensor([float('nan'), float('nan'), float('nan')], device='cuda:0').expand(17, 3)
-        return torch.tensor(float("inf"), device=Q_comb.device), comb, Q_comb
+    # Create mask for valid cameras
+    valid_mask = ~torch.isnan(combs)  # (batch_size, N_cams)
     
-    # Reprojection
-    q_calc, _ = project_points(Q_comb.unsqueeze(0), projection_matrices_tensor.unsqueeze(0))
-
-    #error = torch.sqrt(torch.nn.functional.mse_loss(coords_tensor, q_calc))
-    error = get_loss(coords_tensor.unsqueeze(0), q_calc)
- 
-    return error, comb, Q_comb
+    # Count valid cameras per combination
+    valid_counts = valid_mask.sum(dim=1)  # (batch_size,)
+    valid_combinations = valid_counts > 1
+    
+    # Initialize outputs
+    Q_combs = torch.full((batch_size, 17, 3), float('nan'), device=device)
+    errors = torch.full((batch_size,), float('inf'), device=device)
+    
+    if not valid_combinations.any():
+        return errors, combs, Q_combs
+        
+    # Handle valid combinations
+    coords_expanded = coords.unsqueeze(0)  # (1, N_cams, 17, 2)
+    P_expanded = P_all.unsqueeze(0)       # (1, N_cams, 3, 4)
+    
+    # Expand to batch size
+    coords_batch = coords_expanded.expand(batch_size, -1, -1, -1)  # (batch_size, N_cams, 17, 2)
+    P_batch = P_expanded.expand(batch_size, -1, -1, -1)           # (batch_size, N_cams, 3, 4)
+    
+    # Create masked versions where invalid cameras are zeroed out
+    mask_expanded = valid_mask.unsqueeze(-1).unsqueeze(-1)  # (batch_size, N_cams, 1, 1)
+    coords_masked = coords_batch * mask_expanded             # (batch_size, N_cams, 17, 2)
+    P_masked = P_batch * mask_expanded.expand(-1, -1, 3, 4) # (batch_size, N_cams, 3, 4)
+    
+    # Triangulate valid combinations
+    Q_valid = triangulate(coords_masked[valid_combinations], P_masked[valid_combinations])
+    
+    # Compute reprojection
+    q_calc, _ = project_points(Q_valid, P_masked[valid_combinations])
+    
+    # Compute errors for valid combinations
+    errors_valid = get_loss(coords_masked[valid_combinations], q_calc)
+    
+    # Assign results back to full tensors
+    Q_combs[valid_combinations] = Q_valid
+    errors[valid_combinations] = errors_valid
+    
+    return errors, combs, Q_combs
 
 def find_best_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking = 50):
     """
@@ -541,7 +476,6 @@ def find_best_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking
         confidence_scores: (N,) array of floats
 
     """
-
     min_cameras_for_triangulation = 3
 
     personsIDs_comb = persons_combinations(keypoints_per_view)
@@ -551,8 +485,9 @@ def find_best_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking
     ERROR = torch.full((B, 1), torch.nan, dtype=torch.float32, device=device)
     COORDS = torch.full((B, 8, 17, 2), torch.nan, dtype=torch.float32, device=device)
     Q = torch.full((B, 17, 3), torch.nan, dtype=torch.float32, device=device)
+    CAMS = torch.full((B, 8), 1, dtype=bool, device=device)
 
-    for b, personsIDs_comb_batch in enumerate(personsIDs_comb):
+    """ for b, personsIDs_comb_batch in enumerate(personsIDs_comb):
         best_error = float("inf")
         best_Q = None
         best_coords = None
@@ -569,16 +504,15 @@ def find_best_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking
 
                 # For each persons combination, create subsets with "nb_cams_off" cameras excluded
                 id_cams_off = list(it.combinations(range(len(combination)), nb_cams_off))
-                combinations_with_cams_off = torch.from_numpy(np.array([combination]*len(id_cams_off))) #, device='cpu')
-                for i, id in enumerate(id_cams_off):
-                    combinations_with_cams_off[i,id] = float('nan')
+                combinations_with_cams_off = torch.from_numpy(np.array([combination]*len(id_cams_off))).to(device)
+                for i, off_ids in enumerate(id_cams_off):
+                    combinations_with_cams_off[i, list(off_ids)] = float('nan')
 
                 # Try all subsets
                 error_comb_all, comb_all, Q_comb_all = [], [], []
                 for comb in combinations_with_cams_off:
                     error_comb, comb, Q_comb = triangulate_comb(comb, coords, Ks[b], Ts[b])
                     error_comb_all.append(error_comb)
-                    comb_all.append(comb)
                     Q_comb_all.append(Q_comb)
 
                 error_comb_all = torch.stack(error_comb_all)
@@ -587,8 +521,9 @@ def find_best_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking
 
                 if error_min < best_error:
                     best_error = error_min
-                    best_Q = torch.stack([Q_comb_all[idx_best]]).squeeze()
+                    best_Q = Q_comb_all[idx_best]
                     best_coords = coords
+                    best_cams_off = id_cams_off[idx_best]
                 
             nb_cams_off += 1
 
@@ -596,8 +531,150 @@ def find_best_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking
             ERROR[b] = best_error
             COORDS[b] = best_coords
             Q[b] = best_Q
-        else:
-            print(f'Error is too big: {best_error:.0f} pix.')
+            CAMS[b, best_cams_off] = 0
+        #else:
+            #print(f'Error is too big: {best_error:.0f} pix.') """
+    
+    for b, personsIDs_comb_batch in enumerate(personsIDs_comb):
+        total_start = time.perf_counter()
+
+        best_error = float("inf")
+        best_Q = None
+        best_coords = None
+
+        n_cams = 8
+        nb_cams_off = 0
+        error_min = float('inf')
+
+        # Track timing stats
+        timing = {
+            "get_persons": 0.0,
+            "combinations_off": 0.0,
+            "triangulate": 0.0,
+            "best_update": 0.0,
+            "while_loop": 0.0
+        }
+
+        while_start = time.perf_counter()
+        while n_cams - nb_cams_off >= min_cameras_for_triangulation:
+            for combination in personsIDs_comb_batch:
+                t0 = time.perf_counter()
+                coords, scores = get_persons(keypoints_per_view, combination, b)
+                timing["get_persons"] += time.perf_counter() - t0
+
+                # --- Create subsets with "nb_cams_off" cameras excluded ---
+                t1 = time.perf_counter()
+                """ id_cams_off = list(it.combinations(range(len(combination)), nb_cams_off))
+                combinations_with_cams_off = torch.from_numpy(
+                    np.array([combination] * len(id_cams_off))
+                ).to(device)
+                for i, off_ids in enumerate(id_cams_off):
+                    combinations_with_cams_off[i, list(off_ids)] = float('nan') """
+                # Generate all subsets (same device)
+                id_cams_off = list(it.combinations(range(len(combination)), nb_cams_off))
+                id_cams_off = torch.tensor(id_cams_off, dtype=torch.int64, device=device)  # shape: (n_combos, nb_cams_off)
+
+                # Repeat the combination
+                combinations_with_cams_off = combination.repeat(len(id_cams_off), 1).clone()  # (n_combos, n_cams)
+
+                # Build boolean mask (same device)
+                mask = torch.zeros_like(combinations_with_cams_off, dtype=torch.bool, device=device)
+
+                # Fill mask at once
+                mask.scatter_(1, id_cams_off, True)
+
+                # Apply NaNs
+                combinations_with_cams_off = combinations_with_cams_off.to(device)
+                combinations_with_cams_off = combinations_with_cams_off.masked_fill(mask, float('nan'))
+
+                timing["combinations_off"] += time.perf_counter() - t1
+
+                # --- Triangulate all subsets at once ---
+                t2 = time.perf_counter()
+                error_comb_all, _, Q_comb_all = triangulate_comb(combinations_with_cams_off, coords, Ks[b], Ts[b])
+                timing["triangulate"] += time.perf_counter() - t2
+
+                # --- Evaluate results ---
+                t3 = time.perf_counter()
+                error_min = torch.min(error_comb_all)  # error_comb_all is already a tensor
+                idx_best = torch.argmin(error_comb_all)
+
+                if error_min < best_error:
+                    best_error = error_min
+                    best_Q = Q_comb_all[idx_best]
+                    best_coords = coords
+                    best_cams_off = id_cams_off[idx_best]
+                timing["best_update"] += time.perf_counter() - t3
+
+            nb_cams_off += 1
+        timing["while_loop"] += time.perf_counter() - while_start
+
+        # --- Save best results ---
+        if best_error < error_threshold_tracking:
+            ERROR[b] = best_error
+            COORDS[b] = best_coords
+            Q[b] = best_Q
+            CAMS[b, best_cams_off] = 0
+
+        # --- Print timing summary per batch ---
+        total_time = time.perf_counter() - total_start
+        """ print(
+            f"[Batch {b}] Total: {total_time:.3f}s | "
+            f"get_persons: {timing['get_persons']:.3f}s | "
+            f"combinations_off: {timing['combinations_off']:.3f}s | "
+            f"triangulate: {timing['triangulate']:.3f}s | "
+            f"best_update: {timing['best_update']:.3f}s | "
+            f"while_loop: {timing['while_loop']:.3f}s"
+        ) """
+        
+    return ERROR, COORDS, Q, CAMS
+
+
+
+def find_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking = 50):
+    """
+    Find the triangulation using the best detections of ALL cameras.
+    
+    Args:
+        keypoints: (8, N, 17) list of detections by cameras
+        Ks: intrinsics matrices
+        Ts: projection matrices
+
+    Returns:
+        points_3d: (N, 3) array of 3D points
+        confidence_scores: (N,) array of floats
+
+    """
+    personsIDs_comb = persons_combinations(keypoints_per_view)
+    device = keypoints_per_view.device
+    B = len(personsIDs_comb)
+
+    ERROR = torch.full((B, 1), torch.nan, dtype=torch.float32, device=device)
+    COORDS = torch.full((B, 8, 17, 2), torch.nan, dtype=torch.float32, device=device)
+    Q = torch.full((B, 17, 3), torch.nan, dtype=torch.float32, device=device)
+
+    for b, personsIDs_comb_batch in enumerate(personsIDs_comb):
+        best_error = float("inf")
+        best_Q = None
+        best_coords = None
+
+        # Try all persons combinations
+        for combination in personsIDs_comb_batch:
+            #  Get coords
+            coords, scores = get_persons(keypoints_per_view, combination, b)
+            error_comb, comb, Q_comb = triangulate_comb(combination, coords, Ks[b], Ts[b])
+
+            if error_comb < best_error:
+                best_error = error_comb
+                best_Q = Q_comb
+                best_coords = coords
+
+        if best_error < error_threshold_tracking:
+            ERROR[b] = best_error
+            COORDS[b] = best_coords
+            Q[b] = best_Q
+        #else:
+            #print(f'Error is too big: {best_error:.0f} pix.')
     
     return ERROR, COORDS, Q
 
@@ -646,3 +723,21 @@ def project_points(points_3d, P, im_size=(1920, 1080)):
         valid_mask_all &= (x >= 0) & (x < width) & (y >= 0) & (y < height)
 
     return points_2d_all, valid_mask_all
+
+
+def show_keypoints_on_im(images, detections, reprojection, savepath, show=False):
+    for v, (im, pt_d, pt_r) in enumerate(zip(images, detections, reprojection)):
+        im = np.transpose(im, axes=(1,2,0))
+        im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
+        plt.figure(figsize=(10,6))
+        plt.imshow(im)
+        plt.scatter(*pt_d.T, s=2, color='orange', label='detection')
+        plt.scatter(*pt_r.T, s=2, color='green', label='reprojection')
+
+        plt.legend()
+        plt.axis('off')
+        
+        plt.savefig(f'{savepath}_view{v}.png', bbox_inches='tight', pad_inches=0)
+        if show:
+            plt.show()
+        plt.close()

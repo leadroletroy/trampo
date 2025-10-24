@@ -17,6 +17,8 @@ __pycache__/
 *.jpg
 *.npz
 *.pth
+*.onnx
+*.pkl
 
 # Ignorer dossiers spécifiques
 4DHumans/4D-Humans
@@ -58,3 +60,7 @@ metrics/figs
 metrics/errors
 
 MODELS_2D3D/finetuning_multiview/YOLO
+MODELS_2D3D/rtmpose/rtmpose-l_simcc-body7_pt-body7_420e-256x192-4dba18fc_20230504/end2end.onnx
+MODELS_2D3D/rtmpose/rtmpose-l_simcc-body7_pt-body7_420e-384x288-3f5a1437_20230504/end2end.onnx
+
+MODELS_2D3D/finetuning_multiview/runs
