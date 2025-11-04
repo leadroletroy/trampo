@@ -174,13 +174,12 @@ def predict_multiview_with_grad(
     freeze_bn=False,
     T=0.1,
     num_kpts=17,
-    detections=None,  # <-- NEW optional mask (B,V) of bools
+    detections=None,
 ):
     """
     Batched multi-view inference so pose_estimator sees many crops at once.
     Only processes views where detections[b,v] == True if detections is given.
     """
-
     device = device or ("cuda:0" if torch.cuda.is_available() else "cpu")
     pose_estimator = pose_estimator.to(device)
 
@@ -257,6 +256,7 @@ def predict_multiview_with_grad(
     with torch.set_grad_enabled(training):
         batch = torch.stack(crop_tensors, dim=0).to(device)
         out_x, out_y = pose_estimator(batch, None, mode='tensor')
+
         keypoints_batch, scores_batch = decode_simcc(out_x, out_y, input_size=model_input_size, T=T)
 
         local_indices = {b: {v: 0 for v in range(V)} for b in range(B)}
@@ -271,6 +271,7 @@ def predict_multiview_with_grad(
             kp_bbox = map_keypoints_to_bbox(kp_crop, meta['scale'], meta['pads'])
             kp_img = kp_bbox + meta['origin']
             data = torch.cat([kp_img, sc.unsqueeze(-1)], dim=1)
+
             keypoints_all[b, v, local_idx] = data
 
     return keypoints_all
@@ -308,7 +309,7 @@ def persons_combinations(keypoints_per_view):
         ranges = [range(int(n.item())) for n in nb_for_range]
 
         # Generate all combinations of person indices
-        combs = torch.tensor(list(it.product(*ranges)), dtype=torch.float32)
+        combs = torch.tensor(list(it.product(*ranges)), dtype=keypoints_per_view.dtype, device=keypoints_per_view.device)
 
         # Set NaN where no detection occurred
         if no_detect_mask.any():
@@ -334,30 +335,27 @@ def get_persons(keypoints_all, combination, batch_idx):
         keypoints_selected: (V, K, 2)
         scores_selected: (V, K)
     """
-    B, V, N_local, K, D = keypoints_all.shape
+    B, V, N, K, D = keypoints_all.shape
     assert D >= 3, "Expected last dim to contain (x, y, score)."
 
     selected_keypoints = []
-    selected_scores = []
 
     for v in range(V):
         person_idx = combination[v]
         if not math.isnan(person_idx):
             person_idx = int(person_idx.item())
             det = keypoints_all[batch_idx, v, person_idx]  # (K, 3)
-            selected_keypoints.append(det[:, :2])
-            selected_scores.append(det[:, 2])
+            selected_keypoints.append(det)
         else:
-            selected_keypoints.append(torch.zeros((K, 2), device=keypoints_all.device))
-            selected_scores.append(torch.zeros((K,), device=keypoints_all.device))
+            selected_keypoints.append(torch.full((K, 3), float('nan'), device=keypoints_all.device))
 
-    keypoints_selected = torch.stack(selected_keypoints, dim=0)  # (V, K, 2)
-    scores_selected = torch.stack(selected_scores, dim=0)        # (V, K)
+    keypoints_selected = torch.stack(selected_keypoints, dim=0)  # (V, K, 3)
 
-    return keypoints_selected, scores_selected
+    return keypoints_selected
 
 def get_loss(pred, reproj):
-    mask = (pred != 0).any(dim=-1) & (reproj != 0).any(dim=-1)  # (N_cams, K)
+    #mask = (pred != 0).any(dim=-1) & (reproj != 0).any(dim=-1)  # (N_cams, K)
+    mask = (~torch.isnan(pred)).any(dim=-1) & (~torch.isnan(reproj)).any(dim=-1)  # (N_cams, K)
     mask = mask.unsqueeze(-1)  # (N_cams, K, 1) so it can broadcast with coords
 
     # Apply mask
@@ -409,56 +407,88 @@ def triangulate(points, P):
     Q = Q_hom[..., :3] / Q_hom[..., 3:4]
     return Q
 
+def triangulate_weighted(points, P):
+    """
+    Triangulate 3D points from multiple views, weighted by keypoint confidences.
+
+    Args:
+        points: torch.Tensor (N_combs, N_cams, K, 2)
+            2D keypoints from each camera
+        P: torch.Tensor (N_combs, N_cams, 3, 4)
+            Projection matrices
+        confidences: torch.Tensor (N_combs, N_cams, K)
+            Confidence/likelihood for each keypoint in each view
+
+    Returns:
+        Q: torch.Tensor (N_combs, K, 3)
+            Triangulated 3D points
+    """
+    N_combs, N_cams, K, _ = points.shape
+    x_all = points[..., 0]  # (N_combs, N_cams, K)
+    y_all = points[..., 1]
+    confidences = points[..., 2]  # (N_combs, N_cams, K)
+
+    # Expand P to match points shape
+    P_exp = P.unsqueeze(2).expand(-1, -1, K, -1, -1)  # (N_combs, N_cams, K, 3, 4)
+    P0, P1, P2 = P_exp[..., 0, :], P_exp[..., 1, :], P_exp[..., 2, :]
+
+    x = x_all.unsqueeze(-1)  # (N_combs, N_cams, K, 1)
+    y = y_all.unsqueeze(-1)
+
+    # Core DLT rows
+    A1 = P0 - x * P2  # (N_combs, N_cams, K, 4)
+    A2 = P1 - y * P2
+
+    # Apply confidence weights like Pose2Sim
+    w = confidences.unsqueeze(-1)  # (N_combs, N_cams, K, 1)
+    A1 = A1 * w
+    A2 = A2 * w
+
+    # Stack and reshape for SVD
+    A = torch.cat([A1, A2], dim=1)  # (N_combs, 2*N_cams, K, 4)
+    A = A.permute(0, 2, 1, 3).reshape(N_combs * K, 2 * N_cams, 4)
+
+    # Solve via SVD (batched)
+    _, _, Vh = torch.linalg.svd(A)
+    Q_hom = Vh[..., -1, :]  # (N_combs*K, 4)
+    Q_hom = Q_hom.reshape(N_combs, K, 4)
+
+    # Convert from homogeneous coordinates
+    Q = Q_hom[..., :3] / Q_hom[..., 3:].clamp(min=1e-8)
+    return Q
+
+
 def triangulate_comb(combs, coords, Ks, Ts):
-    """Vectorized version that handles multiple combinations at once"""
-    device = combs.device
-    batch_size = combs.shape[0]
+    """
+    Vectorized version that handles multiple combinations at once
+    
+    Args:
+        combs: (N_combs, N_cams) combinations of person IDs (NaN = no detection)
+        coords: (N_cams, 17, 2) 2D keypoints for all cameras
+        Ks: (N_cams, 3, 3) intrinsic matrices
+        Ts: (N_cams, 3, 4) extrinsic matrices
+    Returns:
+        errors_valid: (N_combs,) reprojection errors for each combination
+        combs: (N_combs, N_cams) input combinations
+        Q_valid: (N_combs, 17, 3) triangulated 3D points for each combination
+    """
+    n_combs = combs.shape[0]
     
     # Create projection matrices for all cameras
     Rt = Ts[:, :3, :]
     P_all = (Ks @ Rt).squeeze()  # (N_cams, 3, 4)
     
-    # Create mask for valid cameras
-    valid_mask = ~torch.isnan(combs)  # (batch_size, N_cams)
-    
-    # Count valid cameras per combination
-    valid_counts = valid_mask.sum(dim=1)  # (batch_size,)
-    valid_combinations = valid_counts > 1
-    
-    # Initialize outputs
-    Q_combs = torch.full((batch_size, 17, 3), float('nan'), device=device)
-    errors = torch.full((batch_size,), float('inf'), device=device)
-    
-    if not valid_combinations.any():
-        return errors, combs, Q_combs
-        
-    # Handle valid combinations
-    coords_expanded = coords.unsqueeze(0)  # (1, N_cams, 17, 2)
-    P_expanded = P_all.unsqueeze(0)       # (1, N_cams, 3, 4)
-    
-    # Expand to batch size
-    coords_batch = coords_expanded.expand(batch_size, -1, -1, -1)  # (batch_size, N_cams, 17, 2)
-    P_batch = P_expanded.expand(batch_size, -1, -1, -1)           # (batch_size, N_cams, 3, 4)
-    
-    # Create masked versions where invalid cameras are zeroed out
-    mask_expanded = valid_mask.unsqueeze(-1).unsqueeze(-1)  # (batch_size, N_cams, 1, 1)
-    coords_masked = coords_batch * mask_expanded             # (batch_size, N_cams, 17, 2)
-    P_masked = P_batch * mask_expanded.expand(-1, -1, 3, 4) # (batch_size, N_cams, 3, 4)
-    
-    # Triangulate valid combinations
-    Q_valid = triangulate(coords_masked[valid_combinations], P_masked[valid_combinations])
-    
-    # Compute reprojection
-    q_calc, _ = project_points(Q_valid, P_masked[valid_combinations])
+    # Expand P to combs size
+    P_expanded = P_all.unsqueeze(0).expand(n_combs, -1, -1, -1)    # (n_combs, N_cams, 3, 4)
+
+    Q_valid = triangulate(coords, P_expanded)
+    q_calc, _ = project_points(Q_valid, P_expanded)
     
     # Compute errors for valid combinations
-    errors_valid = get_loss(coords_masked[valid_combinations], q_calc)
-    
-    # Assign results back to full tensors
-    Q_combs[valid_combinations] = Q_valid
-    errors[valid_combinations] = errors_valid
-    
-    return errors, combs, Q_combs
+    coords = coords[..., :2]
+    errors = torch.nanmean(torch.abs(coords - q_calc), dim=(-1, -2, -3))
+
+    return errors, Q_valid
 
 def find_best_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking = 50):
     """
@@ -477,7 +507,6 @@ def find_best_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking
 
     """
     min_cameras_for_triangulation = 3
-
     personsIDs_comb = persons_combinations(keypoints_per_view)
     device = keypoints_per_view.device
     B = len(personsIDs_comb)
@@ -486,45 +515,72 @@ def find_best_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking
     COORDS = torch.full((B, 8, 17, 2), torch.nan, dtype=torch.float32, device=device)
     Q = torch.full((B, 17, 3), torch.nan, dtype=torch.float32, device=device)
     CAMS = torch.full((B, 8), 1, dtype=bool, device=device)
-
-    """ for b, personsIDs_comb_batch in enumerate(personsIDs_comb):
+    
+    for b, personsIDs_comb_batch in enumerate(personsIDs_comb):
         best_error = float("inf")
         best_Q = None
         best_coords = None
 
-        n_cams = 8
-        error_min = float('inf') 
-        nb_cams_off = 0 # cameras will be taken-off until the reprojection error is under threshold
+        # Skip early if all NaN across all views
+        if torch.isnan(keypoints_per_view[b]).all():
+            continue
+
+        # ---- Turn off cameras with NaN persons IDs ----
+        # personsIDs_comb_batch: shape (n_persons, n_cams)
+        nan_mask = torch.isnan(personsIDs_comb_batch)  # True where invalid
+        valid_cams_mask = ~nan_mask.all(dim=0)         # camera valid if at least one person ID is not NaN
+        CAMS[b] = valid_cams_mask                      # mark active/inactive cameras
+
+        n_cams = valid_cams_mask.sum().item()
+        nb_cams_off = (~valid_cams_mask).sum().item()
+
+        error_min = float('inf')
+
+        # Now only use active cameras for triangulation
+        active_cam_indices = torch.where(valid_cams_mask)[0]
 
         while n_cams - nb_cams_off >= min_cameras_for_triangulation:
-            # Try all persons combinations
             for combination in personsIDs_comb_batch:
-                #  Get coords
-                coords, scores = get_persons(keypoints_per_view, combination, b)
+                coords = get_persons(keypoints_per_view, combination, b)
 
-                # For each persons combination, create subsets with "nb_cams_off" cameras excluded
-                id_cams_off = list(it.combinations(range(len(combination)), nb_cams_off))
-                combinations_with_cams_off = torch.from_numpy(np.array([combination]*len(id_cams_off))).to(device)
-                for i, off_ids in enumerate(id_cams_off):
-                    combinations_with_cams_off[i, list(off_ids)] = float('nan')
+                if torch.isnan(coords).all():
+                    continue
 
-                # Try all subsets
-                error_comb_all, comb_all, Q_comb_all = [], [], []
-                for comb in combinations_with_cams_off:
-                    error_comb, comb, Q_comb = triangulate_comb(comb, coords, Ks[b], Ts[b])
-                    error_comb_all.append(error_comb)
-                    Q_comb_all.append(Q_comb)
+                # Build combinations excluding inactive cameras
+                id_cams_off = list(it.combinations(range(len(active_cam_indices)), nb_cams_off)) #possible cameras to turn off
+                if not id_cams_off:
+                    continue
 
-                error_comb_all = torch.stack(error_comb_all)
+                id_cams_off = torch.tensor(id_cams_off, dtype=torch.int64, device=device) #convert to tensor
+                combinations_with_cams_off = combination.repeat(len(id_cams_off), 1) #repeat for all combinations
+                mask = torch.zeros_like(combinations_with_cams_off, dtype=torch.bool, device=device) #empty mask for cameras to turn off
+                mask.scatter_(1, id_cams_off, True) #mark cameras to turn off in the mask
+                combinations_with_cams_off = combinations_with_cams_off.masked_fill(mask, float('nan')) #set cameras to turn off to nan
+                
+                # Mask coords where cams are off
+                coords_masked = coords.clone()
+                nan_mask = torch.isnan(combinations_with_cams_off)
+                nan_mask_expanded = nan_mask.unsqueeze(-1).unsqueeze(-1).expand(-1, -1, coords.shape[-2], coords.shape[-1])
+                coords_masked = coords.repeat(len(id_cams_off), 1, 1, 1).masked_fill(nan_mask_expanded, float('nan'))
+
+                # Now triangulate only with valid coords
+                error_comb_all, Q_comb_all = triangulate_comb(
+                    combinations_with_cams_off, coords_masked, Ks[b], Ts[b])
+                #print('Triangulation errors:', error_comb_all)
+
+                # Skip invalid outputs
+                if torch.isnan(error_comb_all).all():
+                    continue
+
                 error_min = torch.min(error_comb_all)
                 idx_best = torch.argmin(error_comb_all)
 
                 if error_min < best_error:
                     best_error = error_min
                     best_Q = Q_comb_all[idx_best]
-                    best_coords = coords
+                    best_coords = coords[..., :2]
                     best_cams_off = id_cams_off[idx_best]
-                
+
             nb_cams_off += 1
 
         if best_error < error_threshold_tracking:
@@ -532,104 +588,8 @@ def find_best_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking
             COORDS[b] = best_coords
             Q[b] = best_Q
             CAMS[b, best_cams_off] = 0
-        #else:
-            #print(f'Error is too big: {best_error:.0f} pix.') """
-    
-    for b, personsIDs_comb_batch in enumerate(personsIDs_comb):
-        total_start = time.perf_counter()
 
-        best_error = float("inf")
-        best_Q = None
-        best_coords = None
-
-        n_cams = 8
-        nb_cams_off = 0
-        error_min = float('inf')
-
-        # Track timing stats
-        timing = {
-            "get_persons": 0.0,
-            "combinations_off": 0.0,
-            "triangulate": 0.0,
-            "best_update": 0.0,
-            "while_loop": 0.0
-        }
-
-        while_start = time.perf_counter()
-        while n_cams - nb_cams_off >= min_cameras_for_triangulation:
-            for combination in personsIDs_comb_batch:
-                t0 = time.perf_counter()
-                coords, scores = get_persons(keypoints_per_view, combination, b)
-                timing["get_persons"] += time.perf_counter() - t0
-
-                # --- Create subsets with "nb_cams_off" cameras excluded ---
-                t1 = time.perf_counter()
-                """ id_cams_off = list(it.combinations(range(len(combination)), nb_cams_off))
-                combinations_with_cams_off = torch.from_numpy(
-                    np.array([combination] * len(id_cams_off))
-                ).to(device)
-                for i, off_ids in enumerate(id_cams_off):
-                    combinations_with_cams_off[i, list(off_ids)] = float('nan') """
-                # Generate all subsets (same device)
-                id_cams_off = list(it.combinations(range(len(combination)), nb_cams_off))
-                id_cams_off = torch.tensor(id_cams_off, dtype=torch.int64, device=device)  # shape: (n_combos, nb_cams_off)
-
-                # Repeat the combination
-                combinations_with_cams_off = combination.repeat(len(id_cams_off), 1).clone()  # (n_combos, n_cams)
-
-                # Build boolean mask (same device)
-                mask = torch.zeros_like(combinations_with_cams_off, dtype=torch.bool, device=device)
-
-                # Fill mask at once
-                mask.scatter_(1, id_cams_off, True)
-
-                # Apply NaNs
-                combinations_with_cams_off = combinations_with_cams_off.to(device)
-                combinations_with_cams_off = combinations_with_cams_off.masked_fill(mask, float('nan'))
-
-                timing["combinations_off"] += time.perf_counter() - t1
-
-                # --- Triangulate all subsets at once ---
-                t2 = time.perf_counter()
-                error_comb_all, _, Q_comb_all = triangulate_comb(combinations_with_cams_off, coords, Ks[b], Ts[b])
-                timing["triangulate"] += time.perf_counter() - t2
-
-                # --- Evaluate results ---
-                t3 = time.perf_counter()
-                error_min = torch.min(error_comb_all)  # error_comb_all is already a tensor
-                idx_best = torch.argmin(error_comb_all)
-
-                if error_min < best_error:
-                    best_error = error_min
-                    best_Q = Q_comb_all[idx_best]
-                    best_coords = coords
-                    best_cams_off = id_cams_off[idx_best]
-                timing["best_update"] += time.perf_counter() - t3
-
-            nb_cams_off += 1
-        timing["while_loop"] += time.perf_counter() - while_start
-
-        # --- Save best results ---
-        if best_error < error_threshold_tracking:
-            ERROR[b] = best_error
-            COORDS[b] = best_coords
-            Q[b] = best_Q
-            CAMS[b, best_cams_off] = 0
-
-        # --- Print timing summary per batch ---
-        total_time = time.perf_counter() - total_start
-        """ print(
-            f"[Batch {b}] Total: {total_time:.3f}s | "
-            f"get_persons: {timing['get_persons']:.3f}s | "
-            f"combinations_off: {timing['combinations_off']:.3f}s | "
-            f"triangulate: {timing['triangulate']:.3f}s | "
-            f"best_update: {timing['best_update']:.3f}s | "
-            f"while_loop: {timing['while_loop']:.3f}s"
-        ) """
-        
     return ERROR, COORDS, Q, CAMS
-
-
 
 def find_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking = 50):
     """
@@ -661,8 +621,8 @@ def find_triangulation(keypoints_per_view, Ks, Ts, error_threshold_tracking = 50
         # Try all persons combinations
         for combination in personsIDs_comb_batch:
             #  Get coords
-            coords, scores = get_persons(keypoints_per_view, combination, b)
-            error_comb, comb, Q_comb = triangulate_comb(combination, coords, Ks[b], Ts[b])
+            coords = get_persons(keypoints_per_view, combination, b)
+            error_comb, Q_comb = triangulate_comb(combination.unsqueeze(0).to(device), coords, Ks[b], Ts[b])
 
             if error_comb < best_error:
                 best_error = error_comb
@@ -725,14 +685,30 @@ def project_points(points_3d, P, im_size=(1920, 1080)):
     return points_2d_all, valid_mask_all
 
 
-def show_keypoints_on_im(images, detections, reprojection, savepath, show=False):
-    for v, (im, pt_d, pt_r) in enumerate(zip(images, detections, reprojection)):
+def show_keypoints_on_im(images, detections, prediction, gt, reprojection, savepath, show=False):
+    pred = prediction.cpu().detach().numpy()[0]
+    det = detections.cpu().detach().numpy()[0]
+    reproj = reprojection.cpu().detach().numpy()[0]
+    gt = gt.cpu().detach().numpy()[0]
+
+    for v, (im, pts_d, pt_p, pt_r, pt_gt) in enumerate(zip(images, det, pred, reproj, gt)):
         im = np.transpose(im, axes=(1,2,0))
         im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
         plt.figure(figsize=(10,6))
         plt.imshow(im)
-        plt.scatter(*pt_d.T, s=2, color='orange', label='detection')
-        plt.scatter(*pt_r.T, s=2, color='green', label='reprojection')
+        plt.scatter(*pt_p.T, s=2, color='b', label='prediction (athlete)')
+        plt.scatter(*pt_r.T, s=2, color='g', label='reprojection (athlete)')
+        plt.scatter(*pt_gt.T, s=2, color='c', label='ground truth (athlete)')
+
+        cmap = plt.cm.autumn  # or try 'cool', 'viridis', 'winter', etc.
+        n = len(pts_d)
+        colors = [cmap(i / max(1, n - 1)) for i in range(n)]
+
+        for i, pt_d in enumerate(pts_d):
+            pt_d = pt_d[:, 0:2]
+            if not (pt_d == pt_p).all():  # avoid overplotting
+                label = 'detections' if i == 0 else None
+                plt.scatter(*pt_d.T, s=2, color=colors[i], label=label)
 
         plt.legend()
         plt.axis('off')
@@ -741,3 +717,18 @@ def show_keypoints_on_im(images, detections, reprojection, savepath, show=False)
         if show:
             plt.show()
         plt.close()
+
+
+def nanmin(x, dim):
+    mask = torch.isnan(x)
+    x_safe = torch.where(mask, torch.full_like(x, float('inf')), x)
+    val, _ = torch.min(x_safe, dim=dim)
+    val[torch.isinf(val)] = torch.nan  # restore NaN if all entries were NaN
+    return val
+
+def nanmax(x, dim):
+    mask = torch.isnan(x)
+    x_safe = torch.where(mask, torch.full_like(x, float('-inf')), x)
+    val, _ = torch.max(x_safe, dim=dim)
+    val[torch.isinf(val)] = torch.nan  # restore NaN if all entries were NaN
+    return val
