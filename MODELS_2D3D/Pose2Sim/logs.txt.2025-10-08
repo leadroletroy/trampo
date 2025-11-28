@@ -1,0 +1,1138 @@
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 02. June 2025, 09:11:11
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 02. June 2025, 09:26:09
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 02. June 2025, 09:27:18
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 02. June 2025, 09:42:16
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 02. June 2025, 09:47:56
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Pose estimation for Pose2Sim, for all frames.
+On Monday 02. June 2025, 09:53:22
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Cannot read video. Frame rate will be set to 60 fps.
+Inference run only every 4 frames. Inbetween, pose estimation tracks previously detected points.
+
+Estimating pose...
+Using COCO_17 model (body) for pose estimation.
+
+Valid CUDA installation found: using ONNXRuntime backend with GPU.
+
+Pose tracking set up for "Body" model.
+Mode: balanced.
+Tracking is performed with sports2d.
+
+Found image folders with mp4 extension.
+
+---------------------------------------------------------------------
+Pose estimation for Pose2Sim, for all frames.
+On Monday 02. June 2025, 09:54:54
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Inference run only every 4 frames. Inbetween, pose estimation tracks previously detected points.
+
+Estimating pose...
+Using COCO_17 model (body) for pose estimation.
+
+Valid CUDA installation found: using ONNXRuntime backend with GPU.
+
+Pose tracking set up for "Body" model.
+Mode: balanced.
+Tracking is performed with sports2d.
+
+Found video files with mp4 extension.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/1_partie_0429_000-Camera2_M11140_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/1_partie_0429_000-Camera3_M11141_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/1_partie_0429_000-Camera4_M11458_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/1_partie_0429_000-Camera5_M11459_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/1_partie_0429_000-Camera6_M11461_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/1_partie_0429_000-Camera7_M11462_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/1_partie_0429_000-Camera8_M11463_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/1_partie_0429_000_Camera1_M11139_pose.mp4.
+
+Pose estimation took 00h04m34s.
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 09:59:28
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+Neck not found in COCO_17, consider editing tracked_keypoint in Config.toml. Tracking Nose instead.
+
+--> Mean reprojection error for Neck point on all frames is 26.8 px, which roughly corresponds to 161126.0 mm. 
+--> In average, 6.43 cameras had to be excluded to reach the demanded 20 px error threshold after excluding points with likelihood below 0.3.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h01m43s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:03:02
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Pose estimation for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:08:40
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Inference run only every 2 frames. Inbetween, pose estimation tracks previously detected points.
+
+Estimating pose...
+Using COCO_17 model (body) for pose estimation.
+
+Valid CUDA installation found: using ONNXRuntime backend with GPU.
+Skipping pose estimation as it has already been done. Set overwrite_pose to true in Config.toml if you want to run it again.
+
+Pose estimation took 00h00m00s.
+
+
+---------------------------------------------------------------------
+Camera synchronization for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:08:40
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Synchronization is calculated on the whole sequence. This may take a while.
+All keypoints are used to compute the best synchronization offset.
+These keypoints are filtered with a Butterworth filter (cut-off frequency: 6 Hz, order: 4).
+They are removed when their likelihood is below 0.4.
+
+Synchronizing...
+Selected keypoints: ['RHip', 'RKnee', 'RAnkle', 'LHip', 'LKnee', 'LAnkle', 'Nose', 'RShoulder', 'RElbow', 'RWrist', 'LShoulder', 'LElbow', 'LWrist']
+--> Camera #0: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #1: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #2: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #3: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #4: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #5: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #6: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #7: selected person #0 at time 0.00 ± 2.00 s
+
+--> Camera 1 and 1: 47 frames offset (47 on the selected section), correlation 0.49.
+--> Camera 1 and 1: -67 frames offset (-67 on the selected section), correlation 0.78.
+--> Camera 1 and 1: -119 frames offset (-119 on the selected section), correlation 0.61.
+--> Camera 1 and 1: 5 frames offset (5 on the selected section), correlation 0.77.
+--> Camera 1 and 1: 84 frames offset (84 on the selected section), correlation 0.26.
+--> Camera 1 and 1: -4 frames offset (-4 on the selected section), correlation 0.85.
+--> Camera 1 and 1: 7 frames offset (7 on the selected section), correlation 0.71.
+Saving synchronized json files to the pose-sync folder.
+Synchronized json files saved in /home/lea/vitpose/Pose2Sim/pose-sync.
+
+Synchronization took 00h00m03s.
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:08:43
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+Neck not found in COCO_17, consider editing tracked_keypoint in Config.toml. Tracking Nose instead.
+
+--> Mean reprojection error for Neck point on all frames is 29.3 px, which roughly corresponds to 176156.4 mm. 
+--> In average, 6.48 cameras had to be excluded to reach the demanded 20 px error threshold after excluding points with likelihood below 0.3.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h01m36s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:10:19
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:12:30
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Trimming Participant 0 around frames (479, 1768).
+Interpolation was not possible for person 0. This means that not enough points are available, which is often due to a bad calibration.
+
+Mean reprojection error for RHip is 4.6 px (~ 27.656 m), reached with 6.55 excluded cameras. 
+  Frames 480 to 480, 511 to 516, 518 to 519, 557 to 564, 593 to 594, 597 to 599, 601 to 606, 609 to 612, 625 to 626, 630 to 631, 634 to 634, 643 to 646, 649 to 649, 661 to 662, 669 to 670, 686 to 689, 694 to 694, 702 to 711, 740 to 740, 742 to 742, 745 to 745, 749 to 750, 757 to 757, 766 to 769, 783 to 783, 785 to 785, 793 to 793, 811 to 812, 814 to 818, 840 to 842, 845 to 846, 849 to 849, 861 to 861, 865 to 872, 877 to 877, 880 to 886, 901 to 901, 903 to 904, 915 to 916, 920 to 920, 953 to 953, 957 to 962, 964 to 964, 966 to 968, 974 to 974, 976 to 978, 981 to 983, 985 to 985, 989 to 992, 995 to 995, 997 to 998, 1001 to 1002, 1005 to 1005, 1009 to 1009, 1012 to 1013, 1017 to 1017, 1028 to 1029, 1036 to 1037, 1041 to 1041, 1045 to 1045, 1063 to 1063, 1067 to 1067, 1069 to 1069, 1089 to 1089, 1093 to 1093, 1105 to 1107, 1109 to 1109, 1126 to 1132, 1134 to 1141, 1144 to 1144, 1147 to 1154, 1156 to 1158, 1211 to 1211 were interpolated.
+  Frames 499 to 509, 529 to 540, 545 to 555, 566 to 587, 713 to 732, 821 to 838, 927 to 950, 1160 to 1191 were not interpolated.
+Mean reprojection error for RKnee is 4.2 px (~ 25.251 m), reached with 6.65 excluded cameras. 
+  Frames 480 to 480, 511 to 520, 524 to 524, 542 to 542, 587 to 587, 589 to 591, 593 to 593, 595 to 599, 601 to 606, 609 to 612, 617 to 617, 625 to 625, 627 to 627, 629 to 631, 633 to 633, 643 to 646, 649 to 649, 661 to 662, 669 to 670, 683 to 689, 694 to 694, 702 to 711, 713 to 720, 734 to 734, 745 to 745, 749 to 750, 757 to 757, 768 to 770, 772 to 774, 776 to 777, 779 to 780, 783 to 785, 793 to 793, 796 to 796, 811 to 812, 814 to 818, 840 to 842, 845 to 846, 849 to 849, 861 to 862, 865 to 872, 877 to 877, 881 to 886, 896 to 897, 900 to 904, 915 to 916, 920 to 920, 953 to 953, 973 to 978, 980 to 985, 987 to 987, 989 to 990, 992 to 993, 995 to 995, 997 to 998, 1001 to 1002, 1005 to 1005, 1009 to 1009, 1012 to 1013, 1017 to 1017, 1028 to 1029, 1033 to 1033, 1036 to 1036, 1041 to 1041, 1045 to 1045, 1063 to 1063, 1067 to 1067, 1069 to 1069, 1089 to 1089, 1093 to 1094, 1105 to 1107, 1109 to 1109, 1112 to 1113, 1126 to 1132, 1134 to 1141, 1202 to 1203, 1211 to 1211 were interpolated.
+  Frames 496 to 509, 529 to 540, 544 to 564, 566 to 585, 722 to 732, 821 to 838, 926 to 951, 957 to 969, 1144 to 1191 were not interpolated.
+Mean reprojection error for RAnkle is 4.2 px (~ 25.251 m), reached with 6.66 excluded cameras. 
+  Frames 480 to 480, 490 to 494, 525 to 527, 601 to 607, 609 to 612, 617 to 617, 625 to 625, 635 to 635, 643 to 646, 649 to 649, 661 to 662, 669 to 670, 682 to 689, 693 to 694, 734 to 734, 736 to 738, 740 to 740, 745 to 745, 749 to 751, 753 to 753, 757 to 757, 768 to 769, 776 to 776, 793 to 793, 798 to 798, 800 to 800, 811 to 812, 814 to 818, 840 to 842, 845 to 846, 849 to 850, 865 to 866, 869 to 869, 877 to 877, 881 to 881, 884 to 886, 896 to 897, 900 to 904, 915 to 916, 920 to 923, 973 to 978, 997 to 999, 1001 to 1002, 1005 to 1005, 1009 to 1009, 1012 to 1013, 1017 to 1017, 1028 to 1028, 1036 to 1036, 1045 to 1045, 1063 to 1063, 1067 to 1067, 1069 to 1069, 1089 to 1089, 1093 to 1094, 1101 to 1107, 1109 to 1109, 1112 to 1113, 1184 to 1191, 1202 to 1207, 1211 to 1211, 1221 to 1221 were interpolated.
+  Frames 496 to 509, 511 to 522, 529 to 540, 542 to 585, 587 to 599, 702 to 732, 821 to 838, 926 to 953, 957 to 969, 980 to 995, 1126 to 1158, 1160 to 1182 were not interpolated.
+Mean reprojection error for LHip is 4.7 px (~ 28.257 m), reached with 6.56 excluded cameras. 
+  Frames 480 to 480, 502 to 508, 511 to 516, 519 to 519, 557 to 564, 593 to 595, 597 to 599, 601 to 606, 609 to 612, 625 to 634, 643 to 646, 649 to 649, 659 to 659, 661 to 662, 669 to 670, 686 to 689, 694 to 694, 697 to 698, 737 to 738, 745 to 745, 747 to 747, 749 to 750, 757 to 757, 763 to 763, 783 to 784, 786 to 786, 789 to 789, 801 to 801, 811 to 812, 814 to 818, 840 to 842, 845 to 846, 849 to 849, 861 to 862, 865 to 871, 877 to 877, 880 to 881, 884 to 886, 890 to 890, 897 to 897, 901 to 904, 915 to 916, 953 to 953, 957 to 961, 964 to 964, 966 to 968, 974 to 974, 976 to 978, 981 to 983, 985 to 985, 989 to 990, 992 to 992, 995 to 995, 997 to 998, 1001 to 1002, 1005 to 1005, 1009 to 1009, 1012 to 1013, 1017 to 1017, 1022 to 1022, 1028 to 1030, 1036 to 1036, 1041 to 1041, 1045 to 1045, 1063 to 1063, 1067 to 1067, 1069 to 1069, 1089 to 1089, 1093 to 1093, 1105 to 1107, 1109 to 1109, 1126 to 1127, 1129 to 1132, 1134 to 1141, 1144 to 1144, 1146 to 1154, 1184 to 1191, 1211 to 1211 were interpolated.
+  Frames 529 to 540, 545 to 555, 566 to 587, 702 to 732, 821 to 838, 929 to 950, 1156 to 1182 were not interpolated.
+Mean reprojection error for LKnee is 3.8 px (~ 22.846 m), reached with 6.65 excluded cameras. 
+  Frames 480 to 480, 511 to 518, 520 to 520, 524 to 524, 601 to 606, 609 to 612, 625 to 634, 643 to 646, 649 to 649, 659 to 659, 661 to 662, 669 to 670, 702 to 711, 745 to 745, 749 to 750, 757 to 757, 762 to 763, 783 to 783, 786 to 786, 790 to 791, 793 to 793, 811 to 812, 814 to 818, 840 to 842, 845 to 846, 849 to 849, 861 to 861, 865 to 872, 877 to 877, 881 to 881, 883 to 886, 890 to 890, 896 to 897, 900 to 904, 915 to 916, 920 to 920, 953 to 953, 957 to 964, 966 to 969, 973 to 974, 976 to 978, 980 to 987, 989 to 990, 992 to 993, 995 to 995, 997 to 998, 1001 to 1003, 1005 to 1005, 1009 to 1009, 1012 to 1013, 1017 to 1017, 1028 to 1029, 1033 to 1033, 1036 to 1036, 1041 to 1041, 1045 to 1045, 1063 to 1063, 1067 to 1067, 1069 to 1069, 1089 to 1089, 1093 to 1093, 1101 to 1101, 1105 to 1107, 1109 to 1109, 1112 to 1113, 1126 to 1132, 1134 to 1141, 1184 to 1184, 1186 to 1191, 1202 to 1207, 1211 to 1211 were interpolated.
+  Frames 496 to 508, 529 to 540, 545 to 564, 566 to 599, 683 to 694, 713 to 732, 821 to 838, 926 to 951, 1143 to 1182 were not interpolated.
+Mean reprojection error for LAnkle is 4.0 px (~ 24.049 m), reached with 6.66 excluded cameras. 
+  Frames 480 to 480, 491 to 494, 525 to 527, 601 to 607, 609 to 611, 617 to 617, 625 to 625, 631 to 634, 643 to 646, 649 to 649, 661 to 662, 669 to 670, 734 to 734, 736 to 738, 745 to 745, 749 to 750, 753 to 753, 757 to 757, 793 to 793, 811 to 812, 814 to 818, 821 to 827, 829 to 838, 840 to 842, 845 to 846, 849 to 849, 865 to 866, 869 to 869, 877 to 877, 881 to 881, 884 to 886, 890 to 890, 896 to 897, 900 to 904, 915 to 916, 921 to 923, 950 to 953, 957 to 964, 966 to 969, 973 to 978, 995 to 995, 997 to 998, 1001 to 1003, 1005 to 1005, 1009 to 1009, 1012 to 1013, 1017 to 1017, 1028 to 1028, 1036 to 1036, 1045 to 1045, 1063 to 1063, 1067 to 1067, 1069 to 1069, 1089 to 1089, 1093 to 1093, 1101 to 1107, 1109 to 1109, 1112 to 1113, 1186 to 1191, 1202 to 1207, 1210 to 1211 were interpolated.
+  Frames 496 to 508, 511 to 522, 529 to 540, 542 to 599, 681 to 694, 702 to 732, 926 to 948, 980 to 993, 1126 to 1158, 1160 to 1184 were not interpolated.
+Mean reprojection error for Nose is 5.1 px (~ 30.662 m), reached with 6.43 excluded cameras. 
+  Frames 480 to 480, 503 to 503, 505 to 510, 513 to 516, 545 to 553, 555 to 555, 557 to 564, 587 to 587, 593 to 594, 597 to 597, 599 to 599, 601 to 602, 604 to 606, 609 to 611, 625 to 625, 643 to 646, 661 to 662, 685 to 690, 692 to 695, 697 to 700, 736 to 737, 741 to 742, 745 to 745, 749 to 750, 757 to 757, 766 to 766, 768 to 768, 774 to 774, 797 to 797, 805 to 805, 810 to 812, 814 to 818, 820 to 827, 829 to 838, 840 to 842, 845 to 846, 849 to 849, 865 to 866, 869 to 869, 877 to 877, 884 to 886, 915 to 916, 927 to 927, 941 to 950, 957 to 962, 964 to 964, 966 to 970, 973 to 978, 980 to 983, 985 to 985, 987 to 995, 997 to 1003, 1005 to 1005, 1009 to 1009, 1011 to 1017, 1019 to 1023, 1028 to 1028, 1033 to 1033, 1036 to 1036, 1041 to 1041, 1045 to 1045, 1063 to 1063, 1067 to 1067, 1069 to 1069, 1081 to 1081, 1089 to 1089, 1091 to 1091, 1093 to 1093, 1095 to 1095, 1105 to 1107, 1109 to 1109, 1126 to 1126, 1129 to 1132, 1134 to 1141, 1144 to 1144, 1211 to 1211 were interpolated.
+  Frames 529 to 540, 566 to 585, 702 to 732, 929 to 939, 1150 to 1191 were not interpolated.
+Mean reprojection error for RShoulder is 3.2 px (~ 19.239 m), reached with 6.49 excluded cameras. 
+  Frames 480 to 480, 503 to 503, 505 to 510, 512 to 516, 519 to 519, 593 to 594, 597 to 599, 601 to 606, 609 to 612, 625 to 634, 643 to 646, 649 to 649, 662 to 662, 686 to 689, 694 to 695, 740 to 740, 742 to 745, 749 to 750, 757 to 757, 766 to 766, 769 to 769, 775 to 776, 783 to 786, 793 to 793, 811 to 812, 814 to 818, 840 to 842, 845 to 846, 849 to 849, 861 to 861, 865 to 866, 868 to 871, 877 to 877, 880 to 886, 915 to 916, 941 to 950, 953 to 953, 973 to 978, 980 to 983, 985 to 985, 987 to 987, 989 to 993, 995 to 998, 1000 to 1003, 1005 to 1005, 1009 to 1009, 1011 to 1014, 1016 to 1017, 1019 to 1020, 1022 to 1022, 1025 to 1025, 1029 to 1030, 1033 to 1033, 1036 to 1037, 1041 to 1041, 1045 to 1045, 1063 to 1063, 1067 to 1067, 1069 to 1069, 1089 to 1089, 1093 to 1093, 1105 to 1107, 1126 to 1126, 1129 to 1132, 1134 to 1141, 1144 to 1144, 1150 to 1154, 1191 to 1191, 1211 to 1211 were interpolated.
+  Frames 529 to 540, 545 to 564, 566 to 587, 702 to 732, 821 to 838, 926 to 939, 957 to 970, 1156 to 1189 were not interpolated.
+Mean reprojection error for RElbow is 3.7 px (~ 22.245 m), reached with 6.56 excluded cameras. 
+  Frames 480 to 480, 490 to 490, 493 to 494, 503 to 503, 505 to 510, 512 to 516, 589 to 589, 593 to 594, 597 to 599, 601 to 606, 609 to 612, 625 to 634, 643 to 646, 649 to 649, 661 to 662, 665 to 665, 669 to 671, 680 to 680, 685 to 689, 694 to 696, 698 to 699, 740 to 740, 742 to 745, 749 to 750, 753 to 753, 757 to 757, 766 to 767, 769 to 769, 775 to 776, 783 to 783, 785 to 786, 793 to 793, 799 to 799, 811 to 812, 814 to 818, 840 to 842, 845 to 846, 849 to 849, 860 to 863, 865 to 866, 868 to 872, 877 to 886, 889 to 889, 900 to 900, 904 to 904, 915 to 917, 920 to 921, 953 to 953, 957 to 964, 966 to 969, 973 to 974, 976 to 983, 985 to 985, 987 to 987, 989 to 990, 992 to 993, 995 to 998, 1001 to 1005, 1009 to 1009, 1012 to 1014, 1016 to 1018, 1020 to 1020, 1022 to 1022, 1025 to 1025, 1028 to 1030, 1033 to 1033, 1036 to 1037, 1041 to 1041, 1045 to 1045, 1048 to 1048, 1063 to 1063, 1067 to 1067, 1069 to 1069, 1089 to 1089, 1093 to 1093, 1105 to 1107, 1109 to 1109, 1144 to 1144, 1211 to 1211 were interpolated.
+  Frames 529 to 540, 542 to 564, 566 to 587, 701 to 732, 821 to 838, 926 to 950, 1124 to 1141, 1150 to 1191 were not interpolated.
+Mean reprojection error for RWrist is 3.2 px (~ 19.239 m), reached with 6.68 excluded cameras. 
+  Frames 480 to 480, 490 to 490, 503 to 503, 505 to 510, 513 to 516, 519 to 519, 525 to 525, 589 to 589, 593 to 594, 597 to 599, 601 to 606, 609 to 612, 617 to 617, 625 to 634, 637 to 637, 643 to 646, 649 to 649, 653 to 653, 657 to 657, 661 to 662, 665 to 665, 669 to 671, 675 to 675, 677 to 680, 682 to 682, 684 to 689, 736 to 736, 740 to 740, 743 to 745, 749 to 750, 753 to 753, 757 to 757, 766 to 769, 776 to 776, 783 to 783, 785 to 785, 793 to 794, 801 to 803, 806 to 806, 808 to 809, 811 to 819, 840 to 842, 845 to 846, 849 to 850, 853 to 854, 859 to 861, 863 to 863, 865 to 866, 868 to 873, 889 to 889, 895 to 895, 900 to 904, 915 to 917, 920 to 923, 953 to 953, 985 to 985, 987 to 993, 995 to 998, 1000 to 1005, 1009 to 1009, 1012 to 1013, 1015 to 1015, 1017 to 1017, 1021 to 1022, 1028 to 1030, 1033 to 1033, 1036 to 1036, 1041 to 1041, 1045 to 1045, 1048 to 1048, 1063 to 1063, 1067 to 1069, 1089 to 1090, 1093 to 1094, 1099 to 1100, 1105 to 1107, 1109 to 1109, 1144 to 1144, 1197 to 1197, 1211 to 1211 were interpolated.
+  Frames 529 to 540, 542 to 564, 566 to 587, 694 to 732, 821 to 838, 875 to 886, 925 to 950, 957 to 970, 973 to 983, 1124 to 1141, 1149 to 1191 were not interpolated.
+Mean reprojection error for LShoulder is 3.3 px (~ 19.84 m), reached with 6.48 excluded cameras. 
+  Frames 480 to 480, 503 to 503, 505 to 509, 513 to 516, 587 to 587, 589 to 589, 593 to 593, 597 to 597, 599 to 599, 601 to 606, 609 to 612, 625 to 634, 643 to 646, 649 to 649, 661 to 662, 684 to 689, 694 to 694, 745 to 745, 749 to 750, 757 to 761, 763 to 764, 766 to 766, 769 to 769, 775 to 775, 783 to 783, 785 to 786, 797 to 801, 811 to 812, 814 to 818, 821 to 827, 829 to 838, 840 to 842, 845 to 846, 849 to 849, 861 to 862, 865 to 872, 877 to 877, 880 to 882, 884 to 886, 915 to 916, 920 to 920, 941 to 950, 953 to 953, 957 to 961, 963 to 964, 966 to 970, 973 to 978, 981 to 983, 985 to 985, 987 to 987, 989 to 993, 995 to 995, 997 to 998, 1000 to 1003, 1005 to 1005, 1009 to 1009, 1012 to 1013, 1016 to 1017, 1022 to 1022, 1025 to 1025, 1029 to 1030, 1033 to 1033, 1036 to 1037, 1041 to 1041, 1045 to 1045, 1048 to 1048, 1063 to 1063, 1067 to 1067, 1069 to 1069, 1089 to 1089, 1093 to 1093, 1105 to 1107, 1109 to 1109, 1126 to 1126, 1129 to 1132, 1134 to 1141, 1144 to 1144, 1150 to 1154, 1156 to 1163, 1211 to 1211 were interpolated.
+  Frames 529 to 540, 545 to 564, 566 to 585, 702 to 732, 929 to 939, 1165 to 1191 were not interpolated.
+Mean reprojection error for LElbow is 3.5 px (~ 21.043 m), reached with 6.58 excluded cameras. 
+  Frames 480 to 480, 503 to 503, 505 to 508, 512 to 516, 519 to 519, 589 to 590, 593 to 594, 597 to 599, 601 to 606, 609 to 612, 625 to 634, 637 to 637, 643 to 646, 649 to 649, 658 to 659, 661 to 662, 669 to 669, 673 to 675, 678 to 678, 694 to 694, 736 to 737, 743 to 745, 749 to 750, 752 to 753, 757 to 766, 769 to 769, 775 to 775, 783 to 786, 793 to 797, 799 to 801, 811 to 812, 814 to 818, 840 to 842, 845 to 846, 849 to 850, 853 to 853, 857 to 857, 861 to 861, 865 to 871, 877 to 877, 880 to 886, 902 to 904, 915 to 917, 953 to 953, 957 to 964, 966 to 970, 972 to 979, 981 to 983, 985 to 985, 987 to 987, 989 to 993, 995 to 998, 1001 to 1003, 1005 to 1005, 1009 to 1009, 1011 to 1014, 1017 to 1017, 1020 to 1022, 1025 to 1025, 1028 to 1030, 1033 to 1033, 1036 to 1037, 1041 to 1041, 1045 to 1045, 1048 to 1048, 1063 to 1063, 1067 to 1067, 1069 to 1069, 1077 to 1077, 1089 to 1089, 1093 to 1093, 1105 to 1107, 1109 to 1109, 1113 to 1113, 1126 to 1126, 1129 to 1132, 1134 to 1141, 1144 to 1144, 1184 to 1184, 1186 to 1191, 1202 to 1207, 1210 to 1211, 1214 to 1214 were interpolated.
+  Frames 529 to 540, 545 to 564, 566 to 587, 680 to 690, 702 to 732, 821 to 838, 929 to 950, 1150 to 1182 were not interpolated.
+Mean reprojection error for LWrist is 3.4 px (~ 20.441 m), reached with 6.65 excluded cameras. 
+  Frames 480 to 480, 505 to 508, 513 to 516, 519 to 519, 589 to 591, 593 to 594, 597 to 599, 601 to 606, 609 to 612, 625 to 634, 637 to 637, 643 to 646, 649 to 649, 653 to 653, 658 to 659, 661 to 662, 666 to 666, 694 to 694, 725 to 733, 735 to 737, 742 to 742, 744 to 745, 748 to 750, 752 to 753, 757 to 757, 759 to 759, 761 to 765, 769 to 769, 775 to 775, 783 to 783, 785 to 786, 793 to 796, 798 to 801, 805 to 806, 811 to 812, 840 to 842, 845 to 846, 849 to 850, 853 to 853, 857 to 857, 860 to 863, 865 to 866, 869 to 871, 877 to 877, 880 to 883, 892 to 892, 894 to 894, 898 to 904, 915 to 916, 953 to 953, 985 to 985, 987 to 987, 989 to 993, 995 to 998, 1001 to 1005, 1009 to 1009, 1012 to 1013, 1017 to 1017, 1021 to 1022, 1025 to 1025, 1028 to 1030, 1036 to 1037, 1041 to 1041, 1045 to 1045, 1048 to 1048, 1063 to 1063, 1067 to 1067, 1069 to 1069, 1073 to 1073, 1077 to 1077, 1081 to 1081, 1089 to 1089, 1093 to 1093, 1101 to 1101, 1105 to 1107, 1109 to 1109, 1112 to 1113, 1115 to 1115, 1126 to 1126, 1129 to 1132, 1134 to 1141, 1144 to 1144, 1184 to 1184, 1186 to 1191, 1197 to 1197, 1202 to 1206, 1211 to 1211, 1213 to 1213 were interpolated.
+  Frames 529 to 540, 545 to 564, 566 to 587, 668 to 690, 702 to 721, 814 to 838, 929 to 950, 957 to 970, 973 to 983, 1150 to 1182 were not interpolated.
+
+--> Mean reprojection error for all points on frames 479 to 1768 is 3.2 px, which roughly corresponds to 19238.9 mm. 
+Cameras were excluded if likelihood was below 0.3 and if the reprojection error was above 15 px.
+Gaps were interpolated with linear method if smaller than 10 frames. Larger gaps were filled with the last valid value.
+In average, 6.58 cameras had to be excluded to reach these thresholds.
+Camera M11458 was excluded 66% of the time, Camera M11461: 63%, Camera M11139: 61%, Camera M11140: 58%, Camera M11141: 58%, Camera M11462: 58%, Camera M11459: 57%, and Camera M11463: 50%.
+
+3D coordinates are stored at /home/lea/vitpose/Pose2Sim/pose-3d/Pose2Sim_479-1767.trc.
+
+
+
+All trc files have been converted to c3d.
+Limb swapping was not handled.
+Lens distortions were not taken into account.
+
+Triangulation took 00h00m28s.
+
+
+---------------------------------------------------------------------
+Pose estimation for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:18:43
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Inference run only every 2 frames. Inbetween, pose estimation tracks previously detected points.
+
+Estimating pose...
+Using COCO_17 model (body) for pose estimation.
+
+Valid CUDA installation found: using ONNXRuntime backend with GPU.
+Skipping pose estimation as it has already been done. Set overwrite_pose to true in Config.toml if you want to run it again.
+
+Pose estimation took 00h00m00s.
+
+
+---------------------------------------------------------------------
+Camera synchronization for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:18:43
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Synchronization is calculated on the whole sequence. This may take a while.
+All keypoints are used to compute the best synchronization offset.
+These keypoints are filtered with a Butterworth filter (cut-off frequency: 6 Hz, order: 4).
+They are removed when their likelihood is below 0.4.
+
+Synchronizing...
+Selected keypoints: ['RHip', 'RKnee', 'RAnkle', 'LHip', 'LKnee', 'LAnkle', 'Nose', 'RShoulder', 'RElbow', 'RWrist', 'LShoulder', 'LElbow', 'LWrist']
+--> Camera #0: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #1: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #2: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #3: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #4: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #5: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #6: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #7: selected person #0 at time 0.00 ± 2.00 s
+
+--> Camera 1 and 1: 47 frames offset (47 on the selected section), correlation 0.49.
+--> Camera 1 and 1: -67 frames offset (-67 on the selected section), correlation 0.78.
+--> Camera 1 and 1: -119 frames offset (-119 on the selected section), correlation 0.61.
+--> Camera 1 and 1: 5 frames offset (5 on the selected section), correlation 0.77.
+--> Camera 1 and 1: 84 frames offset (84 on the selected section), correlation 0.26.
+--> Camera 1 and 1: -4 frames offset (-4 on the selected section), correlation 0.85.
+--> Camera 1 and 1: 7 frames offset (7 on the selected section), correlation 0.71.
+Saving synchronized json files to the pose-sync folder.
+Synchronized json files saved in /home/lea/vitpose/Pose2Sim/pose-sync.
+
+Synchronization took 00h00m03s.
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:18:46
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+Neck not found in COCO_17, consider editing tracked_keypoint in Config.toml. Tracking Nose instead.
+
+---------------------------------------------------------------------
+Pose estimation for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:19:04
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Inference run only every 2 frames. Inbetween, pose estimation tracks previously detected points.
+
+Estimating pose...
+Using COCO_17 model (body) for pose estimation.
+
+Valid CUDA installation found: using ONNXRuntime backend with GPU.
+
+Pose tracking set up for "Body" model.
+Mode: performance.
+Tracking is performed with sports2d.
+
+Found video files with mp4 extension.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/M11139_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/M11140_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/M11141_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/M11458_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/M11459_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/M11461_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/M11462_pose.mp4.
+--> Output video saved to /home/lea/vitpose/Pose2Sim/pose/M11463_pose.mp4.
+
+Pose estimation took 00h07m46s.
+
+
+---------------------------------------------------------------------
+Camera synchronization for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:26:51
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Synchronization is calculated on the whole sequence. This may take a while.
+All keypoints are used to compute the best synchronization offset.
+These keypoints are filtered with a Butterworth filter (cut-off frequency: 6 Hz, order: 4).
+They are removed when their likelihood is below 0.4.
+
+Synchronizing...
+Selected keypoints: ['RHip', 'RKnee', 'RAnkle', 'LHip', 'LKnee', 'LAnkle', 'Nose', 'RShoulder', 'RElbow', 'RWrist', 'LShoulder', 'LElbow', 'LWrist']
+--> Camera #0: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #1: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #2: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #3: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #4: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #5: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #6: selected person #0 at time 0.00 ± 2.00 s
+--> Camera #7: selected person #0 at time 0.00 ± 2.00 s
+
+--> Camera M11139 and M11140: -70 frames offset (-70 on the selected section), correlation 0.85.
+--> Camera M11139 and M11141: -63 frames offset (-63 on the selected section), correlation 0.77.
+--> Camera M11139 and M11458: -118 frames offset (-118 on the selected section), correlation 0.31.
+--> Camera M11139 and M11459: -69 frames offset (-69 on the selected section), correlation 0.65.
+--> Camera M11139 and M11461: -86 frames offset (-86 on the selected section), correlation 0.64.
+--> Camera M11139 and M11462: 116 frames offset (116 on the selected section), correlation 0.76.
+--> Camera M11139 and M11463: 100 frames offset (100 on the selected section), correlation 0.63.
+Saving synchronized json files to the pose-sync folder.
+Synchronized json files saved in /home/lea/vitpose/Pose2Sim/pose-sync.
+
+Synchronization took 00h00m03s.
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:26:54
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+Neck not found in COCO_17, consider editing tracked_keypoint in Config.toml. Tracking Nose instead.
+
+--> Mean reprojection error for Neck point on all frames is 9.9 px, which roughly corresponds to 59520.4 mm. 
+--> In average, 1.05 cameras had to be excluded to reach the demanded 20 px error threshold after excluding points with likelihood below 0.3.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h00m17s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:27:12
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Trimming Participant 0 around frames (5, 1685).
+
+Mean reprojection error for RHip is 9.5 px (~ 57.116 m), reached with 1.34 excluded cameras. 
+  Frames 1629 to 1632 were interpolated.
+Mean reprojection error for RKnee is 7.6 px (~ 45.692 m), reached with 1.43 excluded cameras. 
+  Frames 1629 to 1632, 1639 to 1639 were interpolated.
+Mean reprojection error for RAnkle is 6.5 px (~ 39.079 m), reached with 1.56 excluded cameras. 
+  Frames 85 to 85, 87 to 87, 1629 to 1632, 1639 to 1639 were interpolated.
+Mean reprojection error for LHip is 9.8 px (~ 58.919 m), reached with 1.33 excluded cameras. 
+  Frames 1629 to 1632 were interpolated.
+Mean reprojection error for LKnee is 6.7 px (~ 40.281 m), reached with 1.42 excluded cameras. 
+  Frames 1629 to 1632, 1639 to 1639 were interpolated.
+Mean reprojection error for LAnkle is 6.3 px (~ 37.877 m), reached with 1.55 excluded cameras. 
+  Frames 1629 to 1632, 1639 to 1639 were interpolated.
+Mean reprojection error for Nose is 9.3 px (~ 55.913 m), reached with 1.12 excluded cameras. 
+  No frames needed to be interpolated.
+Mean reprojection error for RShoulder is 6.4 px (~ 38.478 m), reached with 1.15 excluded cameras. 
+  No frames needed to be interpolated.
+Mean reprojection error for RElbow is 7.3 px (~ 43.889 m), reached with 1.36 excluded cameras. 
+  No frames needed to be interpolated.
+Mean reprojection error for RWrist is 7.1 px (~ 42.686 m), reached with 1.49 excluded cameras. 
+  Frames 55 to 55, 57 to 57, 1629 to 1629, 1631 to 1632 were interpolated.
+Mean reprojection error for LShoulder is 6.3 px (~ 37.877 m), reached with 1.16 excluded cameras. 
+  No frames needed to be interpolated.
+Mean reprojection error for LElbow is 6.4 px (~ 38.478 m), reached with 1.39 excluded cameras. 
+  No frames needed to be interpolated.
+Mean reprojection error for LWrist is 6.4 px (~ 38.478 m), reached with 1.51 excluded cameras. 
+  Frames 1629 to 1631 were interpolated.
+
+--> Mean reprojection error for all points on frames 5 to 1685 is 7.4 px, which roughly corresponds to 44490.0 mm. 
+Cameras were excluded if likelihood was below 0.3 and if the reprojection error was above 15 px.
+Gaps were interpolated with linear method if smaller than 10 frames. Larger gaps were filled with the last valid value.
+In average, 1.37 cameras had to be excluded to reach these thresholds.
+Camera M11461 was excluded 44% of the time, Camera M11463: 21%, Camera M11458: 19%, Camera M11459: 17%, Camera M11140: 11%, Camera M11141: 10%, Camera M11139: 9%, and Camera M11462: 6%.
+
+3D coordinates are stored at /home/lea/vitpose/Pose2Sim/pose-3d/Pose2Sim_5-1684.trc.
+
+
+
+All trc files have been converted to c3d.
+Limb swapping was not handled.
+Lens distortions were not taken into account.
+
+Triangulation took 00h00m26s.
+
+
+---------------------------------------------------------------------
+Filtering 3D coordinates for Pose2Sim, for all frames.
+On lundi 02. juin 2025, 10:27:39
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Monday 02. June 2025, 10:30:18
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Trimming Participant 0 around frames (5, 1685).
+
+Mean reprojection error for RHip is 9.5 px (~ 57.116 m), reached with 1.34 excluded cameras. 
+  Frames 1629 to 1632 were interpolated.
+Mean reprojection error for RKnee is 7.6 px (~ 45.692 m), reached with 1.43 excluded cameras. 
+  Frames 1629 to 1632, 1639 to 1639 were interpolated.
+Mean reprojection error for RAnkle is 6.5 px (~ 39.079 m), reached with 1.56 excluded cameras. 
+  Frames 85 to 85, 87 to 87, 1629 to 1632, 1639 to 1639 were interpolated.
+Mean reprojection error for LHip is 9.8 px (~ 58.919 m), reached with 1.33 excluded cameras. 
+  Frames 1629 to 1632 were interpolated.
+Mean reprojection error for LKnee is 6.7 px (~ 40.281 m), reached with 1.42 excluded cameras. 
+  Frames 1629 to 1632, 1639 to 1639 were interpolated.
+Mean reprojection error for LAnkle is 6.3 px (~ 37.877 m), reached with 1.55 excluded cameras. 
+  Frames 1629 to 1632, 1639 to 1639 were interpolated.
+Mean reprojection error for Nose is 9.3 px (~ 55.913 m), reached with 1.12 excluded cameras. 
+  No frames needed to be interpolated.
+Mean reprojection error for RShoulder is 6.4 px (~ 38.478 m), reached with 1.15 excluded cameras. 
+  No frames needed to be interpolated.
+Mean reprojection error for RElbow is 7.3 px (~ 43.889 m), reached with 1.36 excluded cameras. 
+  No frames needed to be interpolated.
+Mean reprojection error for RWrist is 7.1 px (~ 42.686 m), reached with 1.49 excluded cameras. 
+  Frames 55 to 55, 57 to 57, 1629 to 1629, 1631 to 1632 were interpolated.
+Mean reprojection error for LShoulder is 6.3 px (~ 37.877 m), reached with 1.16 excluded cameras. 
+  No frames needed to be interpolated.
+Mean reprojection error for LElbow is 6.4 px (~ 38.478 m), reached with 1.39 excluded cameras. 
+  No frames needed to be interpolated.
+Mean reprojection error for LWrist is 6.4 px (~ 38.478 m), reached with 1.51 excluded cameras. 
+  Frames 1629 to 1631 were interpolated.
+
+--> Mean reprojection error for all points on frames 5 to 1685 is 7.4 px, which roughly corresponds to 44490.0 mm. 
+Cameras were excluded if likelihood was below 0.3 and if the reprojection error was above 15 px.
+Gaps were interpolated with linear method if smaller than 10 frames. Larger gaps were filled with the last valid value.
+In average, 1.37 cameras had to be excluded to reach these thresholds.
+Camera M11461 was excluded 44% of the time, Camera M11463: 21%, Camera M11458: 19%, Camera M11459: 17%, Camera M11140: 11%, Camera M11141: 10%, Camera M11139: 9%, and Camera M11462: 6%.
+
+3D coordinates are stored at /home/lea/vitpose/Pose2Sim/pose-3d/Pose2Sim_5-1684.trc.
+
+
+
+All trc files have been converted to c3d.
+Limb swapping was not handled.
+Lens distortions were not taken into account.
+
+Triangulation took 00h00m25s.
+
+
+---------------------------------------------------------------------
+Filtering 3D coordinates for Pose2Sim, for all frames.
+On Monday 02. June 2025, 10:30:44
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+OpenSim scaling and inverse kinematics for Pose2Sim, for all frames.
+On Monday 02. June 2025, 10:31:01
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+No LSTM trc files found. Using non augmented trc files instead.
+The Heel marker is missing from your model. Considering Foot to Heel size as 10 cm.
+The Head marker is missing from your model. Considering Neck to Head size as 1.33 times Neck to MidShoulder size.
+Subject height automatically calculated for Pose2Sim_5-1684.trc: 1454.59 m
+
+Processing TRC file: /home/lea/vitpose/Pose2Sim/pose-3d/Pose2Sim_5-1684.trc
+
+Scaling...
+	Done. OpenSim logs saved to /home/lea/vitpose/Pose2Sim/kinematics/opensim_logs.txt.
+	Scaled model saved to /home/lea/vitpose/Pose2Sim/kinematics/Pose2Sim_5-1684_scaled.osim
+
+Inverse Kinematics...
+
+---------------------------------------------------------------------
+Filtering 3D coordinates for Pose2Sim, for all frames.
+On Monday 02. June 2025, 10:49:12
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Camera synchronization for Pose2Sim, for all frames.
+On Monday 02. June 2025, 15:01:54
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+No video files nor image directories found in ./videos.
+Cannot read video. Frame rate will be set to 60 fps.
+Synchronization is calculated on the whole sequence. This may take a while.
+All keypoints are used to compute the best synchronization offset.
+These keypoints are filtered with a Butterworth filter (cut-off frequency: 6 Hz, order: 4).
+They are removed when their likelihood is below 0.4.
+
+Synchronizing...
+No video files found. Synchronization GUI will not be available.
+No valid coordinates found in the JSON files. There may be a mismatch between the "pose_model" specified for pose estimation and for synchronization. If not, make sure that your likelihood_threshold for synchronization is not set too high.
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 02. June 2025, 15:02:09
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+Neck not found in COCO_17, consider editing tracked_keypoint in Config.toml. Tracking Nose instead.
+
+--> Mean reprojection error for Neck point on all frames is 25.9 px, which roughly corresponds to 155715.0 mm. 
+--> In average, 6.46 cameras had to be excluded to reach the demanded 20 px error threshold after excluding points with likelihood below 0.3.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h49m55s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Monday 02. June 2025, 15:52:05
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Monday 02. June 2025, 15:53:57
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Monday 02. June 2025, 15:55:50
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Monday 02. June 2025, 15:57:50
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 02. June 2025, 15:58:38
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Monday 02. June 2025, 16:00:20
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Monday 02. June 2025, 16:31:14
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+--> Mean reprojection error for RShoulder point on all frames is 43.7 px, which roughly corresponds to 262.7 mm. 
+--> In average, 6.45 cameras had to be excluded to reach the demanded 20 px error threshold after excluding points with likelihood below 0.3.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h17m27s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Monday 02. June 2025, 16:48:42
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:09:03
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:10:29
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:12:23
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Multi-person analysis selected.
+
+--> A person was reconstructed if the lines from cameras to their keypoints intersected within 0.1 m and if the calculated affinity stayed above 0.2 after excluding points with likelihood below 0.3.
+--> Beware that people were sorted across cameras, but not across frames. This will be done in the triangulation stage.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h00m08s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:12:32
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:14:01
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Multi-person analysis selected.
+
+--> A person was reconstructed if the lines from cameras to their keypoints intersected within 0.1 m and if the calculated affinity stayed above 0.2 after excluding points with likelihood below 0.3.
+--> Beware that people were sorted across cameras, but not across frames. This will be done in the triangulation stage.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h00m08s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:14:10
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Camera synchronization for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:22:21
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+No video files nor image directories found in ./videos.
+Cannot read video. Frame rate will be set to 60 fps.
+Synchronization is calculated on the whole sequence. This may take a while.
+All keypoints are used to compute the best synchronization offset.
+These keypoints are filtered with a Butterworth filter (cut-off frequency: 6 Hz, order: 4).
+They are removed when their likelihood is below 0.4.
+
+Synchronizing...
+No video files found. Synchronization GUI will not be available.
+No valid coordinates found in the JSON files. There may be a mismatch between the "pose_model" specified for pose estimation and for synchronization. If not, make sure that your likelihood_threshold for synchronization is not set too high.
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:23:15
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Multi-person analysis selected.
+
+--> A person was reconstructed if the lines from cameras to their keypoints intersected within 0.1 m and if the calculated affinity stayed above 0.2 after excluding points with likelihood below 0.3.
+--> Beware that people were sorted across cameras, but not across frames. This will be done in the triangulation stage.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h00m08s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:23:24
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:25:13
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:28:01
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Multi-person analysis selected.
+
+--> A person was reconstructed if the lines from cameras to their keypoints intersected within 0.1 m and if the calculated affinity stayed above 0.2 after excluding points with likelihood below 0.5.
+--> Beware that people were sorted across cameras, but not across frames. This will be done in the triangulation stage.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h00m08s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:28:10
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:42:56
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Multi-person analysis selected.
+
+--> A person was reconstructed if the lines from cameras to their keypoints intersected within 0.1 m and if the calculated affinity stayed above 0.2 after excluding points with likelihood below 0.5.
+--> Beware that people were sorted across cameras, but not across frames. This will be done in the triangulation stage.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h00m07s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 09:43:03
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Trimming Participant 0 around frames (1, 886).
+Cannot read video. Frame rate will be set to 60 fps.
+
+Mean reprojection error for RHip is 9.4 px (~ 0.057 m), reached with 2.73 excluded cameras. 
+  Frames 45 to 46, 48 to 48, 184 to 184, 330 to 330, 676 to 676, 683 to 685 were interpolated.
+Mean reprojection error for RKnee is 8.3 px (~ 0.05 m), reached with 2.85 excluded cameras. 
+  Frames 45 to 45, 48 to 52, 184 to 184, 329 to 330, 579 to 579, 676 to 676, 683 to 685 were interpolated.
+Mean reprojection error for RAnkle is 7.2 px (~ 0.043 m), reached with 2.96 excluded cameras. 
+  Frames 45 to 45, 48 to 48, 52 to 55, 184 to 184, 303 to 303, 330 to 330, 341 to 341, 345 to 345, 454 to 456, 676 to 676, 683 to 685 were interpolated.
+Mean reprojection error for LHip is 9.2 px (~ 0.055 m), reached with 2.72 excluded cameras. 
+  Frames 42 to 42, 45 to 45, 48 to 48, 184 to 184, 330 to 330, 676 to 676, 684 to 685 were interpolated.
+Mean reprojection error for LKnee is 7.3 px (~ 0.044 m), reached with 2.86 excluded cameras. 
+  Frames 45 to 45, 48 to 48, 184 to 184, 330 to 330, 345 to 345, 574 to 574, 579 to 579, 581 to 581, 676 to 676, 683 to 685 were interpolated.
+Mean reprojection error for LAnkle is 7.0 px (~ 0.042 m), reached with 2.96 excluded cameras. 
+  Frames 45 to 45, 48 to 48, 58 to 58, 184 to 184, 330 to 330, 345 to 345, 455 to 455, 574 to 574, 676 to 676, 680 to 680, 683 to 685 were interpolated.
+Mean reprojection error for Nose is 8.2 px (~ 0.049 m), reached with 2.71 excluded cameras. 
+  Frames 45 to 45, 48 to 48, 184 to 184, 330 to 330, 676 to 676, 684 to 685 were interpolated.
+Mean reprojection error for RShoulder is 7.5 px (~ 0.045 m), reached with 2.77 excluded cameras. 
+  Frames 45 to 45, 48 to 48, 184 to 184, 330 to 330, 676 to 676, 684 to 685 were interpolated.
+Mean reprojection error for RElbow is 8.4 px (~ 0.051 m), reached with 3.05 excluded cameras. 
+  Frames 42 to 42, 44 to 45, 48 to 48, 184 to 184, 330 to 330, 676 to 676, 684 to 685 were interpolated.
+Mean reprojection error for RWrist is 7.8 px (~ 0.047 m), reached with 3.22 excluded cameras. 
+  Frames 43 to 43, 45 to 45, 48 to 48, 50 to 50, 184 to 184, 330 to 330, 413 to 414, 418 to 418, 574 to 574, 676 to 676, 684 to 685 were interpolated.
+Mean reprojection error for LShoulder is 8.2 px (~ 0.049 m), reached with 2.76 excluded cameras. 
+  Frames 45 to 45, 48 to 48, 50 to 54, 58 to 58, 62 to 62, 69 to 69, 184 to 184, 303 to 303, 330 to 330, 676 to 676, 684 to 685 were interpolated.
+Mean reprojection error for LElbow is 8.0 px (~ 0.048 m), reached with 3.02 excluded cameras. 
+  Frames 44 to 45, 48 to 49, 51 to 51, 53 to 54, 62 to 62, 184 to 184, 330 to 330, 676 to 676, 684 to 685 were interpolated.
+Mean reprojection error for LWrist is 7.5 px (~ 0.045 m), reached with 3.16 excluded cameras. 
+  Frames 45 to 45, 48 to 48, 62 to 62, 184 to 184, 322 to 322, 330 to 330, 566 to 566, 676 to 676, 684 to 685, 815 to 815 were interpolated.
+
+--> Mean reprojection error for all points on frames 1 to 886 is 8.1 px, which roughly corresponds to 48.7 mm. 
+Cameras were excluded if likelihood was below 0.3 and if the reprojection error was above 20 px.
+Gaps were interpolated with linear method if smaller than 10 frames. Larger gaps were filled with the last valid value.
+In average, 2.91 cameras had to be excluded to reach these thresholds.
+Camera M11459 was excluded 63% of the time, Camera M11461: 52%, Camera M11463: 51%, Camera M11139: 34%, Camera M11462: 33%, Camera M11458: 19%, Camera M11140: 19%, and Camera M11141: 16%.
+
+3D coordinates are stored at /home/lea/vitpose/Pose2Sim/pose-3d/Pose2Sim_P1_1-885.trc.
+
+
+
+All trc files have been converted to c3d.
+Limb swapping was not handled.
+Lens distortions were not taken into account.
+
+Triangulation took 00h00m09s.
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 10:19:02
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+--> Mean reprojection error for RShoulder point on all frames is 8.6 px, which roughly corresponds to 51.7 mm. 
+--> In average, 2.96 cameras had to be excluded to reach the demanded 20 px error threshold after excluding points with likelihood below 0.5.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h00m05s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 10:19:08
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Trimming Participant 0 around frames (4, 886).
+Cannot read video. Frame rate will be set to 60 fps.
+
+Mean reprojection error for RHip is 8.6 px (~ 0.052 m), reached with 3.03 excluded cameras. 
+  Frames 37 to 37, 39 to 47, 66 to 66, 181 to 181, 327 to 327, 571 to 571, 576 to 576, 808 to 808 were interpolated.
+Mean reprojection error for RKnee is 7.8 px (~ 0.047 m), reached with 3.16 excluded cameras. 
+  Frames 34 to 34, 37 to 37, 39 to 43, 45 to 49, 66 to 66, 181 to 181, 326 to 327, 571 to 571, 576 to 576, 799 to 803, 806 to 806, 808 to 808 were interpolated.
+Mean reprojection error for RAnkle is 7.0 px (~ 0.042 m), reached with 3.3 excluded cameras. 
+  Frames 39 to 47, 49 to 52, 54 to 54, 61 to 61, 66 to 66, 181 to 181, 224 to 224, 227 to 227, 229 to 229, 300 to 300, 327 to 327, 342 to 342, 451 to 453, 571 to 571, 576 to 576, 799 to 803, 806 to 806, 808 to 808 were interpolated.
+Mean reprojection error for LHip is 8.6 px (~ 0.052 m), reached with 3.04 excluded cameras. 
+  Frames 26 to 26, 37 to 37, 39 to 47, 66 to 66, 181 to 181, 327 to 327, 571 to 571, 576 to 576, 800 to 800, 802 to 802, 808 to 808 were interpolated.
+Mean reprojection error for LKnee is 6.7 px (~ 0.04 m), reached with 3.17 excluded cameras. 
+  Frames 37 to 37, 39 to 47, 66 to 66, 181 to 181, 327 to 327, 342 to 342, 571 to 571, 576 to 576, 578 to 578, 799 to 803, 806 to 806, 808 to 808 were interpolated.
+Mean reprojection error for LAnkle is 6.8 px (~ 0.041 m), reached with 3.3 excluded cameras. 
+  Frames 37 to 37, 39 to 47, 49 to 49, 53 to 53, 55 to 55, 66 to 66, 181 to 181, 227 to 227, 327 to 327, 342 to 342, 452 to 452, 571 to 571, 576 to 576, 677 to 677, 680 to 680, 799 to 803, 806 to 806, 808 to 808 were interpolated.
+Mean reprojection error for Nose is 7.8 px (~ 0.047 m), reached with 2.99 excluded cameras. 
+  Frames 39 to 43, 45 to 47, 66 to 66, 181 to 181, 327 to 327, 571 to 571, 576 to 576 were interpolated.
+Mean reprojection error for RShoulder is 7.4 px (~ 0.044 m), reached with 2.92 excluded cameras. 
+  Frames 39 to 43, 45 to 47, 66 to 66, 181 to 181, 327 to 327, 571 to 571, 576 to 576 were interpolated.
+Mean reprojection error for RElbow is 8.0 px (~ 0.048 m), reached with 3.21 excluded cameras. 
+  Frames 39 to 43, 45 to 47, 66 to 66, 181 to 181, 327 to 327, 571 to 571, 576 to 576 were interpolated.
+Mean reprojection error for RWrist is 7.6 px (~ 0.046 m), reached with 3.38 excluded cameras. 
+  Frames 39 to 43, 45 to 47, 66 to 66, 181 to 181, 192 to 192, 327 to 327, 410 to 411, 415 to 415, 571 to 571, 576 to 576 were interpolated.
+Mean reprojection error for LShoulder is 7.8 px (~ 0.047 m), reached with 3.02 excluded cameras. 
+  Frames 39 to 43, 66 to 66, 181 to 181, 300 to 300, 308 to 308, 327 to 327, 571 to 571, 576 to 576, 582 to 582 were interpolated.
+  Frames 45 to 60 were not interpolated.
+Mean reprojection error for LElbow is 7.7 px (~ 0.046 m), reached with 3.27 excluded cameras. 
+  Frames 37 to 37, 39 to 43, 45 to 48, 50 to 51, 58 to 59, 66 to 66, 181 to 181, 306 to 308, 310 to 310, 327 to 327, 571 to 571, 576 to 576, 582 to 582, 673 to 673 were interpolated.
+Mean reprojection error for LWrist is 7.3 px (~ 0.044 m), reached with 3.41 excluded cameras. 
+  Frames 37 to 37, 39 to 47, 56 to 56, 59 to 59, 61 to 61, 66 to 66, 181 to 181, 308 to 308, 319 to 319, 327 to 327, 563 to 563, 571 to 571, 576 to 576, 582 to 582, 812 to 812 were interpolated.
+
+--> Mean reprojection error for all points on frames 4 to 886 is 7.7 px, which roughly corresponds to 46.3 mm. 
+Cameras were excluded if likelihood was below 0.3 and if the reprojection error was above 20 px.
+Gaps were interpolated with linear method if smaller than 10 frames. Larger gaps were filled with the last valid value.
+In average, 3.17 cameras had to be excluded to reach these thresholds.
+Camera M11459 was excluded 64% of the time, Camera M11461: 57%, Camera M11463: 56%, Camera M11462: 38%, Camera M11139: 36%, Camera M11458: 22%, Camera M11140: 21%, and Camera M11141: 18%.
+
+3D coordinates are stored at /home/lea/vitpose/Pose2Sim/pose-3d/Pose2Sim_4-885.trc.
+
+
+
+All trc files have been converted to c3d.
+Limb swapping was not handled.
+Lens distortions were not taken into account.
+
+Triangulation took 00h00m07s.
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 15:23:59
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+--> Mean reprojection error for RShoulder point on all frames is 8.6 px, which roughly corresponds to 51.7 mm. 
+--> In average, 2.96 cameras had to be excluded to reach the demanded 20 px error threshold after excluding points with likelihood below 0.5.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h00m05s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Tuesday 03. June 2025, 15:24:05
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Trimming Participant 0 around frames (4, 886).
+Cannot read video. Frame rate will be set to 60 fps.
+
+Mean reprojection error for RHip is 8.6 px (~ 0.052 m), reached with 3.03 excluded cameras. 
+  Frames 37 to 37, 39 to 47, 66 to 66, 181 to 181, 327 to 327, 571 to 571, 576 to 576, 808 to 808 were interpolated.
+Mean reprojection error for RKnee is 7.8 px (~ 0.047 m), reached with 3.16 excluded cameras. 
+  Frames 34 to 34, 37 to 37, 39 to 43, 45 to 49, 66 to 66, 181 to 181, 326 to 327, 571 to 571, 576 to 576, 799 to 803, 806 to 806, 808 to 808 were interpolated.
+Mean reprojection error for RAnkle is 7.0 px (~ 0.042 m), reached with 3.3 excluded cameras. 
+  Frames 39 to 47, 49 to 52, 54 to 54, 61 to 61, 66 to 66, 181 to 181, 224 to 224, 227 to 227, 229 to 229, 300 to 300, 327 to 327, 342 to 342, 451 to 453, 571 to 571, 576 to 576, 799 to 803, 806 to 806, 808 to 808 were interpolated.
+Mean reprojection error for LHip is 8.6 px (~ 0.052 m), reached with 3.04 excluded cameras. 
+  Frames 26 to 26, 37 to 37, 39 to 47, 66 to 66, 181 to 181, 327 to 327, 571 to 571, 576 to 576, 800 to 800, 802 to 802, 808 to 808 were interpolated.
+Mean reprojection error for LKnee is 6.7 px (~ 0.04 m), reached with 3.17 excluded cameras. 
+  Frames 37 to 37, 39 to 47, 66 to 66, 181 to 181, 327 to 327, 342 to 342, 571 to 571, 576 to 576, 578 to 578, 799 to 803, 806 to 806, 808 to 808 were interpolated.
+Mean reprojection error for LAnkle is 6.8 px (~ 0.041 m), reached with 3.3 excluded cameras. 
+  Frames 37 to 37, 39 to 47, 49 to 49, 53 to 53, 55 to 55, 66 to 66, 181 to 181, 227 to 227, 327 to 327, 342 to 342, 452 to 452, 571 to 571, 576 to 576, 677 to 677, 680 to 680, 799 to 803, 806 to 806, 808 to 808 were interpolated.
+Mean reprojection error for Nose is 7.8 px (~ 0.047 m), reached with 2.99 excluded cameras. 
+  Frames 39 to 43, 45 to 47, 66 to 66, 181 to 181, 327 to 327, 571 to 571, 576 to 576 were interpolated.
+Mean reprojection error for RShoulder is 7.4 px (~ 0.044 m), reached with 2.92 excluded cameras. 
+  Frames 39 to 43, 45 to 47, 66 to 66, 181 to 181, 327 to 327, 571 to 571, 576 to 576 were interpolated.
+Mean reprojection error for RElbow is 8.0 px (~ 0.048 m), reached with 3.21 excluded cameras. 
+  Frames 39 to 43, 45 to 47, 66 to 66, 181 to 181, 327 to 327, 571 to 571, 576 to 576 were interpolated.
+Mean reprojection error for RWrist is 7.6 px (~ 0.046 m), reached with 3.38 excluded cameras. 
+  Frames 39 to 43, 45 to 47, 66 to 66, 181 to 181, 192 to 192, 327 to 327, 410 to 411, 415 to 415, 571 to 571, 576 to 576 were interpolated.
+Mean reprojection error for LShoulder is 7.8 px (~ 0.047 m), reached with 3.02 excluded cameras. 
+  Frames 39 to 43, 66 to 66, 181 to 181, 300 to 300, 308 to 308, 327 to 327, 571 to 571, 576 to 576, 582 to 582 were interpolated.
+  Frames 45 to 60 were not interpolated.
+Mean reprojection error for LElbow is 7.7 px (~ 0.046 m), reached with 3.27 excluded cameras. 
+  Frames 37 to 37, 39 to 43, 45 to 48, 50 to 51, 58 to 59, 66 to 66, 181 to 181, 306 to 308, 310 to 310, 327 to 327, 571 to 571, 576 to 576, 582 to 582, 673 to 673 were interpolated.
+Mean reprojection error for LWrist is 7.3 px (~ 0.044 m), reached with 3.41 excluded cameras. 
+  Frames 37 to 37, 39 to 47, 56 to 56, 59 to 59, 61 to 61, 66 to 66, 181 to 181, 308 to 308, 319 to 319, 327 to 327, 563 to 563, 571 to 571, 576 to 576, 582 to 582, 812 to 812 were interpolated.
+
+--> Mean reprojection error for all points on frames 4 to 886 is 7.7 px, which roughly corresponds to 46.3 mm. 
+Cameras were excluded if likelihood was below 0.3 and if the reprojection error was above 20 px.
+Gaps were interpolated with linear method if smaller than 10 frames. Larger gaps were filled with the last valid value.
+In average, 3.17 cameras had to be excluded to reach these thresholds.
+Camera M11459 was excluded 64% of the time, Camera M11461: 57%, Camera M11463: 56%, Camera M11462: 38%, Camera M11139: 36%, Camera M11458: 22%, Camera M11140: 21%, and Camera M11141: 18%.
+
+3D coordinates are stored at /home/lea/vitpose/Pose2Sim/pose-3d/Pose2Sim_4-885.trc.
+
+
+
+All trc files have been converted to c3d.
+Limb swapping was not handled.
+Lens distortions were not taken into account.
+
+Triangulation took 00h00m07s.
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Wednesday 04. June 2025, 10:38:30
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Single-person analysis selected.
+
+--> Mean reprojection error for RShoulder point on all frames is 25.5 px, which roughly corresponds to 153.3 mm. 
+--> In average, 3.66 cameras had to be excluded to reach the demanded 20 px error threshold after excluding points with likelihood below 0.5.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h00m12s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Wednesday 04. June 2025, 10:38:43
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Trimming Participant 0 around frames (0, 1045).
+Cannot read video. Frame rate will be set to 60 fps.
+
+Mean reprojection error for RHip is 8.0 px (~ 0.048 m), reached with 3.82 excluded cameras. 
+  Frames 71 to 76, 111 to 113, 115 to 115, 119 to 119, 121 to 122, 124 to 125, 130 to 130, 136 to 136, 141 to 141, 145 to 145, 147 to 148, 158 to 159, 166 to 168, 177 to 179, 181 to 190, 194 to 196, 269 to 269, 395 to 396, 413 to 413, 537 to 537, 539 to 539, 569 to 570, 573 to 574, 612 to 613, 617 to 625, 628 to 629, 635 to 635, 651 to 652, 664 to 668, 845 to 845, 861 to 861, 865 to 865, 872 to 872, 875 to 876 were interpolated.
+Mean reprojection error for RKnee is 7.7 px (~ 0.046 m), reached with 4.0 excluded cameras. 
+  Frames 71 to 76, 101 to 103, 111 to 113, 115 to 115, 119 to 119, 121 to 125, 130 to 130, 136 to 136, 139 to 141, 145 to 145, 147 to 148, 158 to 159, 167 to 167, 169 to 169, 171 to 173, 177 to 179, 181 to 190, 194 to 196, 199 to 200, 209 to 209, 211 to 211, 227 to 227, 269 to 269, 308 to 309, 312 to 312, 385 to 385, 395 to 396, 413 to 413, 533 to 533, 535 to 535, 537 to 537, 539 to 544, 569 to 574, 612 to 613, 617 to 625, 628 to 629, 635 to 635, 651 to 652, 664 to 668, 845 to 845, 861 to 861, 865 to 865, 872 to 872, 875 to 876, 928 to 928, 930 to 931 were interpolated.
+Mean reprojection error for RAnkle is 6.9 px (~ 0.041 m), reached with 4.18 excluded cameras. 
+  Frames 35 to 35, 37 to 37, 71 to 78, 113 to 116, 119 to 125, 130 to 130, 134 to 137, 139 to 148, 158 to 160, 169 to 169, 192 to 198, 200 to 200, 204 to 205, 269 to 269, 308 to 309, 386 to 386, 395 to 396, 398 to 398, 413 to 413, 430 to 430, 533 to 533, 535 to 535, 537 to 545, 569 to 571, 573 to 574, 612 to 613, 617 to 625, 628 to 629, 635 to 635, 651 to 652, 664 to 668, 670 to 670, 845 to 845, 861 to 861, 865 to 865, 872 to 872, 875 to 876, 928 to 935, 940 to 940, 963 to 963, 965 to 965, 971 to 972, 974 to 974, 976 to 978, 980 to 980 were interpolated.
+  Frames 174 to 190 were not interpolated.
+Mean reprojection error for LHip is 8.4 px (~ 0.051 m), reached with 3.85 excluded cameras. 
+  Frames 71 to 76, 111 to 113, 115 to 115, 119 to 119, 121 to 122, 124 to 125, 130 to 130, 135 to 136, 141 to 141, 145 to 145, 147 to 148, 158 to 159, 172 to 172, 192 to 192, 194 to 197, 199 to 200, 269 to 269, 309 to 309, 395 to 396, 413 to 413, 537 to 537, 539 to 541, 564 to 567, 569 to 574, 601 to 601, 612 to 613, 616 to 625, 628 to 629, 635 to 635, 651 to 652, 663 to 668, 845 to 845, 861 to 861, 865 to 865, 872 to 872, 875 to 875 were interpolated.
+  Frames 177 to 190 were not interpolated.
+Mean reprojection error for LKnee is 6.7 px (~ 0.04 m), reached with 4.03 excluded cameras. 
+  Frames 71 to 76, 108 to 108, 111 to 115, 118 to 125, 128 to 128, 130 to 130, 136 to 136, 141 to 141, 145 to 145, 147 to 148, 158 to 160, 164 to 164, 167 to 167, 171 to 173, 194 to 197, 199 to 199, 269 to 269, 309 to 309, 386 to 386, 395 to 396, 413 to 413, 533 to 533, 535 to 535, 537 to 537, 539 to 544, 566 to 567, 569 to 574, 612 to 613, 617 to 625, 628 to 629, 635 to 635, 651 to 652, 664 to 668, 845 to 845, 861 to 861, 865 to 865, 872 to 872, 875 to 876, 928 to 928, 930 to 930 were interpolated.
+  Frames 175 to 190 were not interpolated.
+Mean reprojection error for LAnkle is 6.6 px (~ 0.04 m), reached with 4.19 excluded cameras. 
+  Frames 35 to 35, 37 to 37, 71 to 78, 113 to 116, 118 to 126, 130 to 130, 134 to 136, 139 to 148, 158 to 160, 169 to 169, 193 to 197, 204 to 206, 269 to 269, 309 to 309, 312 to 312, 386 to 386, 395 to 396, 413 to 413, 427 to 427, 430 to 430, 533 to 533, 535 to 535, 537 to 537, 539 to 544, 566 to 566, 569 to 574, 612 to 613, 617 to 625, 628 to 629, 635 to 635, 651 to 652, 664 to 668, 845 to 845, 861 to 861, 865 to 865, 872 to 872, 875 to 876, 906 to 906, 908 to 908, 928 to 935, 940 to 940, 963 to 965, 972 to 972, 974 to 974, 976 to 978, 980 to 980 were interpolated.
+  Frames 177 to 190 were not interpolated.
+Mean reprojection error for Nose is 7.6 px (~ 0.046 m), reached with 3.71 excluded cameras. 
+  Frames 111 to 113, 115 to 115, 119 to 122, 125 to 125, 130 to 130, 136 to 136, 141 to 141, 145 to 145, 147 to 148, 158 to 159, 177 to 179, 181 to 190, 194 to 196, 269 to 269, 395 to 396, 413 to 413, 569 to 570, 573 to 574, 612 to 613, 617 to 625, 628 to 629, 635 to 635, 651 to 652, 664 to 668, 845 to 845 were interpolated.
+Mean reprojection error for RShoulder is 7.6 px (~ 0.046 m), reached with 3.66 excluded cameras. 
+  Frames 113 to 113, 115 to 115, 119 to 119, 121 to 122, 125 to 125, 130 to 130, 136 to 136, 141 to 141, 145 to 145, 147 to 148, 158 to 159, 177 to 179, 181 to 190, 194 to 196, 269 to 269, 395 to 396, 413 to 413, 569 to 570, 573 to 574, 612 to 613, 617 to 625, 628 to 629, 635 to 635, 651 to 652, 664 to 668, 845 to 845 were interpolated.
+Mean reprojection error for RElbow is 7.9 px (~ 0.047 m), reached with 3.97 excluded cameras. 
+  Frames 75 to 76, 113 to 113, 115 to 115, 119 to 119, 121 to 122, 125 to 125, 130 to 130, 136 to 136, 141 to 141, 145 to 145, 147 to 148, 158 to 159, 177 to 179, 194 to 196, 269 to 269, 395 to 396, 409 to 409, 413 to 413, 569 to 571, 573 to 574, 577 to 577, 612 to 613, 617 to 625, 628 to 630, 633 to 633, 635 to 635, 651 to 652, 664 to 668, 842 to 842, 845 to 845, 859 to 860 were interpolated.
+  Frames 181 to 191 were not interpolated.
+Mean reprojection error for RWrist is 6.9 px (~ 0.041 m), reached with 4.15 excluded cameras. 
+  Frames 103 to 103, 111 to 111, 113 to 113, 115 to 115, 119 to 119, 121 to 122, 124 to 125, 130 to 130, 136 to 136, 141 to 141, 145 to 145, 147 to 148, 158 to 159, 161 to 161, 164 to 165, 177 to 179, 194 to 196, 269 to 269, 272 to 273, 277 to 277, 362 to 362, 365 to 365, 395 to 396, 398 to 398, 409 to 409, 413 to 413, 416 to 416, 418 to 420, 494 to 494, 569 to 571, 573 to 574, 577 to 577, 579 to 579, 612 to 613, 633 to 633, 635 to 635, 651 to 652, 664 to 668, 837 to 837, 841 to 842, 845 to 848, 850 to 850, 858 to 860, 863 to 863, 971 to 971 were interpolated.
+  Frames 181 to 191, 617 to 631 were not interpolated.
+Mean reprojection error for LShoulder is 7.4 px (~ 0.044 m), reached with 3.74 excluded cameras. 
+  Frames 113 to 113, 115 to 115, 119 to 119, 121 to 126, 130 to 130, 132 to 132, 136 to 136, 141 to 141, 145 to 145, 147 to 148, 158 to 160, 163 to 163, 177 to 179, 181 to 190, 194 to 196, 200 to 200, 269 to 269, 395 to 396, 409 to 409, 413 to 413, 545 to 545, 567 to 567, 569 to 570, 573 to 574, 612 to 613, 617 to 625, 628 to 629, 635 to 635, 651 to 652, 655 to 655, 663 to 668, 845 to 845, 851 to 851 were interpolated.
+Mean reprojection error for LElbow is 7.4 px (~ 0.044 m), reached with 4.03 excluded cameras. 
+  Frames 75 to 75, 111 to 111, 113 to 113, 115 to 116, 118 to 123, 125 to 125, 130 to 130, 136 to 136, 138 to 138, 141 to 141, 145 to 145, 147 to 148, 158 to 159, 161 to 161, 164 to 165, 169 to 169, 171 to 172, 176 to 179, 181 to 190, 194 to 197, 269 to 269, 391 to 396, 413 to 413, 417 to 417, 535 to 535, 543 to 543, 567 to 567, 569 to 570, 573 to 574, 588 to 588, 601 to 602, 604 to 606, 612 to 613, 617 to 625, 628 to 629, 635 to 635, 641 to 641, 651 to 652, 655 to 656, 663 to 668, 841 to 841, 845 to 845, 852 to 852 were interpolated.
+Mean reprojection error for LWrist is 6.7 px (~ 0.04 m), reached with 4.15 excluded cameras. 
+  Frames 75 to 75, 108 to 108, 110 to 111, 113 to 113, 115 to 115, 118 to 119, 121 to 122, 125 to 125, 130 to 130, 136 to 136, 138 to 138, 141 to 141, 145 to 145, 147 to 148, 152 to 152, 158 to 159, 169 to 169, 177 to 179, 181 to 190, 193 to 198, 200 to 200, 208 to 209, 227 to 227, 269 to 269, 378 to 378, 395 to 396, 411 to 411, 413 to 413, 416 to 418, 424 to 424, 543 to 543, 545 to 545, 567 to 567, 569 to 570, 572 to 575, 601 to 602, 612 to 613, 617 to 625, 628 to 629, 635 to 635, 651 to 652, 662 to 668, 837 to 837, 842 to 842, 845 to 845, 851 to 853, 858 to 860, 863 to 863, 939 to 939 were interpolated.
+
+--> Mean reprojection error for all points on frames 0 to 1045 is 7.6 px, which roughly corresponds to 45.7 mm. 
+Cameras were excluded if likelihood was below 0.3 and if the reprojection error was above 20 px.
+Gaps were interpolated with linear method if smaller than 10 frames. Larger gaps were filled with the last valid value.
+In average, 3.96 cameras had to be excluded to reach these thresholds.
+Camera M11461 was excluded 67% of the time, Camera M11463: 60%, Camera M11139: 60%, Camera M11459: 56%, Camera M11462: 53%, Camera M11140: 39%, Camera M11458: 33%, and Camera M11141: 28%.
+
+3D coordinates are stored at /home/lea/vitpose/Pose2Sim/pose-3d/Pose2Sim_0-1044.trc.
+
+
+
+All trc files have been converted to c3d.
+Limb swapping was not handled.
+Lens distortions were not taken into account.
+
+Triangulation took 00h00m10s.
+
+
+---------------------------------------------------------------------
+Associating persons for Pose2Sim, for all frames.
+On Wednesday 04. June 2025, 11:55:20
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+
+Multi-person analysis selected.
+
+--> A person was reconstructed if the lines from cameras to their keypoints intersected within 0.1 m and if the calculated affinity stayed above 0.2 after excluding points with likelihood below 0.5.
+--> Beware that people were sorted across cameras, but not across frames. This will be done in the triangulation stage.
+
+Tracked json files are stored in /home/lea/vitpose/Pose2Sim/pose-associated.
+
+Associating persons took 00h00m08s.
+
+
+---------------------------------------------------------------------
+Triangulation of 2D points for Pose2Sim, for all frames.
+On Wednesday 04. June 2025, 11:55:29
+Project directory: /home/lea/vitpose/Pose2Sim
+---------------------------------------------------------------------
+
+Trimming Participant 0 around frames (0, 1045).
+Cannot read video. Frame rate will be set to 60 fps.
+
+Mean reprojection error for RHip is 8.4 px (~ 0.051 m), reached with 3.5 excluded cameras. 
+  Frames 73 to 76, 113 to 113, 115 to 115, 119 to 119, 124 to 125, 136 to 136, 141 to 141, 145 to 145, 147 to 148, 159 to 159, 161 to 161, 165 to 168, 182 to 183, 195 to 195, 269 to 269, 312 to 312, 544 to 544, 569 to 570, 573 to 574, 612 to 613, 617 to 622, 625 to 625, 628 to 629, 635 to 635, 651 to 652, 664 to 668, 845 to 845 were interpolated.
+Mean reprojection error for RKnee is 8.1 px (~ 0.049 m), reached with 3.64 excluded cameras. 
+  Frames 73 to 76, 113 to 113, 115 to 115, 123 to 124, 130 to 130, 136 to 136, 139 to 141, 145 to 145, 147 to 148, 159 to 159, 161 to 161, 167 to 167, 169 to 169, 171 to 173, 182 to 182, 191 to 191, 194 to 195, 199 to 200, 209 to 209, 227 to 227, 269 to 269, 308 to 309, 312 to 312, 533 to 533, 544 to 544, 569 to 572, 574 to 574, 612 to 613, 617 to 622, 625 to 625, 628 to 629, 635 to 635, 651 to 652, 664 to 667, 845 to 845 were interpolated.
+Mean reprojection error for RAnkle is 7.1 px (~ 0.043 m), reached with 3.82 excluded cameras. 
+  Frames 35 to 35, 37 to 37, 73 to 77, 113 to 113, 116 to 116, 120 to 120, 123 to 124, 134 to 137, 139 to 143, 145 to 148, 158 to 161, 169 to 169, 174 to 178, 181 to 184, 187 to 187, 189 to 193, 195 to 195, 197 to 198, 200 to 200, 204 to 204, 269 to 269, 308 to 309, 312 to 312, 398 to 398, 413 to 413, 430 to 430, 533 to 533, 538 to 538, 544 to 544, 569 to 571, 612 to 613, 617 to 619, 621 to 622, 625 to 625, 628 to 629, 635 to 635, 651 to 652, 665 to 667, 670 to 670, 845 to 845 were interpolated.
+Mean reprojection error for LHip is 8.3 px (~ 0.05 m), reached with 3.53 excluded cameras. 
+  Frames 73 to 76, 113 to 113, 124 to 124, 130 to 130, 135 to 136, 141 to 141, 145 to 145, 147 to 148, 158 to 159, 161 to 161, 172 to 172, 177 to 178, 181 to 182, 190 to 190, 195 to 195, 199 to 200, 269 to 269, 308 to 309, 312 to 312, 544 to 544, 569 to 574, 601 to 601, 612 to 613, 616 to 619, 621 to 622, 625 to 625, 628 to 629, 635 to 635, 651 to 652, 665 to 667, 845 to 845 were interpolated.
+Mean reprojection error for LKnee is 6.8 px (~ 0.041 m), reached with 3.66 excluded cameras. 
+  Frames 73 to 76, 113 to 113, 115 to 115, 123 to 124, 136 to 136, 141 to 141, 145 to 145, 147 to 148, 158 to 161, 167 to 167, 171 to 173, 175 to 182, 190 to 191, 195 to 195, 199 to 199, 269 to 269, 308 to 309, 312 to 312, 413 to 413, 533 to 533, 544 to 544, 569 to 572, 574 to 574, 612 to 613, 617 to 622, 625 to 625, 628 to 629, 635 to 635, 651 to 652, 665 to 667, 845 to 845 were interpolated.
+Mean reprojection error for LAnkle is 6.6 px (~ 0.04 m), reached with 3.82 excluded cameras. 
+  Frames 35 to 35, 37 to 37, 73 to 77, 113 to 113, 116 to 116, 119 to 119, 123 to 124, 126 to 126, 134 to 136, 139 to 143, 145 to 148, 158 to 161, 169 to 169, 177 to 178, 181 to 183, 186 to 187, 190 to 191, 193 to 193, 195 to 195, 197 to 197, 204 to 204, 206 to 206, 269 to 269, 308 to 309, 312 to 312, 427 to 427, 430 to 430, 533 to 533, 544 to 544, 569 to 572, 574 to 574, 612 to 613, 617 to 619, 621 to 623, 625 to 625, 628 to 629, 635 to 635, 651 to 652, 665 to 667, 845 to 845 were interpolated.
+Mean reprojection error for Nose is 7.9 px (~ 0.047 m), reached with 3.4 excluded cameras. 
+  Frames 75 to 75, 113 to 113, 115 to 115, 136 to 136, 141 to 141, 147 to 148, 158 to 159, 161 to 161, 187 to 187, 190 to 190, 195 to 195, 269 to 269, 312 to 312, 569 to 570, 612 to 613, 617 to 619, 621 to 622, 625 to 625, 628 to 629, 635 to 635, 651 to 652, 665 to 667, 845 to 845 were interpolated.
+Mean reprojection error for RShoulder is 8.0 px (~ 0.048 m), reached with 3.45 excluded cameras. 
+  Frames 75 to 75, 113 to 113, 119 to 119, 122 to 122, 125 to 125, 130 to 130, 136 to 136, 141 to 141, 145 to 145, 147 to 148, 158 to 159, 161 to 161, 177 to 178, 182 to 182, 184 to 184, 186 to 190, 195 to 195, 269 to 269, 413 to 413, 569 to 570, 573 to 574, 612 to 613, 617 to 619, 621 to 622, 625 to 625, 628 to 629, 635 to 635, 651 to 652, 665 to 667, 845 to 845 were interpolated.
+Mean reprojection error for RElbow is 8.3 px (~ 0.05 m), reached with 3.74 excluded cameras. 
+  Frames 75 to 76, 111 to 113, 121 to 121, 136 to 136, 141 to 141, 147 to 148, 159 to 159, 161 to 161, 177 to 177, 183 to 183, 187 to 187, 190 to 190, 195 to 195, 269 to 269, 569 to 571, 573 to 574, 612 to 613, 617 to 619, 621 to 623, 625 to 625, 628 to 630, 633 to 633, 635 to 635, 651 to 652, 665 to 667, 842 to 842, 845 to 845, 861 to 861 were interpolated.
+Mean reprojection error for RWrist is 7.6 px (~ 0.046 m), reached with 3.92 excluded cameras. 
+  Frames 48 to 48, 75 to 75, 111 to 111, 113 to 113, 115 to 115, 119 to 119, 122 to 122, 124 to 125, 136 to 136, 141 to 141, 147 to 148, 159 to 159, 161 to 161, 183 to 183, 187 to 187, 190 to 190, 195 to 196, 269 to 269, 272 to 273, 398 to 398, 413 to 413, 416 to 416, 419 to 419, 494 to 494, 569 to 571, 573 to 574, 612 to 613, 633 to 633, 635 to 635, 651 to 652, 664 to 667, 841 to 842, 845 to 848, 850 to 850, 858 to 858, 861 to 861, 863 to 863 were interpolated.
+  Frames 617 to 631 were not interpolated.
+Mean reprojection error for LShoulder is 7.4 px (~ 0.044 m), reached with 3.47 excluded cameras. 
+  Frames 75 to 75, 113 to 113, 121 to 125, 130 to 130, 136 to 136, 141 to 141, 147 to 148, 158 to 161, 163 to 164, 177 to 178, 182 to 182, 186 to 186, 195 to 195, 269 to 269, 569 to 570, 612 to 613, 617 to 622, 625 to 625, 628 to 629, 635 to 635, 651 to 652, 655 to 655, 665 to 667, 845 to 845, 851 to 851 were interpolated.
+Mean reprojection error for LElbow is 7.4 px (~ 0.044 m), reached with 3.73 excluded cameras. 
+  Frames 75 to 75, 113 to 113, 116 to 116, 118 to 118, 120 to 121, 123 to 123, 136 to 136, 141 to 141, 147 to 148, 159 to 159, 161 to 161, 164 to 164, 169 to 169, 171 to 172, 176 to 178, 195 to 196, 269 to 269, 394 to 394, 417 to 417, 544 to 544, 569 to 570, 601 to 602, 604 to 606, 612 to 613, 617 to 619, 621 to 622, 625 to 625, 628 to 629, 635 to 635, 641 to 641, 651 to 652, 655 to 656, 664 to 667, 841 to 841, 845 to 845, 852 to 852 were interpolated.
+Mean reprojection error for LWrist is 6.8 px (~ 0.041 m), reached with 3.87 excluded cameras. 
+  Frames 75 to 75, 110 to 110, 112 to 113, 115 to 115, 118 to 118, 121 to 121, 125 to 125, 136 to 136, 141 to 141, 147 to 148, 152 to 152, 158 to 159, 161 to 161, 164 to 164, 169 to 169, 178 to 178, 186 to 186, 193 to 193, 195 to 196, 200 to 200, 227 to 227, 269 to 269, 417 to 417, 424 to 424, 569 to 570, 572 to 572, 601 to 602, 612 to 613, 617 to 619, 621 to 622, 625 to 625, 628 to 629, 635 to 635, 651 to 652, 665 to 667, 837 to 837, 842 to 842, 845 to 845, 851 to 853, 858 to 858, 863 to 863, 929 to 930 were interpolated.
+
+--> Mean reprojection error for all points on frames 0 to 1045 is 7.8 px, which roughly corresponds to 46.9 mm. 
+Cameras were excluded if likelihood was below 0.3 and if the reprojection error was above 20 px.
+Gaps were interpolated with linear method if smaller than 10 frames. Larger gaps were filled with the last valid value.
+In average, 3.66 cameras had to be excluded to reach these thresholds.
+Camera M11461 was excluded 64% of the time, Camera M11139: 60%, Camera M11463: 55%, Camera M11459: 52%, Camera M11462: 48%, Camera M11140: 34%, Camera M11458: 28%, and Camera M11141: 25%.
+
+3D coordinates are stored at /home/lea/vitpose/Pose2Sim/pose-3d/Pose2Sim_P1_0-1044.trc.
+
+
+
+All trc files have been converted to c3d.
+Limb swapping was not handled.
+Lens distortions were not taken into account.
+
+Triangulation took 00h00m11s.
+

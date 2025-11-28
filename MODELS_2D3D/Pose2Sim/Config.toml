@@ -22,8 +22,8 @@ multi_person = false # true for trials with multiple participants. If false, onl
 participant_height = 'auto' # 'auto', float (eg 1.72), or list of floats (eg [1.72, 1.40])  # meters  # Only used for marker augmentation 
 participant_mass = 70.0             # float (eg 70.0), or list of floats (eg [70.0, 63.5])  # kg      # Only used for marker augmentation and scaling, no impact on results unless you need to further compute forces
 
-frame_rate = 120 # fps # int or 'auto'. If 'auto', finds from video (or defaults to 60 fps if you work with images) 
-frame_range = 'all' # 'auto', 'all', or range like [10,300]. If 'auto', will trim around the frames with low reprojection error (useful if a person enters/exits the scene)
+frame_rate = 50 # fps # int or 'auto'. If 'auto', finds from video (or defaults to 60 fps if you work with images) 
+frame_range = 'auto' # 'auto', 'all', or range like [10,300]. If 'auto', will trim around the frames with low reprojection error (useful if a person enters/exits the scene)
 
 ## If cameras are not synchronized, designates the frame range of the camera with the shortest recording time
 ## N.B.: If you want a time range instead, use frame_range = time_range * frame_rate
@@ -96,14 +96,14 @@ output_format = 'openpose' # 'openpose', 'mmpose', 'deeplabcut', 'none' or a lis
 
 
 [synchronization]
-synchronization_gui = true # true or false. If true, a player will popup and let the user determine synchronization parameters. If false, it will be done automatically based on the parameters below
-display_sync_plots = true # true or false (lowercase)
+synchronization_gui = false # true or false. If true, a player will popup and let the user determine synchronization parameters. If false, it will be done automatically based on the parameters below
+display_sync_plots = false # true or false (lowercase)
 keypoints_to_consider = 'all' # 'all' if all points should be considered, for example if the participant did not perform any particicular sharp movement. In this case, the capture needs to be 5-10 seconds long at least
                            # ['RWrist', 'RElbow'] list of keypoint names if you want to specify keypoints with a sharp vertical motion.
 approx_time_maxspeed = 'auto' # 'auto' if you want to consider the whole capture (default, slower if long sequences)
                            # [10.0, 2.0, 8.0, 11.0] list of times (seconds) if you want to specify the approximate time of a clear vertical event for each camera
 time_range_around_maxspeed = 2.0 # Search for best correlation in the range [approx_time_maxspeed - time_range_around_maxspeed, approx_time_maxspeed  + time_range_around_maxspeed]
-likelihood_threshold = 0.4 # Keypoints whose likelihood is below likelihood_threshold are filtered out
+likelihood_threshold = 0.3 # Keypoints whose likelihood is below likelihood_threshold are filtered out
 filter_cutoff = 6 # time series are smoothed to get coherent time-lagged correlation
 filter_order = 4
 
@@ -185,13 +185,13 @@ calibration_type = 'convert' # 'convert' or 'calculate'
 
 
 [triangulation]
-reproj_error_threshold_triangulation = 50 # px
+reproj_error_threshold_triangulation = 20 # px
 likelihood_threshold_triangulation = 0.3
-min_cameras_for_triangulation = 2
-interpolation = 'linear' #linear, slinear, quadratic, cubic, or none
+min_cameras_for_triangulation = 3
+interpolation = 'cubic' #linear, slinear, quadratic, cubic, or none
                         # 'none' if you don't want to interpolate missing points
-interp_if_gap_smaller_than = 20 # do not interpolate bigger gaps
-fill_large_gaps_with = 'last_value' # 'last_value', 'nan', or 'zeros' 
+interp_if_gap_smaller_than = 10 # do not interpolate bigger gaps
+fill_large_gaps_with = 'nan' # 'last_value', 'nan', or 'zeros' 
 show_interp_indices = true # true or false (lowercase). For each keypoint, return the frames that need to be interpolated
 handle_LR_swap = false # Better if few cameras (eg less than 4) with risk of limb swapping (eg camera facing sagittal plane), otherwise slightly less accurate and slower
 undistort_points = false # Better if distorted image (parallel lines curvy on the edge or at least one param > 10^-2), but unnecessary (and slightly slower) if distortions are low
@@ -200,7 +200,7 @@ make_c3d = true # save triangulated data in c3d format in addition to trc
 
 [filtering]
 type = 'butterworth' # butterworth, kalman, gaussian, LOESS, median, butterworth_on_speed
-display_figures = true # true or false (lowercase) 
+display_figures = false # true or false (lowercase) 
 make_c3d = true # also save triangulated data in c3d format
 
    [filtering.butterworth]
@@ -208,7 +208,7 @@ make_c3d = true # also save triangulated data in c3d format
    cut_off_frequency = 6 # Hz
    [filtering.kalman]
    # How much more do you trust triangulation results (measurements), than previous data (process assuming constant acceleration)?
-   trust_ratio = 100 # = measurement_trust/process_trust ~= process_noise/measurement_noise
+   trust_ratio = 20 # = measurement_trust/process_trust ~= process_noise/measurement_noise
    smooth = true # should be true, unless you need real-time filtering
    [filtering.butterworth_on_speed]
    order = 4 

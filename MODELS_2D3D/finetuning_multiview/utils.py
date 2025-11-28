@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import math
 import time
@@ -7,18 +8,14 @@ import itertools as it
 import matplotlib.pyplot as plt
 
 import sys
-sys.path.append('/home/lea/trampo/MODELS_2D3D/mmpose')
-from typing import List, Tuple, Optional
+sys.path.append('/home/lea/trampo/metrics')
+from data_analysis import extract_coordinates
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from torchvision.ops import nms
 
-try:
-    from mmdet.apis import inference_detector, init_detector
-    has_mmdet = True
-except (ImportError, ModuleNotFoundError):
-    has_mmdet = False
 
 def show_prob(prob_x, prob_y):
     """
@@ -139,6 +136,16 @@ def resize_and_pad_keep_aspect(crop, target_size=(256, 192)):
 
     return resized_padded, scale, (pad_left, pad_top)
 
+def pad_to_multiple(x, multiple=64):
+    _, _, H, W = x.shape
+    new_H = ((H + multiple - 1) // multiple) * multiple
+    new_W = ((W + multiple - 1) // multiple) * multiple
+    pad_H = new_H - H
+    pad_W = new_W - W
+    # pad format: (left, right, top, bottom)
+    x = F.pad(x, (0, pad_W, 0, pad_H), mode='constant', value=0)
+    return x
+
 def map_keypoints_to_bbox(keypoints, scale, pad):
     keypoints_no_pad = keypoints - pad
     keypoints_orig = keypoints_no_pad / scale
@@ -168,7 +175,6 @@ def predict_multiview_with_grad(
     pose_estimator,
     images,
     bbox_thr=0.3,
-    pose_batch_size=8,
     device=None,
     training=False,
     freeze_bn=False,
@@ -182,52 +188,93 @@ def predict_multiview_with_grad(
     """
     device = device or ("cuda:0" if torch.cuda.is_available() else "cpu")
     pose_estimator = pose_estimator.to(device)
+    detector = detector.to(device)
 
     # Freeze detector (no grads)
     detector.eval()
     for p in detector.parameters():
         p.requires_grad = False
 
-    B, V, C, H, W = images.size()
-
-    # Convert to numpy for detector
-    imgs_np = images.permute(0, 1, 3, 4, 2).cpu().numpy() * 255
-    imgs_np = imgs_np.astype(np.uint8)
-
-    crop_tensors, metas = [], []
     model_input_size = (256, 192)
+
+    B, V, C, H, W = images.shape
+    num_imgs = B*V
+    batch_size = 16
+
+    # Flatten batch and view dimensions
+    flat_imgs = images.reshape(B * V, C, H, W).to(device, non_blocking=True)
+    flat_imgs = pad_to_multiple(flat_imgs)
+
+    det_results = []
+
+    for i in range(0, num_imgs, batch_size):
+        batch_imgs = flat_imgs[i:i+batch_size]
+        
+        # YOLO accepts either numpy arrays or torch tensors
+        results = detector.predict(
+            source=batch_imgs,
+            device=device,
+            conf=bbox_thr,
+            classes=[0],       # 0 = person
+            verbose=False
+        )
+        det_results.extend(results)
+
+    # --- NMS post-processing (remove duplicates) ---
+    iou_thr = 0.4  # adjust overlap tolerance
+
+    filtered_results = []
+    for r in det_results:
+        if not hasattr(r, "boxes") or r.boxes is None or len(r.boxes) == 0:
+            filtered_results.append(r)
+            continue
+
+        boxes = r.boxes.xyxy  # shape (N, 4)
+        scores = r.boxes.conf  # shape (N,)
+        keep_idx = nms(boxes, scores, iou_thr)
+        filtered = r.new()
+        filtered.boxes = r.boxes[keep_idx]
+        filtered_results.append(filtered)
+
+    det_results = filtered_results
+
+    crop_tensors = []
+    metas = []
     max_persons = 0
 
-    for b in range(B):
-        for v in range(V):
-            # NEW: skip if detection mask exists and is False
-            if detections is not None and not bool(detections[b, v]):
-                continue
+    # Flattened loop over results (vectorizable crop/resize)
+    for idx, dets in enumerate(det_results):
+        bboxes = dets.boxes.xyxy
+        b = idx // V
+        v = idx % V
+        img = flat_imgs[idx]
 
-            img = imgs_np[b, v]
-            det_result = inference_detector(detector, img)
-            pred_instance = det_result.pred_instances.cpu().numpy()
-            bboxes = pred_instance.bboxes
-            bboxes = bboxes[np.logical_and(pred_instance.labels == 0,
-                                           pred_instance.scores > bbox_thr)]
-            max_persons = max(max_persons, len(bboxes))
+        max_persons = max(max_persons, len(bboxes))
 
-            for bbox in bboxes:
-                x1, y1, x2, y2 = map(int, bbox.tolist())
-                if x2 <= x1 or y2 <= y1:
-                    continue
+        if not len(bboxes):
+            continue
+        
+        # Convert bbox tensor once, filter invalids
+        bboxes = bboxes.to(torch.int16)
+        valid = (bboxes[:, 2] > bboxes[:, 0]) & (bboxes[:, 3] > bboxes[:, 1])
+        bboxes = bboxes[valid]
 
-                crop = img[y1:y2, x1:x2]
-                crop_resized, scale, pads = resize_and_pad_keep_aspect(crop, model_input_size)
-                crop_tensor = torch.from_numpy(crop_resized).permute(2, 0, 1).float() / 255.0
-                crop_tensors.append(crop_tensor)
+        # Vectorized cropping loop (batching crops for this image)
+        for bbox in bboxes:
+            x1, y1, x2, y2 = bbox.tolist()
+            crop = img[:, y1:y2, x1:x2].permute(1,2,0)
+            crop = crop.cpu().detach().numpy()
+            crop_resized, scale, pads = resize_and_pad_keep_aspect(crop, model_input_size)
 
-                metas.append({
-                    'b': b, 'v': v,
-                    'origin': torch.tensor([x1, y1], dtype=torch.float32, device=device),
-                    'scale': scale,
-                    'pads': torch.tensor(pads, dtype=torch.int16, device=device)
-                })
+            crop_tensor = torch.from_numpy(crop_resized).permute(2,0,1).float() / 255.0
+            crop_tensors.append(crop_tensor)
+
+            metas.append({
+                'b': b, 'v': v,
+                'origin': torch.tensor([x1, y1], dtype=torch.float32, device=device),
+                'scale': scale,
+                'pads': torch.tensor(pads, dtype=torch.int16, device=device)
+            })
 
     if len(crop_tensors) == 0:
         # Nothing detected at all
@@ -273,9 +320,8 @@ def predict_multiview_with_grad(
             data = torch.cat([kp_img, sc.unsqueeze(-1)], dim=1)
 
             keypoints_all[b, v, local_idx] = data
-
+    
     return keypoints_all
-
 
 def persons_combinations(keypoints_per_view):
     """
@@ -456,7 +502,6 @@ def triangulate_weighted(points, P):
     # Convert from homogeneous coordinates
     Q = Q_hom[..., :3] / Q_hom[..., 3:].clamp(min=1e-8)
     return Q
-
 
 def triangulate_comb(combs, coords, Ks, Ts):
     """
@@ -685,6 +730,59 @@ def project_points(points_3d, P, im_size=(1920, 1080)):
     return points_2d_all, valid_mask_all
 
 
+def get_gt_coords(seqs, frames, matching_pose2sim_vit, rotate=True):
+   # define Rotation for Pose2Sim to World
+   R = np.array([
+      [0, 0, 1],
+      [-1, 0, 0],
+      [0, 1, 0]
+   ])
+
+   gt_coords_all = []
+
+   for seq, frame in zip(seqs, frames):
+      path = os.path.join('/home/lea/trampo/MODELS_2D3D/Pose2Sim/pose-3d-vit-multi', seq, 'C1+C2+C3+C4+C5+C6+C7+C8', f'{seq}.trc')
+      gt_coords, gt_frames = extract_coordinates(path)
+
+      frame_val = frame.item() if torch.is_tensor(frame) else frame
+      mask = gt_frames == frame_val
+
+      if not np.any(mask):
+         n_joints = 13
+         nan_coords = np.full((n_joints, 3), np.nan, dtype=np.float32)
+         gt_coords_all.append(nan_coords)
+         continue
+
+      gt_coords = gt_coords[mask, matching_pose2sim_vit, :]
+
+      if rotate:
+         gt_coords = (R @ gt_coords.T).T
+
+      gt_coords_all.append(gt_coords)
+
+   return gt_coords_all
+
+def bone_length_loss(keypoints, seg_lengths, map_seg_to_keypoints, device=None):
+    """
+    keypoints: Tensor [B, N, D]  (D=2 or 3)
+    seg_lengths: list of per-bone target lengths (float)
+    map_seg_to_keypoints: list of tuples [(i,j), (k,l), ...]
+    """
+    # Convert to tensors
+    map_seg = torch.tensor(map_seg_to_keypoints, device=device)
+    target_lengths = seg_lengths #, device=keypoints.device, dtype=torch.float32)
+
+    # Extract coordinates for bone endpoints
+    kp1 = keypoints[:, map_seg[:, 0], :]  # [B, n_bones, D]
+    kp2 = keypoints[:, map_seg[:, 1], :]  # [B, n_bones, D]
+
+    # Compute bone lengths per sample
+    bone_lengths = torch.linalg.norm(kp1 - kp2, dim=-1)  # [B, n_bones]
+
+    # Compute loss (L2 difference)
+    loss = torch.nanmean(torch.abs(bone_lengths - target_lengths))
+    return loss
+
 def show_keypoints_on_im(images, detections, prediction, gt, reprojection, savepath, show=False):
     pred = prediction.cpu().detach().numpy()[0]
     det = detections.cpu().detach().numpy()[0]
@@ -705,7 +803,6 @@ def show_keypoints_on_im(images, detections, prediction, gt, reprojection, savep
         colors = [cmap(i / max(1, n - 1)) for i in range(n)]
 
         for i, pt_d in enumerate(pts_d):
-            pt_d = pt_d[:, 0:2]
             if not (pt_d == pt_p).all():  # avoid overplotting
                 label = 'detections' if i == 0 else None
                 plt.scatter(*pt_d.T, s=2, color=colors[i], label=label)
@@ -717,7 +814,6 @@ def show_keypoints_on_im(images, detections, prediction, gt, reprojection, savep
         if show:
             plt.show()
         plt.close()
-
 
 def nanmin(x, dim):
     mask = torch.isnan(x)
